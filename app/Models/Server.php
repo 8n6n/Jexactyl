@@ -34,7 +34,7 @@ use Everest\Exceptions\Http\Server\ServerStateConflictException;
  * @property string|null $threads
  * @property bool $oom_killer
  * @property int $allocation_id
- * @property int $nest_id
+ * @property int $pack_id
  * @property int $egg_id
  * @property string|null $startup
  * @property string $image
@@ -59,7 +59,7 @@ use Everest\Exceptions\Http\Server\ServerStateConflictException;
  * @property \Everest\Models\Egg|null $egg
  * @property \Illuminate\Database\Eloquent\Collection|\Everest\Models\Mount[] $mounts
  * @property int|null $mounts_count
- * @property \Everest\Models\Nest $nest
+ * @property \Everest\Models\Pack $pack
  * @property \Everest\Models\Node $node
  * @property \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property int|null $notifications_count
@@ -91,7 +91,7 @@ use Everest\Exceptions\Http\Server\ServerStateConflictException;
  * @method static \Illuminate\Database\Eloquent\Builder|Server whereIo($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Server whereMemory($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Server whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Server whereNestId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Server wherePackId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Server whereNodeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Server whereOomKiller($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Server whereOwnerId($value)
@@ -164,7 +164,7 @@ class Server extends Model
         'oom_killer' => 'sometimes|boolean',
         'disk' => 'required|numeric|min:0',
         'allocation_id' => 'required|bail|unique:servers|exists:allocations,id',
-        'nest_id' => 'required|exists:nests,id',
+        'pack_id' => 'required|exists:packs,id',
         'egg_id' => 'required|exists:eggs,id',
         'startup' => 'nullable|string',
         'skip_scripts' => 'sometimes|boolean',
@@ -192,7 +192,7 @@ class Server extends Model
         'cpu' => 'integer',
         'oom_killer' => 'boolean',
         'allocation_id' => 'integer',
-        'nest_id' => 'integer',
+        'pack_id' => 'integer',
         'egg_id' => 'integer',
         'order_id' => 'integer',
         'days_until_renewal' => 'integer',
@@ -259,11 +259,11 @@ class Server extends Model
     }
 
     /**
-     * Gets information for the nest associated with this server.
+     * Gets information for the pack associated with this server.
      */
-    public function nest(): BelongsTo
+    public function pack(): BelongsTo
     {
-        return $this->belongsTo(Nest::class);
+        return $this->belongsTo(Pack::class);
     }
 
     /**

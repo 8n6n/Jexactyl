@@ -31,7 +31,7 @@ class BillingConfigImportService
                     'description' => $category['description'],
                     'visible' => (bool) $category['visible'],
                     'egg_id' => (int) $category['egg_id'],
-                    'nest_id' => (int) $category['nest_id'],
+                    'pack_id' => (int) $category['pack_id'],
                 ]);
 
                 // Map the old category UUID to the new category UUID

@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Everest\Models\Egg;
-use Everest\Models\Nest;
+use Everest\Models\Pack;
 use Illuminate\Database\Seeder;
 use Illuminate\Http\UploadedFile;
 use Everest\Services\Eggs\Sharing\EggImporterService;
@@ -37,10 +37,10 @@ class EggSeeder extends Seeder
      */
     public function run()
     {
-        foreach (static::$import as $nest) {
+        foreach (static::$import as $pack) {
             /* @noinspection PhpParamsInspection */
             $this->parseEggFiles(
-                Nest::query()->where('author', 'support@pterodactyl.io')->where('name', $nest)->firstOrFail()
+                Pack::query()->where('author', 'support@pterodactyl.io')->where('name', $pack)->firstOrFail()
             );
         }
     }
@@ -50,11 +50,11 @@ class EggSeeder extends Seeder
      *
      * @throws \JsonException
      */
-    protected function parseEggFiles(Nest $nest)
+    protected function parseEggFiles(Pack $pack)
     {
-        $files = new \DirectoryIterator(database_path('Seeders/eggs/' . kebab_case($nest->name)));
+        $files = new \DirectoryIterator(database_path('Seeders/eggs/' . kebab_case($pack->name)));
 
-        $this->command->alert('Updating Eggs for Nest: ' . $nest->name);
+        $this->command->alert('Updating Eggs for Pack: ' . $pack->name);
         /** @var \DirectoryIterator $file */
         foreach ($files as $file) {
             if (!$file->isFile() || !$file->isReadable()) {
@@ -64,7 +64,7 @@ class EggSeeder extends Seeder
             $decoded = json_decode(file_get_contents($file->getRealPath()), true, 512, JSON_THROW_ON_ERROR);
             $file = new UploadedFile($file->getPathname(), $file->getFilename(), 'application/json');
 
-            $egg = $nest->eggs()
+            $egg = $pack->eggs()
                 ->where('author', $decoded['author'])
                 ->where('name', $decoded['name'])
                 ->first();
@@ -73,7 +73,7 @@ class EggSeeder extends Seeder
                 $this->updateImporterService->handle($egg, $file);
                 $this->command->info('Updated ' . $decoded['name']);
             } else {
-                $this->importerService->handleFile($nest->id, $file);
+                $this->importerService->handleFile($pack->id, $file);
                 $this->command->comment('Created ' . $decoded['name']);
             }
         }

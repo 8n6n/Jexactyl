@@ -75,7 +75,7 @@ class StartupModificationService
 
             $server = $server->forceFill([
                 'egg_id' => $egg->id,
-                'nest_id' => $egg->nest_id,
+                'pack_id' => $egg->pack_id,
             ]);
         }
 

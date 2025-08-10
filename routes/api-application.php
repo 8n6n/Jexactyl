@@ -245,23 +245,23 @@ Route::middleware([AdminSubject::class])->group(function () {
 
     /*
     |--------------------------------------------------------------------------
-    | Nest Controller Routes
+    | Pack Controller Routes
     |--------------------------------------------------------------------------
     |
-    | Endpoint: /api/application/nests
+    | Endpoint: /api/application/packs
     |
     */
-    Route::group(['prefix' => '/nests'], function () {
-        Route::get('/', [Application\Nests\NestController::class, 'index']);
-        Route::get('/{nest:id}', [Application\Nests\NestController::class, 'view']);
-        Route::get('/{nest:id}/eggs', [Application\Eggs\EggController::class, 'index']);
+    Route::group(['prefix' => '/packs'], function () {
+        Route::get('/', [Application\Packs\PackController::class, 'index']);
+        Route::get('/{pack:id}', [Application\Packs\PackController::class, 'view']);
+        Route::get('/{pack:id}/eggs', [Application\Eggs\EggController::class, 'index']);
 
-        Route::post('/', [Application\Nests\NestController::class, 'store']);
-        Route::post('/{nest:id}/import', [Application\Nests\NestController::class, 'import']);
+        Route::post('/', [Application\Packs\PackController::class, 'store']);
+        Route::post('/{pack:id}/import', [Application\Packs\PackController::class, 'import']);
 
-        Route::patch('/{nest:id}', [Application\Nests\NestController::class, 'update']);
+        Route::patch('/{pack:id}', [Application\Packs\PackController::class, 'update']);
 
-        Route::delete('/{nest:id}', [Application\Nests\NestController::class, 'delete']);
+        Route::delete('/{pack:id}', [Application\Packs\PackController::class, 'delete']);
     });
 
     /*

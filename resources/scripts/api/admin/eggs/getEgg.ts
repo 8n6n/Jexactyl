@@ -1,4 +1,4 @@
-import { Nest } from '@/api/admin/nests/getNests';
+import { Pack } from '@/api/admin/packs/getPacks';
 import { rawDataToServer, Server } from '@/api/admin/servers/getServers';
 import http, { FractalResponseData, FractalResponseList } from '@/api/http';
 import useSWR from 'swr';
@@ -34,7 +34,7 @@ export const rawDataToEggVariable = ({ attributes }: FractalResponseData): EggVa
 export interface Egg {
     id: number;
     uuid: string;
-    nestId: number;
+    packId: number;
     author: string;
     name: string;
     description: string | null;
@@ -54,7 +54,7 @@ export interface Egg {
     // scriptIsPrivileged: boolean;
 
     relations: {
-        nest?: Nest;
+        pack?: Pack;
         servers?: Server[];
         variables?: EggVariable[];
     };
@@ -63,7 +63,7 @@ export interface Egg {
 export const rawDataToEgg = ({ attributes }: FractalResponseData): Egg => ({
     id: attributes.id,
     uuid: attributes.uuid,
-    nestId: attributes.nest_id,
+    packId: attributes.pack_id,
     author: attributes.author,
     name: attributes.name,
     description: attributes.description,
@@ -83,7 +83,7 @@ export const rawDataToEgg = ({ attributes }: FractalResponseData): Egg => ({
     updatedAt: new Date(attributes.updated_at),
 
     relations: {
-        nest: undefined,
+        pack: undefined,
         servers: ((attributes.relationships?.servers as FractalResponseList | undefined)?.data || []).map(
             rawDataToServer,
         ),

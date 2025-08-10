@@ -9,7 +9,7 @@ class UpdateEggRequest extends StoreEggRequest
     public function rules(array $rules = null): array
     {
         return [
-            'nest_id' => 'sometimes|numeric|exists:nests,id',
+            'pack_id' => 'sometimes|numeric|exists:packs,id',
             'name' => 'sometimes|string|max:191',
             'description' => 'sometimes|string|nullable',
             'features' => 'sometimes|array',

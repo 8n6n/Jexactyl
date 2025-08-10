@@ -13,12 +13,12 @@ return [
         'cidr_out_of_range' => 'CIDR notation only allows masks between /25 and /32.',
         'port_out_of_range' => 'Ports in an allocation must be greater than 1024 and less than or equal to 65535.',
     ],
-    'nest' => [
-        'delete_has_servers' => 'A Nest with active servers attached to it cannot be deleted from the Panel.',
+    'pack' => [
+        'delete_has_servers' => 'A Pack with active servers attached to it cannot be deleted from the Panel.',
         'egg' => [
             'delete_has_servers' => 'An Egg with active servers attached to it cannot be deleted from the Panel.',
             'invalid_copy_id' => 'The Egg selected for copying a script from either does not exist, or is copying a script itself.',
-            'must_be_child' => 'The "Copy Settings From" directive for this Egg must be a child option for the selected Nest.',
+            'must_be_child' => 'The "Copy Settings From" directive for this Egg must be a child option for the selected Pack.',
             'has_children' => 'This Egg is a parent to one or more other Eggs. Please delete those Eggs before deleting this Egg.',
         ],
         'variables' => [

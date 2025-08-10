@@ -60,10 +60,10 @@ class WebhookSeeder extends Seeder
             'admin:mounts:update',
             'admin:mounts:delete',
 
-            'admin:nests:create',
-            'admin:nests:import',
-            'admin:nests:update',
-            'admin:nests:delete',
+            'admin:packs:create',
+            'admin:packs:import',
+            'admin:packs:update',
+            'admin:packs:delete',
 
             'admin:nodes:create',
             'admin:nodes:update',

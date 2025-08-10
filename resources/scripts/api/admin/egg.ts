@@ -5,7 +5,7 @@ import useSWR from 'swr';
 
 import type { Model, UUID, WithRelationships } from '@/api/admin/index';
 import { withRelationships } from '@/api/admin/index';
-import type { Nest } from '@/api/admin/nest';
+import type { Pack } from '@/api/admin/pack';
 import type { QueryBuilderParams } from '@/api/http';
 import http, { withQueryBuilderParams } from '@/api/http';
 import { Transformers } from '@definitions/admin';
@@ -13,7 +13,7 @@ import { Transformers } from '@definitions/admin';
 export interface Egg extends Model {
     id: number;
     uuid: UUID;
-    nestId: number;
+    packId: number;
     author: string;
     name: string;
     description: string | null;
@@ -32,7 +32,7 @@ export interface Egg extends Model {
     createdAt: Date;
     updatedAt: Date;
     relationships: {
-        nest?: Nest;
+        pack?: Pack;
         variables?: EggVariable[];
     };
 }
@@ -56,7 +56,7 @@ export interface EggVariable extends Model {
  * A standard API response with the minimum viable details for the frontend
  * to correctly render a egg.
  */
-export type LoadedEgg = WithRelationships<Egg, 'nest' | 'variables'>;
+export type LoadedEgg = WithRelationships<Egg, 'pack' | 'variables'>;
 
 /**
  * Gets a single egg from the database and returns it.
@@ -64,18 +64,18 @@ export type LoadedEgg = WithRelationships<Egg, 'nest' | 'variables'>;
 export const getEgg = async (id: number | string): Promise<LoadedEgg> => {
     const { data } = await http.get(`/api/application/eggs/${id}`, {
         params: {
-            include: ['nest', 'variables'],
+            include: ['pack', 'variables'],
         },
     });
 
-    return withRelationships(Transformers.toEgg(data), 'nest', 'variables');
+    return withRelationships(Transformers.toEgg(data), 'pack', 'variables');
 };
 
 export const searchEggs = async (
-    nestId: number,
+    packId: number,
     params: QueryBuilderParams<'name'>,
 ): Promise<WithRelationships<Egg, 'variables'>[]> => {
-    const { data } = await http.get(`/api/application/nests/${nestId}/eggs`, {
+    const { data } = await http.get(`/api/application/packs/${packId}/eggs`, {
         params: {
             ...withQueryBuilderParams(params),
             include: ['variables'],

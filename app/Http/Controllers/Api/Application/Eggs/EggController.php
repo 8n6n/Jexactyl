@@ -4,7 +4,7 @@ namespace Everest\Http\Controllers\Api\Application\Eggs;
 
 use Ramsey\Uuid\Uuid;
 use Everest\Models\Egg;
-use Everest\Models\Nest;
+use Everest\Models\Pack;
 use Everest\Facades\Activity;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
@@ -31,9 +31,9 @@ class EggController extends ApplicationApiController
     }
 
     /**
-     * Return an array of all eggs on a given nest.
+     * Return an array of all eggs on a given pack.
      */
-    public function index(GetEggsRequest $request, Nest $nest): array
+    public function index(GetEggsRequest $request, Pack $pack): array
     {
         $perPage = (int) $request->query('per_page', '20');
         if ($perPage > 100) {
@@ -42,7 +42,7 @@ class EggController extends ApplicationApiController
 
         // @phpstan-ignore-next-line
         $eggs = QueryBuilder::for(Egg::query())
-            ->where('nest_id', '=', $nest->id)
+            ->where('pack_id', '=', $pack->id)
             ->allowedFilters(['id', 'name', 'author'])
             ->allowedSorts(['id', 'name', 'author']);
         if ($perPage > 0) {

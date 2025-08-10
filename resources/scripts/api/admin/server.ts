@@ -6,7 +6,7 @@ import { Model, UUID, withRelationships, WithRelationships } from '@/api/admin/i
 import { Allocation, Node } from '@/api/admin/node';
 import { Transformers, User } from '@definitions/admin';
 import { Egg, EggVariable } from '@/api/admin/egg';
-import { Nest } from '@/api/admin/nest';
+import { Pack } from '@/api/admin/pack';
 import { type Database } from '@definitions/server';
 
 /**
@@ -42,7 +42,7 @@ export interface Server extends Model {
     nodeId: number;
     allocationId: number;
     eggId: number;
-    nestId: number;
+    packId: number;
     limits: ServerLimits;
     featureLimits: {
         databases: number;
@@ -59,7 +59,7 @@ export interface Server extends Model {
     updatedAt: Date;
     relationships: {
         allocations?: Allocation[];
-        nest?: Nest;
+        pack?: Pack;
         egg?: Egg;
         node?: Node;
         user?: User;

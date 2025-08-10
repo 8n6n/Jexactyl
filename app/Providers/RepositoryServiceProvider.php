@@ -4,7 +4,7 @@ namespace Everest\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Everest\Repositories\Eloquent\EggRepository;
-use Everest\Repositories\Eloquent\NestRepository;
+use Everest\Repositories\Eloquent\PackRepository;
 use Everest\Repositories\Eloquent\NodeRepository;
 use Everest\Repositories\Eloquent\TaskRepository;
 use Everest\Repositories\Eloquent\UserRepository;
@@ -20,7 +20,7 @@ use Everest\Repositories\Eloquent\SettingsRepository;
 use Everest\Repositories\Eloquent\AllocationRepository;
 use Everest\Contracts\Repository\EggRepositoryInterface;
 use Everest\Repositories\Eloquent\EggVariableRepository;
-use Everest\Contracts\Repository\NestRepositoryInterface;
+use Everest\Contracts\Repository\PackRepositoryInterface;
 use Everest\Contracts\Repository\NodeRepositoryInterface;
 use Everest\Contracts\Repository\TaskRepositoryInterface;
 use Everest\Contracts\Repository\UserRepositoryInterface;
@@ -55,7 +55,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(EggRepositoryInterface::class, EggRepository::class);
         $this->app->bind(EggVariableRepositoryInterface::class, EggVariableRepository::class);
         $this->app->bind(LocationRepositoryInterface::class, LocationRepository::class);
-        $this->app->bind(NestRepositoryInterface::class, NestRepository::class);
+        $this->app->bind(PackRepositoryInterface::class, PackRepository::class);
         $this->app->bind(NodeRepositoryInterface::class, NodeRepository::class);
         $this->app->bind(ScheduleRepositoryInterface::class, ScheduleRepository::class);
         $this->app->bind(ServerRepositoryInterface::class, ServerRepository::class);

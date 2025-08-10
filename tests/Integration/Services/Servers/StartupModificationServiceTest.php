@@ -3,7 +3,7 @@
 namespace Everest\Tests\Integration\Services\Servers;
 
 use Exception;
-use Everest\Models\Nest;
+use Everest\Models\Pack;
 use Everest\Models\User;
 use Everest\Models\Server;
 use Everest\Models\ServerVariable;
@@ -16,7 +16,7 @@ class StartupModificationServiceTest extends IntegrationTestCase
 {
     /**
      * Test that a non-admin request to modify the server startup parameters does
-     * not perform any egg or nest updates. This also attempts to pass through an
+     * not perform any egg or pack updates. This also attempts to pass through an
      * egg_id variable which should have no impact if the request is coming from
      * a non-admin entity.
      */
@@ -71,12 +71,12 @@ class StartupModificationServiceTest extends IntegrationTestCase
     public function testServerIsProperlyModifiedAsAdminUser()
     {
         /** @var \Everest\Models\Egg $nextEgg */
-        $nextEgg = Nest::query()->findOrFail(2)->eggs()->firstOrFail();
+        $nextEgg = Pack::query()->findOrFail(2)->eggs()->firstOrFail();
 
         $server = $this->createServerModel(['egg_id' => 1]);
 
         $this->assertNotSame($nextEgg->id, $server->egg_id);
-        $this->assertNotSame($nextEgg->nest_id, $server->nest_id);
+        $this->assertNotSame($nextEgg->pack_id, $server->pack_id);
 
         $response = $this->getService()
             ->setUserLevel(User::USER_LEVEL_ADMIN)
@@ -89,7 +89,7 @@ class StartupModificationServiceTest extends IntegrationTestCase
 
         $this->assertInstanceOf(Server::class, $response);
         $this->assertSame($nextEgg->id, $response->egg_id);
-        $this->assertSame($nextEgg->nest_id, $response->nest_id);
+        $this->assertSame($nextEgg->pack_id, $response->pack_id);
         $this->assertSame('sample startup', $response->startup);
         $this->assertSame('docker/hodor', $response->image);
         $this->assertTrue($response->skip_scripts);

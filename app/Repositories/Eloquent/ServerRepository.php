@@ -146,7 +146,7 @@ class ServerRepository extends EloquentRepository implements ServerRepositoryInt
         try {
             /** @var \Everest\Models\Server $model */
             $model = $this->getBuilder()
-                ->with('nest', 'node')
+                ->with('pack', 'node')
                 ->where(function (Builder $query) use ($uuid) {
                     $query->where('uuidShort', $uuid)->orWhere('uuid', $uuid);
                 })
@@ -172,7 +172,7 @@ class ServerRepository extends EloquentRepository implements ServerRepositoryInt
     public function loadAllServersForNode(int $node, int $limit): LengthAwarePaginator
     {
         return $this->getBuilder()
-            ->with(['user', 'nest', 'egg'])
+            ->with(['user', 'pack', 'egg'])
             ->where('node_id', '=', $node)
             ->paginate($limit);
     }

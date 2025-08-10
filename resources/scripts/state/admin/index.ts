@@ -6,8 +6,8 @@ import type { AdminDatabaseStore } from '@/state/admin/databases';
 import databases from '@/state/admin/databases';
 import type { AdminMountStore } from '@/state/admin/mounts';
 import mounts from '@/state/admin/mounts';
-import type { AdminNestStore } from '@/state/admin/nests';
-import nests from '@/state/admin/nests';
+import type { AdminPackStore } from '@/state/admin/packs';
+import packs from '@/state/admin/packs';
 import type { AdminNodeStore } from '@/state/admin/nodes';
 import nodes from '@/state/admin/nodes';
 import type { AdminRoleStore } from '@/state/admin/roles';
@@ -26,7 +26,7 @@ interface AdminStore {
     api: AdminApiStore;
     databases: AdminDatabaseStore;
     mounts: AdminMountStore;
-    nests: AdminNestStore;
+    packs: AdminPackStore;
     nodes: AdminNodeStore;
     roles: AdminRoleStore;
     servers: AdminServerStore;
@@ -39,7 +39,7 @@ export const AdminContext = createContextStore<AdminStore>({
     api,
     databases,
     mounts,
-    nests,
+    packs,
     nodes,
     roles,
     servers,

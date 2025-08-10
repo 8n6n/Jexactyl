@@ -16,7 +16,7 @@ class EggTransformer extends Transformer
      */
     protected array $availableIncludes = [
         'config',
-        'nest',
+        'pack',
         'script',
         'servers',
         'variables',
@@ -47,7 +47,7 @@ class EggTransformer extends Transformer
             'id' => $model->id,
             'uuid' => $model->uuid,
             'name' => $model->name,
-            'nest_id' => $model->nest_id,
+            'pack_id' => $model->pack_id,
             'author' => $model->author,
             'description' => $model->description,
             'docker_images' => $model->docker_images,
@@ -91,15 +91,15 @@ class EggTransformer extends Transformer
     }
 
     /**
-     * Include the Nest relationship for the given Egg in the transformation.
+     * Include the Pack relationship for the given Egg in the transformation.
      */
-    public function includeNest(Egg $model): Item|NullResource
+    public function includePack(Egg $model): Item|NullResource
     {
         if (!$this->authorize(AdminAcl::RESOURCE_NESTS)) {
             return $this->null();
         }
 
-        return $this->item($model->nest, new NestTransformer());
+        return $this->item($model->pack, new PackTransformer());
     }
 
     /**

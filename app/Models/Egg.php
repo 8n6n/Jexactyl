@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * @property int $id
  * @property string $uuid
- * @property int $nest_id
+ * @property int $pack_id
  * @property string $author
  * @property string $name
  * @property string|null $description
@@ -38,7 +38,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $inherit_config_stop
  * @property string $inherit_file_denylist
  * @property array|null $inherit_features
- * @property \Everest\Models\Nest $nest
+ * @property \Everest\Models\Pack $pack
  * @property \Illuminate\Database\Eloquent\Collection|\Everest\Models\Server[] $servers
  * @property \Illuminate\Database\Eloquent\Collection|\Everest\Models\EggVariable[] $variables
  * @property \Everest\Models\Egg|null $scriptFrom
@@ -78,7 +78,7 @@ class Egg extends Model
      * Fields that are not mass assignable.
      */
     protected $fillable = [
-        'nest_id',
+        'pack_id',
         'author',
         'uuid',
         'name',
@@ -103,7 +103,7 @@ class Egg extends Model
      * Cast values to correct type.
      */
     protected $casts = [
-        'nest_id' => 'integer',
+        'pack_id' => 'integer',
         'config_from' => 'integer',
         'script_is_privileged' => 'boolean',
         'force_outgoing_ip' => 'boolean',
@@ -114,7 +114,7 @@ class Egg extends Model
     ];
 
     public static array $validationRules = [
-        'nest_id' => 'required|bail|numeric|exists:nests,id',
+        'pack_id' => 'required|bail|numeric|exists:packs,id',
         'uuid' => 'required|string|size:36',
         'name' => 'required|string|max:191',
         'description' => 'string|nullable',
@@ -244,11 +244,11 @@ class Egg extends Model
     }
 
     /**
-     * Gets nest associated with an egg.
+     * Gets pack associated with an egg.
      */
-    public function nest(): BelongsTo
+    public function pack(): BelongsTo
     {
-        return $this->belongsTo(Nest::class);
+        return $this->belongsTo(Pack::class);
     }
 
     /**

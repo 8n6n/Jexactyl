@@ -20,7 +20,7 @@ class ActivityLogBatchService
 
     /**
      * Starts a new batch transaction. If there is already a transaction present
-     * this will be nested.
+     * this will be packed.
      */
     public function start(): void
     {

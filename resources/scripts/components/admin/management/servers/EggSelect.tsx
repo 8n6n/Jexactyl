@@ -9,12 +9,12 @@ import Label from '@elements/Label';
 import Select from '@elements/Select';
 
 interface Props {
-    nestId?: number;
+    packId?: number;
     selectedEggId?: number;
     onEggSelect: (egg: WithRelationships<Egg, 'variables'> | undefined) => void;
 }
 
-export default ({ nestId, selectedEggId, onEggSelect }: Props) => {
+export default ({ packId, selectedEggId, onEggSelect }: Props) => {
     const [, , { setValue: setEnvValue, setTouched: setEnvTouched }] =
         useField<Record<string, string | undefined>>('environment');
     const [, , { setValue: setEggIdValue, setTouched: setEggIdTouched }] = useField<number>('eggId');
@@ -45,21 +45,21 @@ export default ({ nestId, selectedEggId, onEggSelect }: Props) => {
     };
 
     useEffect(() => {
-        if (!nestId) {
+        if (!packId) {
             setEggs(undefined);
             return;
         }
 
-        searchEggs(nestId, {})
+        searchEggs(packId, {})
             .then(_eggs => {
                 setEggs(_eggs);
 
-                // If the currently selected egg is in the selected nest, use it instead of picking the first egg on the nest.
+                // If the currently selected egg is in the selected pack, use it instead of picking the first egg on the pack.
                 const egg = _eggs.find(egg => egg.id === selectedEggId) ?? _eggs[0];
                 selectEgg(egg);
             })
             .catch(error => console.error(error));
-    }, [nestId]);
+    }, [packId]);
 
     const onSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
         selectEgg(eggs?.find(egg => egg.id.toString() === event.currentTarget.value) ?? undefined);

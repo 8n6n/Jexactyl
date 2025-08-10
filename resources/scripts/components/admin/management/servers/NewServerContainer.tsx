@@ -78,7 +78,7 @@ function InternalForm() {
                         </div>
                     </BaseSettingsBox>
                     <FeatureLimitsBox />
-                    <ServerServiceContainer selectedEggId={egg?.id} setEgg={setEgg} nestId={0} />
+                    <ServerServiceContainer selectedEggId={egg?.id} setEgg={setEgg} packId={0} />
                 </div>
                 <div className="grid grid-cols-1 gap-y-6 col-span-2 md:col-span-1">
                     <AdminBox icon={faNetworkWired} title="Networking" isLoading={isSubmitting}>

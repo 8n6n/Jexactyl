@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $r_allocations
  * @property int $r_users
  * @property int $r_locations
- * @property int $r_nests
+ * @property int $r_packs
  * @property int $r_eggs
  * @property int $r_database_hosts
  * @property int $r_server_databases
@@ -48,7 +48,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|ApiKey whereRDatabaseHosts($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ApiKey whereREggs($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ApiKey whereRLocations($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ApiKey whereRNests($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ApiKey whereRPacks($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ApiKey whereRNodes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ApiKey whereRServerDatabases($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ApiKey whereRServers($value)

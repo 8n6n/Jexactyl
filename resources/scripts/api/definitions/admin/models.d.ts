@@ -39,7 +39,7 @@ interface ApiKeyPermission extends Model {
     r_database_hosts: string;
     r_eggs: string;
     r_locations: string;
-    r_nests: string;
+    r_packs: string;
     r_nodes: string;
     r_server_databases: string;
     r_servers: string;
@@ -141,7 +141,7 @@ interface Category extends Model {
     icon: string;
     description: string;
     visible: boolean;
-    nestId: number;
+    packId: number;
     eggId: number;
 
     createdAt: Date;

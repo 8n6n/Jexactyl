@@ -3,34 +3,34 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Everest\Services\Nests\NestCreationService;
-use Everest\Contracts\Repository\NestRepositoryInterface;
+use Everest\Services\Packs\PackCreationService;
+use Everest\Contracts\Repository\PackRepositoryInterface;
 
-class NestSeeder extends Seeder
+class PackSeeder extends Seeder
 {
     /**
-     * @var \Everest\Services\Nests\NestCreationService
+     * @var \Everest\Services\Packs\PackCreationService
      */
     private $creationService;
 
     /**
-     * @var \Everest\Contracts\Repository\NestRepositoryInterface
+     * @var \Everest\Contracts\Repository\PackRepositoryInterface
      */
     private $repository;
 
     /**
-     * NestSeeder constructor.
+     * PackSeeder constructor.
      */
     public function __construct(
-        NestCreationService $creationService,
-        NestRepositoryInterface $repository
+        PackCreationService $creationService,
+        PackRepositoryInterface $repository
     ) {
         $this->creationService = $creationService;
         $this->repository = $repository;
     }
 
     /**
-     * Run the seeder to add missing nests to the Panel.
+     * Run the seeder to add missing packs to the Panel.
      *
      * @throws \Everest\Exceptions\Model\DataValidationException
      */
@@ -40,20 +40,20 @@ class NestSeeder extends Seeder
             'author' => 'support@pterodactyl.io',
         ])->keyBy('name')->toArray();
 
-        $this->createMinecraftNest(array_get($items, 'Minecraft'));
-        $this->createSourceEngineNest(array_get($items, 'Source Engine'));
-        $this->createVoiceServersNest(array_get($items, 'Voice Servers'));
-        $this->createRustNest(array_get($items, 'Rust'));
+        $this->createMinecraftPack(array_get($items, 'Minecraft'));
+        $this->createSourceEnginePack(array_get($items, 'Source Engine'));
+        $this->createVoiceServersPack(array_get($items, 'Voice Servers'));
+        $this->createRustPack(array_get($items, 'Rust'));
     }
 
     /**
-     * Create the Minecraft nest to be used later on.
+     * Create the Minecraft pack to be used later on.
      *
      * @throws \Everest\Exceptions\Model\DataValidationException
      */
-    private function createMinecraftNest(array $nest = null)
+    private function createMinecraftPack(array $pack = null)
     {
-        if (is_null($nest)) {
+        if (is_null($pack)) {
             $this->creationService->handle([
                 'name' => 'Minecraft',
                 'description' => 'Minecraft - the classic game from Mojang. With support for Vanilla MC, Spigot, and many others!',
@@ -62,13 +62,13 @@ class NestSeeder extends Seeder
     }
 
     /**
-     * Create the Source Engine Games nest to be used later on.
+     * Create the Source Engine Games pack to be used later on.
      *
      * @throws \Everest\Exceptions\Model\DataValidationException
      */
-    private function createSourceEngineNest(array $nest = null)
+    private function createSourceEnginePack(array $pack = null)
     {
-        if (is_null($nest)) {
+        if (is_null($pack)) {
             $this->creationService->handle([
                 'name' => 'Source Engine',
                 'description' => 'Includes support for most Source Dedicated Server games.',
@@ -77,13 +77,13 @@ class NestSeeder extends Seeder
     }
 
     /**
-     * Create the Voice Servers nest to be used later on.
+     * Create the Voice Servers pack to be used later on.
      *
      * @throws \Everest\Exceptions\Model\DataValidationException
      */
-    private function createVoiceServersNest(array $nest = null)
+    private function createVoiceServersPack(array $pack = null)
     {
-        if (is_null($nest)) {
+        if (is_null($pack)) {
             $this->creationService->handle([
                 'name' => 'Voice Servers',
                 'description' => 'Voice servers such as Mumble and Teamspeak 3.',
@@ -92,13 +92,13 @@ class NestSeeder extends Seeder
     }
 
     /**
-     * Create the Rust nest to be used later on.
+     * Create the Rust pack to be used later on.
      *
      * @throws \Everest\Exceptions\Model\DataValidationException
      */
-    private function createRustNest(array $nest = null)
+    private function createRustPack(array $pack = null)
     {
-        if (is_null($nest)) {
+        if (is_null($pack)) {
             $this->creationService->handle([
                 'name' => 'Rust',
                 'description' => 'Rust - A game where you must fight to survive.',

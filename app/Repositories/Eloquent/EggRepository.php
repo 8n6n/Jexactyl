@@ -74,13 +74,13 @@ class EggRepository extends EloquentRepository implements EggRepositoryInterface
     }
 
     /**
-     * Confirm a copy script belongs to the same nest as the item trying to use it.
+     * Confirm a copy script belongs to the same pack as the item trying to use it.
      */
     public function isCopyableScript(int $copyFromId, int $service): bool
     {
         return $this->getBuilder()->whereNull('copy_script_from')
             ->where('id', '=', $copyFromId)
-            ->where('nest_id', '=', $service)
+            ->where('pack_id', '=', $service)
             ->exists();
     }
 }

@@ -27,7 +27,7 @@ const initialValues: Values = {
         r_database_hosts: '0',
         r_eggs: '0',
         r_locations: '0',
-        r_nests: '0',
+        r_packs: '0',
         r_nodes: '0',
         r_server_databases: '0',
         r_servers: '0',
@@ -86,7 +86,7 @@ export default () => {
                                 database_hosts: number().required(),
                                 eggs: number().required(),
                                 locations: number().required(),
-                                nests: number().required(),
+                                packs: number().required(),
                                 nodes: number().required(),
                                 server_databases: number().required(),
                                 servers: number().required(),
@@ -127,7 +127,7 @@ export default () => {
                                         <PermissionRow name={'Database Hosts'} id={'r_database_hosts'} />
                                         <PermissionRow name={'Eggs'} id={'r_eggs'} />
                                         <PermissionRow name={'Locations'} id={'r_locations'} />
-                                        <PermissionRow name={'Nests'} id={'r_nests'} />
+                                        <PermissionRow name={'Packs'} id={'r_packs'} />
                                         <PermissionRow name={'Nodes'} id={'r_nodes'} />
                                         <PermissionRow name={'Server Databases'} id={'r_server_databases'} />
                                         <PermissionRow name={'Servers'} id={'r_servers'} />

@@ -63,7 +63,7 @@ class CategoryController extends ApplicationApiController
                 'icon' => $request->input('icon'),
                 'description' => $request->input('description'),
                 'visible' => $request->input('visible'),
-                'nest_id' => $egg->nest_id,
+                'pack_id' => $egg->pack_id,
                 'egg_id' => $egg->id,
             ]);
         } catch (\Exception $ex) {
@@ -93,7 +93,7 @@ class CategoryController extends ApplicationApiController
                 'icon' => $request->input('icon'),
                 'description' => $request->input('description'),
                 'visible' => $request->input('visible'),
-                'nest_id' => $egg->nest_id,
+                'pack_id' => $egg->pack_id,
                 'egg_id' => $egg->id,
             ]);
         } catch (\Exception $ex) {

@@ -44,16 +44,16 @@ trait CreatesTestModels
         }
 
         if (empty($attributes['egg_id'])) {
-            $egg = !empty($attributes['nest_id'])
-                ? Egg::query()->where('nest_id', $attributes['nest_id'])->firstOrFail()
+            $egg = !empty($attributes['pack_id'])
+                ? Egg::query()->where('pack_id', $attributes['pack_id'])->firstOrFail()
                 : $this->getBungeecordEgg();
 
             $attributes['egg_id'] = $egg->id;
-            $attributes['nest_id'] = $egg->nest_id;
+            $attributes['pack_id'] = $egg->pack_id;
         }
 
-        if (empty($attributes['nest_id'])) {
-            $attributes['nest_id'] = Egg::query()->findOrFail($attributes['egg_id'])->nest_id;
+        if (empty($attributes['pack_id'])) {
+            $attributes['pack_id'] = Egg::query()->findOrFail($attributes['egg_id'])->pack_id;
         }
 
         unset($attributes['user_id']);
@@ -64,7 +64,7 @@ trait CreatesTestModels
         Allocation::query()->where('id', $server->allocation_id)->update(['server_id' => $server->id]);
 
         return $server->fresh([
-            'user', 'node', 'allocation', 'nest', 'egg',
+            'user', 'node', 'allocation', 'pack', 'egg',
         ]);
     }
 

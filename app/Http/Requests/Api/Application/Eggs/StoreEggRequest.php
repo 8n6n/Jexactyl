@@ -10,7 +10,7 @@ class StoreEggRequest extends ApplicationApiRequest
     public function rules(array $rules = null): array
     {
         return [
-            'nest_id' => 'required|bail|numeric|exists:nests,id',
+            'pack_id' => 'required|bail|numeric|exists:packs,id',
             'name' => 'required|string|max:191',
             'description' => 'sometimes|string|nullable',
             'features' => 'sometimes|array',

@@ -6,7 +6,7 @@ type Egg2 = Omit<Omit<Partial<Egg>, 'configFiles'>, 'configStartup'> & { configF
 export default (egg: Partial<Egg2>): Promise<Egg> => {
     return new Promise((resolve, reject) => {
         http.post('/api/application/eggs', {
-            nest_id: egg.nestId,
+            pack_id: egg.packId,
             name: egg.name,
             description: egg.description,
             features: egg.features,

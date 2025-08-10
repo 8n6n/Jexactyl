@@ -110,7 +110,7 @@ function InternalForm({ category, visible, setVisible }: Props) {
                     <ServerServiceContainer
                         selectedEggId={egg?.id}
                         setEgg={setEgg}
-                        nestId={category?.nestId ?? 0}
+                        packId={category?.packId ?? 0}
                         noToggle
                     />
                     <div css={tw`rounded shadow-md mt-4 py-2 pr-6`} style={{ backgroundColor: secondary }}>
@@ -194,7 +194,7 @@ export default ({ category }: { category?: Category }) => {
                     icon: string().nullable().max(191).min(3),
                     description: string().nullable().max(191).min(3),
                     visible: boolean().required(),
-                    nestId: number(),
+                    packId: number(),
                     eggId: number(),
                 })}
             >

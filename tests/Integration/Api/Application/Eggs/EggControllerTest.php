@@ -23,13 +23,13 @@ class EggControllerTest extends ApplicationApiIntegrationTestCase
     }
 
     /**
-     * Test that all the eggs belonging to a given nest can be returned.
+     * Test that all the eggs belonging to a given pack can be returned.
      */
-    public function testListAllEggsInNest()
+    public function testListAllEggsInPack()
     {
-        $eggs = $this->repository->findWhere([['nest_id', '=', 1]]);
+        $eggs = $this->repository->findWhere([['pack_id', '=', 1]]);
 
-        $response = $this->getJson('/api/application/nests/' . $eggs->first()->nest_id . '/eggs');
+        $response = $this->getJson('/api/application/packs/' . $eggs->first()->pack_id . '/eggs');
         $response->assertStatus(Response::HTTP_OK);
         $response->assertJsonCount(count($eggs), 'data');
         $response->assertJsonStructure([
@@ -38,7 +38,7 @@ class EggControllerTest extends ApplicationApiIntegrationTestCase
                 [
                     'object',
                     'attributes' => [
-                        'id', 'uuid', 'nest_id', 'author', 'description', 'docker_images', 'startup', 'created_at', 'updated_at',
+                        'id', 'uuid', 'pack_id', 'author', 'description', 'docker_images', 'startup', 'created_at', 'updated_at',
                         'script' => ['privileged', 'install', 'entry', 'container', 'extends'],
                         'config' => [
                             'files' => [],
@@ -77,7 +77,7 @@ class EggControllerTest extends ApplicationApiIntegrationTestCase
         $response->assertJsonStructure([
             'object',
             'attributes' => [
-                'id', 'uuid', 'nest_id', 'author', 'description', 'docker_images', 'startup', 'script' => [], 'config' => [], 'created_at', 'updated_at',
+                'id', 'uuid', 'pack_id', 'author', 'description', 'docker_images', 'startup', 'script' => [], 'config' => [], 'created_at', 'updated_at',
             ],
         ]);
 
@@ -94,13 +94,13 @@ class EggControllerTest extends ApplicationApiIntegrationTestCase
     {
         $egg = $this->repository->find(1);
 
-        $response = $this->getJson('/api/application/eggs/' . $egg->id . '?include=servers,variables,nest');
+        $response = $this->getJson('/api/application/eggs/' . $egg->id . '?include=servers,variables,pack');
         $response->assertStatus(Response::HTTP_OK);
         $response->assertJsonStructure([
             'object',
             'attributes' => [
                 'relationships' => [
-                    'nest' => ['object', 'attributes'],
+                    'pack' => ['object', 'attributes'],
                     'servers' => ['object', 'data' => []],
                     'variables' => ['object', 'data' => []],
                 ],

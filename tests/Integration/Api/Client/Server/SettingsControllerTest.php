@@ -66,7 +66,7 @@ class SettingsControllerTest extends ClientApiIntegrationTestCase
     }
 
     /**
-     * Test that a server can be reinstalled. Honestly this test doesn't do much of anything other
+     * Test that a server can be reinstalled. Hopackly this test doesn't do much of anything other
      * than make sure the endpoint works since.
      *
      * @dataProvider reinstallPermissionsDataProvider

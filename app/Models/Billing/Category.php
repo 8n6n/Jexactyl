@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $icon
  * @property string $description
  * @property bool $visible
- * @property int $nest_id
+ * @property int $pack_id
  * @property int $egg_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -35,7 +35,7 @@ class Category extends Model
      */
     protected $fillable = [
         'uuid', 'name', 'visible', 'icon',
-        'description', 'nest_id', 'egg_id',
+        'description', 'pack_id', 'egg_id',
     ];
 
     public static array $validationRules = [
@@ -44,7 +44,7 @@ class Category extends Model
         'icon' => 'nullable|string|max:300',
         'description' => 'nullable|string|max:300',
         'visible' => 'nullable|bool',
-        'nest_id' => 'required|exists:nests,id',
+        'pack_id' => 'required|exists:packs,id',
         'egg_id' => 'required|exists:eggs,id',
     ];
 

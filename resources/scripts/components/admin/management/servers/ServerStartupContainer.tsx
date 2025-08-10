@@ -12,7 +12,7 @@ import { useServerFromRoute } from '@/api/admin/server';
 import type { Values } from '@/api/admin/servers/updateServerStartup';
 import updateServerStartup from '@/api/admin/servers/updateServerStartup';
 import EggSelect from '@admin/management/servers/EggSelect';
-import NestSelector from '@admin/management/servers/NestSelector';
+import PackSelector from '@admin/management/servers/PackSelector';
 import FormikSwitch from '@elements/FormikSwitch';
 import { Button } from '@elements/button';
 import Input from '@elements/Input';
@@ -72,25 +72,25 @@ function ServerStartupLineContainer({ egg, server }: { egg?: Egg; server: Server
 export function ServerServiceContainer({
     selectedEggId,
     setEgg,
-    nestId: _nestId,
+    packId: _packId,
     noToggle,
 }: {
     selectedEggId?: number;
     setEgg: (value: WithRelationships<Egg, 'variables'> | undefined) => void;
-    nestId: number;
+    packId: number;
     noToggle?: boolean;
 }) {
     const { isSubmitting } = useFormikContext();
 
-    const [nestId, setNestId] = useState<number>(_nestId);
+    const [packId, setPackId] = useState<number>(_packId);
 
     return (
         <AdminBox title={'Service Configuration'} isLoading={isSubmitting} className="w-full" icon={faLayerGroup}>
             <div className="mb-6">
-                <NestSelector selectedNestId={nestId} onNestSelect={setNestId} />
+                <PackSelector selectedPackId={packId} onPackSelect={setPackId} />
             </div>
             <div className="mb-6">
-                <EggSelect nestId={nestId} selectedEggId={selectedEggId} onEggSelect={setEgg} />
+                <EggSelect packId={packId} selectedEggId={selectedEggId} onEggSelect={setEgg} />
             </div>
             {!noToggle && (
                 <div className="bg-neutral-800 border border-neutral-900 shadow-inner p-4 rounded">
@@ -177,7 +177,7 @@ function ServerStartupForm({
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mb-6">
                     <div className="flex">
-                        <ServerServiceContainer selectedEggId={selectedEggId} setEgg={setEgg} nestId={server.nestId} />
+                        <ServerServiceContainer selectedEggId={selectedEggId} setEgg={setEgg} packId={server.packId} />
                     </div>
 
                     <div className="flex">

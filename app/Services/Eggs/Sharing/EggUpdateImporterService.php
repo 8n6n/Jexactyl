@@ -35,7 +35,7 @@ class EggUpdateImporterService
 
         $parsed = json_decode($file->openFile()->fread($file->getSize()), true);
         if (json_last_error() !== 0) {
-            throw new BadJsonFormatException(trans('exceptions.nest.importer.json_error', ['error' => json_last_error_msg()]));
+            throw new BadJsonFormatException(trans('exceptions.pack.importer.json_error', ['error' => json_last_error_msg()]));
         }
         $parsed = $this->eggParserService->handle($parsed);
 

@@ -67,10 +67,10 @@ class ServerCreationService
             $data['node_id'] = Allocation::query()->findOrFail($data['allocation_id'])->node_id;
         }
 
-        if (empty($data['nest_id'])) {
+        if (empty($data['pack_id'])) {
             Assert::false(empty($data['egg_id']), 'Expected a non-empty egg_id in server creation data.');
 
-            $data['nest_id'] = Egg::query()->findOrFail($data['egg_id'])->nest_id;
+            $data['pack_id'] = Egg::query()->findOrFail($data['egg_id'])->pack_id;
         }
 
         $eggVariableData = $this->validatorService
@@ -155,7 +155,7 @@ class ServerCreationService
             'threads' => Arr::get($data, 'threads'),
             'oom_killer' => Arr::get($data, 'oom_killer') ?? false,
             'allocation_id' => Arr::get($data, 'allocation_id'),
-            'nest_id' => Arr::get($data, 'nest_id'),
+            'pack_id' => Arr::get($data, 'pack_id'),
             'egg_id' => Arr::get($data, 'egg_id'),
             'startup' => Arr::get($data, 'startup'),
             'image' => Arr::get($data, 'image'),

@@ -4,7 +4,7 @@ import { Server, ServerVariable } from '@/api/admin/server';
 import { FractalResponseData, FractalResponseList } from '@/api/http';
 import * as Models from '@definitions/admin/models';
 import { Egg, EggVariable } from '@/api/admin/egg';
-import { Nest } from '@/api/admin/nest';
+import { Pack } from '@/api/admin/pack';
 import { type Database } from '@definitions/server';
 import { WebhookEvent } from '@/api/admin/webhooks';
 
@@ -42,7 +42,7 @@ function transform<T>(
 export default class Transformers {
     static toServer = ({ attributes }: FractalResponseData): Server => {
         const { oom_killer, ...limits } = attributes.limits;
-        const { allocations, egg, nest, node, user, variables, databases } = attributes.relationships || {};
+        const { allocations, egg, pack, node, user, variables, databases } = attributes.relationships || {};
 
         return {
             id: attributes.id,
@@ -56,7 +56,7 @@ export default class Transformers {
             nodeId: attributes.node_id,
             allocationId: attributes.allocation_id,
             eggId: attributes.egg_id,
-            nestId: attributes.nest_id,
+            packId: attributes.pack_id,
             limits: { ...limits, oomKiller: oom_killer },
             featureLimits: attributes.feature_limits,
             container: attributes.container,
@@ -64,7 +64,7 @@ export default class Transformers {
             updatedAt: new Date(attributes.updated_at),
             relationships: {
                 allocations: transform(allocations as FractalResponseList | undefined, this.toAllocation),
-                nest: transform(nest as FractalResponseData | undefined, this.toNest),
+                pack: transform(pack as FractalResponseData | undefined, this.toPack),
                 egg: transform(egg as FractalResponseData | undefined, this.toEgg),
                 node: transform(node as FractalResponseData | undefined, this.toNode),
                 user: transform(user as FractalResponseData | undefined, this.toUser),
@@ -203,7 +203,7 @@ export default class Transformers {
             icon: attributes.icon,
             description: attributes.description,
             visible: attributes.visible,
-            nestId: attributes.nest_id,
+            packId: attributes.pack_id,
             eggId: attributes.egg_id,
 
             createdAt: new Date(attributes.created_at),
@@ -241,7 +241,7 @@ export default class Transformers {
     static toEgg = ({ attributes }: FractalResponseData): Egg => ({
         id: attributes.id,
         uuid: attributes.uuid,
-        nestId: attributes.nest_id,
+        packId: attributes.pack_id,
         author: attributes.author,
         name: attributes.name,
         description: attributes.description,
@@ -260,7 +260,7 @@ export default class Transformers {
         createdAt: new Date(attributes.created_at),
         updatedAt: new Date(attributes.updated_at),
         relationships: {
-            nest: transform(attributes.relationships?.nest as FractalResponseData, this.toNest),
+            pack: transform(attributes.relationships?.pack as FractalResponseData, this.toPack),
             variables: transform(attributes.relationships?.variables as FractalResponseList, this.toEggVariable),
         },
     });
@@ -303,7 +303,7 @@ export default class Transformers {
         },
     });
 
-    static toNest = ({ attributes }: FractalResponseData): Nest => ({
+    static toPack = ({ attributes }: FractalResponseData): Pack => ({
         id: attributes.id,
         uuid: attributes.uuid,
         author: attributes.author,

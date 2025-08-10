@@ -32,7 +32,7 @@ interface EggRepositoryInterface extends RepositoryInterface
     public function getWithExportAttributes(int $id): Egg;
 
     /**
-     * Confirm a copy script belongs to the same nest as the item trying to use it.
+     * Confirm a copy script belongs to the same pack as the item trying to use it.
      */
     public function isCopyableScript(int $copyFromId, int $service): bool;
 }

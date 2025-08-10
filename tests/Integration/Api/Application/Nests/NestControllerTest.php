@@ -1,15 +1,15 @@
 <?php
 
-namespace Everest\Tests\Integration\Api\Application\Nests;
+namespace Everest\Tests\Integration\Api\Application\Packs;
 
 use Illuminate\Http\Response;
-use Everest\Contracts\Repository\NestRepositoryInterface;
-use Everest\Transformers\Api\Application\NestTransformer;
+use Everest\Contracts\Repository\PackRepositoryInterface;
+use Everest\Transformers\Api\Application\PackTransformer;
 use Everest\Tests\Integration\Api\Application\ApplicationApiIntegrationTestCase;
 
-class NestControllerTest extends ApplicationApiIntegrationTestCase
+class PackControllerTest extends ApplicationApiIntegrationTestCase
 {
-    private NestRepositoryInterface $repository;
+    private PackRepositoryInterface $repository;
 
     /**
      * Setup tests.
@@ -18,20 +18,20 @@ class NestControllerTest extends ApplicationApiIntegrationTestCase
     {
         parent::setUp();
 
-        $this->repository = $this->app->make(NestRepositoryInterface::class);
+        $this->repository = $this->app->make(PackRepositoryInterface::class);
     }
 
     /**
-     * Test that the expected nests are returned by the request.
+     * Test that the expected packs are returned by the request.
      */
-    public function testNestResponse()
+    public function testPackResponse()
     {
-        /** @var \Everest\Models\Nest[] $nests */
-        $nests = $this->repository->all();
+        /** @var \Everest\Models\Pack[] $packs */
+        $packs = $this->repository->all();
 
-        $response = $this->getJson('/api/application/nests');
+        $response = $this->getJson('/api/application/packs');
         $response->assertStatus(Response::HTTP_OK);
-        $response->assertJsonCount(count($nests), 'data');
+        $response->assertJsonCount(count($packs), 'data');
         $response->assertJsonStructure([
             'object',
             'data' => [['object', 'attributes' => ['id', 'uuid', 'author', 'name', 'description', 'created_at', 'updated_at']]],
@@ -52,22 +52,22 @@ class NestControllerTest extends ApplicationApiIntegrationTestCase
             ],
         ]);
 
-        foreach ($nests as $nest) {
+        foreach ($packs as $pack) {
             $response->assertJsonFragment([
-                'object' => 'nest',
-                'attributes' => (new NestTransformer())->transform($nest),
+                'object' => 'pack',
+                'attributes' => (new PackTransformer())->transform($pack),
             ]);
         }
     }
 
     /**
-     * Test that getting a single nest returns the expected result.
+     * Test that getting a single pack returns the expected result.
      */
-    public function testSingleNestResponse()
+    public function testSinglePackResponse()
     {
-        $nest = $this->repository->find(1);
+        $pack = $this->repository->find(1);
 
-        $response = $this->getJson('/api/application/nests/' . $nest->id);
+        $response = $this->getJson('/api/application/packs/' . $pack->id);
         $response->assertStatus(Response::HTTP_OK);
         $response->assertJsonStructure([
             'object',
@@ -75,20 +75,20 @@ class NestControllerTest extends ApplicationApiIntegrationTestCase
         ]);
 
         $response->assertJson([
-            'object' => 'nest',
-            'attributes' => (new NestTransformer())->transform($nest),
+            'object' => 'pack',
+            'attributes' => (new PackTransformer())->transform($pack),
         ]);
     }
 
     /**
      * Test that including eggs in the response works as expected.
      */
-    public function testSingleNestWithEggsIncluded()
+    public function testSinglePackWithEggsIncluded()
     {
-        $nest = $this->repository->find(1);
-        $nest->loadMissing('eggs');
+        $pack = $this->repository->find(1);
+        $pack->loadMissing('eggs');
 
-        $response = $this->getJson('/api/application/nests/' . $nest->id . '?include=servers,eggs');
+        $response = $this->getJson('/api/application/packs/' . $pack->id . '?include=servers,eggs');
         $response->assertStatus(Response::HTTP_OK);
         $response->assertJsonStructure([
             'object',
@@ -100,15 +100,15 @@ class NestControllerTest extends ApplicationApiIntegrationTestCase
             ],
         ]);
 
-        $response->assertJsonCount(count($nest->getRelation('eggs')), 'attributes.relationships.eggs.data');
+        $response->assertJsonCount(count($pack->getRelation('eggs')), 'attributes.relationships.eggs.data');
     }
 
     /**
-     * Test that a missing nest returns a 404 error.
+     * Test that a missing pack returns a 404 error.
      */
-    public function testGetMissingNest()
+    public function testGetMissingPack()
     {
-        $response = $this->getJson('/api/application/nests/0');
+        $response = $this->getJson('/api/application/packs/0');
         $this->assertNotFoundJson($response);
     }
 

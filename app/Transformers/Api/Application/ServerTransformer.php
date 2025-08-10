@@ -21,7 +21,7 @@ class ServerTransformer extends Transformer
         'allocations',
         'user',
         'subusers',
-        'nest',
+        'pack',
         'egg',
         'variables',
         'node',
@@ -76,7 +76,7 @@ class ServerTransformer extends Transformer
             'owner_id' => $model->owner_id,
             'node_id' => $model->node_id,
             'allocation_id' => $model->allocation_id,
-            'nest_id' => $model->nest_id,
+            'pack_id' => $model->pack_id,
             'egg_id' => $model->egg_id,
             'container' => [
                 'startup' => $model->startup,
@@ -125,15 +125,15 @@ class ServerTransformer extends Transformer
     }
 
     /**
-     * Return a generic array with nest information for this server.
+     * Return a generic array with pack information for this server.
      */
-    public function includeNest(Server $server): Item|NullResource
+    public function includePack(Server $server): Item|NullResource
     {
         if (!$this->authorize(AdminAcl::RESOURCE_NESTS)) {
             return $this->null();
         }
 
-        return $this->item($server->nest, new NestTransformer());
+        return $this->item($server->pack, new PackTransformer());
     }
 
     /**

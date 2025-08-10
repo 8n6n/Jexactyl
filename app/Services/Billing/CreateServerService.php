@@ -42,7 +42,7 @@ class CreateServerService
                 'node_id' => $metadata->node_id,
                 'allocation_id' => $allocation,
                 'egg_id' => $egg->id,
-                'nest_id' => $product->category->nest_id,
+                'pack_id' => $product->category->pack_id,
                 'name' => $request->user()->username . '\'s server',
                 'owner_id' => $request->user()->id,
                 'memory' => $product->memory_limit,

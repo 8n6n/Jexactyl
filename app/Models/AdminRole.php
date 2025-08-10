@@ -134,10 +134,10 @@ class AdminRole extends Model
     public const ROLES_UPDATE = 'roles.update';
     public const ROLES_DELETE = 'roles.delete';
 
-    public const NESTS_READ = 'nests.read';
-    public const NESTS_CREATE = 'nests.create';
-    public const NESTS_UPDATE = 'nests.update';
-    public const NESTS_DELETE = 'nests.delete';
+    public const NESTS_READ = 'packs.read';
+    public const NESTS_CREATE = 'packs.create';
+    public const NESTS_UPDATE = 'packs.update';
+    public const NESTS_DELETE = 'packs.delete';
 
     public const EGGS_READ = 'eggs.read';
     public const EGGS_CREATE = 'eggs.create';
@@ -304,13 +304,13 @@ class AdminRole extends Model
                 'delete' => 'Delete an existing admin role.',
             ],
         ],
-        'nests' => [
-            'description' => 'Permissions to configure nests.',
+        'packs' => [
+            'description' => 'Permissions to configure packs.',
             'keys' => [
-                'read' => 'View the current nests.',
-                'create' => 'Create a new nest.',
-                'update' => 'Update an existing nest.',
-                'delete' => 'Delete an existing nest.',
+                'read' => 'View the current packs.',
+                'create' => 'Create a new pack.',
+                'update' => 'Update an existing pack.',
+                'delete' => 'Delete an existing pack.',
             ],
         ],
         'eggs' => [
@@ -320,7 +320,7 @@ class AdminRole extends Model
                 'create' => 'Create a new egg.',
                 'update' => 'Update an existing egg.',
                 'delete' => 'Delete an existing egg.',
-                'import' => 'Import an egg to an existing nest via JSON.',
+                'import' => 'Import an egg to an existing pack via JSON.',
                 'export' => 'Export an egg via JSON.',
             ],
         ],

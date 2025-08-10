@@ -30,10 +30,10 @@ const UserRouter = lazy(() => import('@/components/admin/management/users/UserRo
 const RolesContainer = lazy(() => import('@/components/admin/management/roles/RolesContainer'));
 const RoleEditContainer = lazy(() => import('@/components/admin/management/roles/RoleEditContainer'));
 
-const NestsContainer = lazy(() => import('@/components/admin/service/nests/NestsContainer'));
-const NestEditContainer = lazy(() => import('@/components/admin/service/nests/NestEditContainer'));
-const NewEggContainer = lazy(() => import('@/components/admin/service/nests/NewEggContainer'));
-const EggRouter = lazy(() => import('@/components/admin/service/nests/eggs/EggRouter'));
+const PacksContainer = lazy(() => import('@/components/admin/service/packs/PacksContainer'));
+const PackEditContainer = lazy(() => import('@/components/admin/service/packs/PackEditContainer'));
+const NewEggContainer = lazy(() => import('@/components/admin/service/packs/NewEggContainer'));
+const EggRouter = lazy(() => import('@/components/admin/service/packs/eggs/EggRouter'));
 
 const admin: AdminRouteDefinition[] = [
     /**
@@ -90,10 +90,10 @@ const admin: AdminRouteDefinition[] = [
     /**
      * Admin - Service Routes
      */
-    route('nests', NestsContainer, { name: 'Nests', icon: Icon.ViewGridIcon, category: 'services' }),
-    route('nests/:nestId', NestEditContainer),
-    route('nests/:nestId/new', NewEggContainer),
-    route('nests/:nestId/eggs/:id/*', EggRouter),
+    route('packs', PacksContainer, { name: 'Packs', icon: Icon.ViewGridIcon, category: 'services' }),
+    route('packs/:packId', PackEditContainer),
+    route('packs/:packId/new', NewEggContainer),
+    route('packs/:packId/eggs/:id/*', EggRouter),
 ];
 
 export default admin;

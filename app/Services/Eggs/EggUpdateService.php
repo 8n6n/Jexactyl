@@ -26,12 +26,12 @@ class EggUpdateService
     {
         if (!is_null(array_get($data, 'config_from'))) {
             $results = $this->repository->findCountWhere([
-                ['nest_id', '=', $egg->nest_id],
+                ['pack_id', '=', $egg->pack_id],
                 ['id', '=', array_get($data, 'config_from')],
             ]);
 
             if ($results !== 1) {
-                throw new NoParentConfigurationFoundException(trans('exceptions.nest.egg.must_be_child'));
+                throw new NoParentConfigurationFoundException(trans('exceptions.pack.egg.must_be_child'));
             }
         }
 

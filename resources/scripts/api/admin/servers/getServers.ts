@@ -68,7 +68,7 @@ export interface Server {
     ownerId: number;
     nodeId: number;
     allocationId: number;
-    nestId: number;
+    packId: number;
     eggId: number;
 
     container: {
@@ -119,7 +119,7 @@ export const rawDataToServer = ({ attributes }: FractalResponseData): Server =>
         ownerId: attributes.owner_id,
         nodeId: attributes.node_id,
         allocationId: attributes.allocation_id,
-        nestId: attributes.nest_id,
+        packId: attributes.pack_id,
         eggId: attributes.egg_id,
 
         container: {
