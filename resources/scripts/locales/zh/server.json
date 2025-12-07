@@ -44,42 +44,69 @@
     },
     "databases": {
         "title": "数据库",
+        "description": "为您的服务器分配数据库。",
         "createNew": "创建新数据库",
         "rotatePassword": "轮换密码",
         "showPassword": "显示密码",
-        "copyPassword": "复制密码"
+        "copyPassword": "复制密码",
+        "noDatabases": "您还没有创建任何数据库。",
+        "limitZero": "无法为此服务器创建数据库。",
+        "databaseCount": "已为此服务器分配 {{count}}/{{limit}} 个数据库。"
     },
     "schedules": {
         "title": "计划任务",
+        "description": "为您的服务器创建和编辑自动任务。",
         "createNew": "创建计划任务",
         "editSchedule": "编辑计划任务",
         "runNow": "立即运行",
-        "deleteSchedule": "删除计划任务"
+        "deleteSchedule": "删除计划任务",
+        "noSchedules": "此服务器尚未配置任何计划任务。"
     },
     "users": {
         "title": "用户",
+        "description": "控制其他用户对此服务器的访问权限。",
         "addSubuser": "添加子用户",
         "editSubuser": "编辑子用户",
-        "removeSubuser": "移除子用户"
+        "removeSubuser": "移除子用户",
+        "noSubusers": "您还没有添加任何子用户。",
+        "subuserCount": "已为此服务器创建 {{count}}/{{limit}} 个子用户。"
     },
     "backups": {
         "title": "备份",
+        "description": "通过备份保护您的数据安全。",
         "createBackup": "创建备份",
         "restore": "恢复",
         "download": "下载",
         "delete": "删除",
         "lock": "锁定",
-        "unlock": "解锁"
+        "unlock": "解锁",
+        "noBackups": "此服务器当前没有存储任何备份。",
+        "noMoreBackups": "没有更多备份可显示了，请尝试返回上一页。",
+        "limitZero": "由于备份限制设置为 0，无法为此服务器创建备份。",
+        "backupCount": "已为此服务器创建 {{count}}/{{limit}} 个备份。",
+        "backupName": "备份名称",
+        "backupNameDescription": "如果提供，将用于引用此备份的名称。",
+        "ignoredFiles": "忽略的文件和目录",
+        "ignoredFilesDescription": "输入生成备份时要忽略的文件或文件夹。留空将使用服务器根目录中 .pteroignore 文件的内容（如果存在）。支持文件和文件夹的通配符匹配，也可以通过在路径前添加感叹号来否定规则。",
+        "locked": "已锁定",
+        "lockedDescription": "防止此备份被删除，直到明确解锁。",
+        "startBackup": "开始备份"
     },
     "network": {
         "title": "网络",
+        "description": "为此服务器分配、编辑和删除端口。",
         "createAllocation": "创建端口分配",
-        "notes": "备注"
+        "notes": "备注",
+        "allocationCount": "您当前正在使用此服务器允许的 {{count}}/{{limit}} 个端口分配。"
     },
     "startup": {
         "title": "启动配置",
+        "description": "控制服务器的启动变量。",
         "dockerImage": "Docker 镜像",
-        "startupCommand": "启动命令"
+        "startupCommand": "启动命令",
+        "dockerImageDescription": "这是一个高级功能，允许您选择运行此服务器实例时使用的 Docker 镜像。",
+        "customImageNotice": "此服务器的 Docker 镜像已由管理员手动设置，无法通过此界面更改。",
+        "variables": "变量"
     },
     "settings": {
         "title": "设置",

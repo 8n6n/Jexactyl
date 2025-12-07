@@ -44,42 +44,69 @@
     },
     "databases": {
         "title": "Databases",
+        "description": "Assign databases directly to your server.",
         "createNew": "Create New Database",
         "rotatePassword": "Rotate Password",
         "showPassword": "Show Password",
-        "copyPassword": "Copy Password"
+        "copyPassword": "Copy Password",
+        "noDatabases": "It looks like you have no databases.",
+        "limitZero": "Databases cannot be created for this server.",
+        "databaseCount": "{{count}} of {{limit}} databases have been allocated to this server."
     },
     "schedules": {
         "title": "Schedules",
+        "description": "Create and edit automatic tasks for your server.",
         "createNew": "Create Schedule",
         "editSchedule": "Edit Schedule",
         "runNow": "Run Now",
-        "deleteSchedule": "Delete Schedule"
+        "deleteSchedule": "Delete Schedule",
+        "noSchedules": "There are no schedules configured for this server."
     },
     "users": {
         "title": "Users",
+        "description": "Control the access of other users to this server.",
         "addSubuser": "Add Subuser",
         "editSubuser": "Edit Subuser",
-        "removeSubuser": "Remove Subuser"
+        "removeSubuser": "Remove Subuser",
+        "noSubusers": "It looks like you don't have any subusers.",
+        "subuserCount": "{{count}} of {{limit}} subusers have been created for this server."
     },
     "backups": {
         "title": "Backups",
+        "description": "Keep your data safe with backups.",
         "createBackup": "Create Backup",
         "restore": "Restore",
         "download": "Download",
         "delete": "Delete",
         "lock": "Lock",
-        "unlock": "Unlock"
+        "unlock": "Unlock",
+        "noBackups": "It looks like there are no backups currently stored for this server.",
+        "noMoreBackups": "Looks like we've run out of backups to show you, try going back a page.",
+        "limitZero": "Backups cannot be created for this server because the backup limit is set to 0.",
+        "backupCount": "{{count}} of {{limit}} backups have been created for this server.",
+        "backupName": "Backup name",
+        "backupNameDescription": "If provided, the name that should be used to reference this backup.",
+        "ignoredFiles": "Ignored Files & Directories",
+        "ignoredFilesDescription": "Enter the files or folders to ignore while generating this backup. Leave blank to use the contents of the .pteroignore file in the root of the server directory if present. Wildcard matching of files and folders is supported in addition to negating a rule by prefixing the path with an exclamation point.",
+        "locked": "Locked",
+        "lockedDescription": "Prevents this backup from being deleted until explicitly unlocked.",
+        "startBackup": "Start backup"
     },
     "network": {
         "title": "Network",
+        "description": "Assign, edit and remove ports from this server.",
         "createAllocation": "Create Allocation",
-        "notes": "Notes"
+        "notes": "Notes",
+        "allocationCount": "You are currently using {{count}} of {{limit}} allowed allocations for this server."
     },
     "startup": {
         "title": "Startup",
+        "description": "Control startup variables for your server.",
         "dockerImage": "Docker Image",
-        "startupCommand": "Startup Command"
+        "startupCommand": "Startup Command",
+        "dockerImageDescription": "This is an advanced feature allowing you to select a Docker image to use when running this server instance.",
+        "customImageNotice": "This server's Docker image has been manually set by an administrator and cannot be changed through this UI.",
+        "variables": "Variables"
     },
     "settings": {
         "title": "Settings",
