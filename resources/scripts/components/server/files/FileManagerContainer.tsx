@@ -33,6 +33,7 @@ import Label from '@/components/elements/Label';
 import TitledGreyBox from '@/components/elements/TitledGreyBox';
 import { ip } from '@/lib/formatters';
 import PageContentBlock from '@/components/elements/PageContentBlock';
+import { useTranslation } from 'react-i18next';
 
 const sortFiles = (files: FileObject[]): FileObject[] => {
     const sortedFiles: FileObject[] = files
@@ -42,6 +43,8 @@ const sortFiles = (files: FileObject[]): FileObject[] => {
 };
 
 export default () => {
+    const { t } = useTranslation('server');
+    const { t: tc } = useTranslation('common');
     const id = ServerContext.useStoreState(state => state.server.data!.id);
     const { hash } = useLocation();
     const { data: files, error, mutate } = useFileManagerSwr();
@@ -75,9 +78,9 @@ export default () => {
 
     return (
         <PageContentBlock
-            title={'File Manager'}
+            title={t('files.title') as string}
             header
-            description={'Control your files and folders via the UI.'}
+            description={t('files.description') as string}
             showFlashKey={'files'}
         >
             <ErrorBoundary>
@@ -98,7 +101,7 @@ export default () => {
                             <NewDirectoryButton />
                             <UploadButton />
                             <NavLink to={`/server/${id}/files/new${window.location.hash}`}>
-                                <Button>New File</Button>
+                                <Button>{t('files.newFile')}</Button>
                             </NavLink>
                             <Button onClick={() => setGridView(!gridView)}>
                                 <FontAwesomeIcon icon={gridView ? faList : faBorderAll} fixedWidth />
@@ -114,15 +117,14 @@ export default () => {
                     ) : (
                         <>
                             {!files.length ? (
-                                <p css={tw`text-sm text-neutral-400 text-center`}>This directory seems to be empty.</p>
+                                <p css={tw`text-sm text-neutral-400 text-center`}>{t('files.emptyDirectory')}</p>
                             ) : (
                                 <FadeTransition duration="duration-150" appear show>
                                     <div>
                                         {files.length > 250 && (
                                             <div css={tw`rounded bg-yellow-400 mb-px p-3`}>
                                                 <p css={tw`text-yellow-900 text-sm text-center`}>
-                                                    This directory is too large to display in the browser, limiting the
-                                                    output to the first 250 files.
+                                                    {t('files.tooManyFiles')}
                                                 </p>
                                             </div>
                                         )}
@@ -147,15 +149,15 @@ export default () => {
                     )}
                 </div>
                 <Can action={'file.sftp'}>
-                    <TitledGreyBox title={'SFTP Details'} icon={faFolderPlus} css={tw`xl:mt-0 mt-6 h-auto`}>
+                    <TitledGreyBox title={t('files.sftpDetails') as string} icon={faFolderPlus} css={tw`xl:mt-0 mt-6 h-auto`}>
                         <div>
-                            <Label>Server Address</Label>
+                            <Label>{t('files.serverAddress')}</Label>
                             <CopyOnClick text={`sftp://${ip(sftp.ip)}:${sftp.port}`}>
                                 <Input type={'text'} value={`sftp://${ip(sftp.ip)}:${sftp.port}`} readOnly />
                             </CopyOnClick>
                         </div>
                         <div css={tw`mt-6`}>
-                            <Label>Username</Label>
+                            <Label>{tc('username')}</Label>
                             <CopyOnClick text={`${username}.${id}`}>
                                 <Input type={'text'} value={`${username}.${id}`} readOnly />
                             </CopyOnClick>
@@ -164,13 +166,13 @@ export default () => {
                             <div css={tw`flex-1`}>
                                 <div css={tw`border-l-4 border-cyan-500 p-3`}>
                                     <p css={tw`text-xs text-neutral-200`}>
-                                        Your SFTP password is the same as the password you use to access this panel.
+                                        {t('files.sftpPasswordHint')}
                                     </p>
                                 </div>
                             </div>
                             <div css={tw`ml-4`}>
                                 <a href={`sftp://${username}.${id}@${ip(sftp.ip)}:${sftp.port}`}>
-                                    <Button.Text variant={Button.Variants.Secondary}>Launch SFTP</Button.Text>
+                                    <Button.Text variant={Button.Variants.Secondary}>{t('files.launchSftp')}</Button.Text>
                                 </a>
                             </div>
                         </div>

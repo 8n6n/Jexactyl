@@ -14,6 +14,7 @@ import { CustomLink } from '@/api/admin/links';
 import { getLinks } from '@/api/getLinks';
 import http from '@/api/http';
 import NavigationBar from '@/components/NavigationBar';
+import { useTranslation } from 'react-i18next';
 
 function DashboardRouter() {
     const user = useStoreState(s => s.user.data!);
@@ -22,6 +23,15 @@ function DashboardRouter() {
     const [links, setLinks] = useState<CustomLink[] | null>();
     const flags = useStoreState(state => state.everest.data!);
     const [collapsed, setCollapsed] = usePersistedState<boolean>(`sidebar_user_${user.uuid}`, false);
+    const { t } = useTranslation('common');
+
+    // Helper function to get translated route name
+    const getRouteName = (route: { name?: string; nameKey?: string }) => {
+        if (route.nameKey) {
+            return t(route.nameKey);
+        }
+        return route.name || '';
+    };
 
     useEffect(() => {
         getLinks().then(setLinks).catch();
@@ -45,13 +55,13 @@ function DashboardRouter() {
                         <MobileSidebar.Link
                             key={route.route}
                             icon={route.icon ?? PuzzleIcon}
-                            text={route.name}
+                            text={getRouteName(route)}
                             linkTo={route.path !== '' ? `/account/${route.path}` : ''}
                             end={route.end}
                         />
                     ))}
                 {(user.rootAdmin || user.admin_role_id) && (
-                    <MobileSidebar.Link icon={CogIcon} text={'Admin'} linkTo={'/admin'} />
+                    <MobileSidebar.Link icon={CogIcon} text={t('admin')} linkTo={'/admin'} />
                 )}
             </MobileSidebar>
             <Sidebar className={'flex-none'} $collapsed={collapsed} theme={theme}>
@@ -74,14 +84,14 @@ function DashboardRouter() {
                 <Sidebar.Wrapper theme={theme}>
                     <NavLink to={'/'} end className={'mb-[18px]'}>
                         <DesktopComputerIcon />
-                        <span>Dashboard</span>
+                        <span>{t('nav.dashboard')}</span>
                     </NavLink>
                     {routes.account
                         .filter(route => route.name && (!route.condition || route.condition(flags)))
                         .map(route => (
                             <NavLink to={`/account/${route.path}`} key={route.path} end={route.end}>
                                 <Sidebar.Icon icon={route.icon ?? PuzzleIcon} />
-                                <span>{route.name}</span>
+                                <span>{getRouteName(route)}</span>
                             </NavLink>
                         ))}
                 </Sidebar.Wrapper>
@@ -99,12 +109,12 @@ function DashboardRouter() {
                     {(user.rootAdmin || user.admin_role_id) && (
                         <NavLink to={'/admin'}>
                             <CogIcon />
-                            <span className={collapsed ? 'hidden' : ''}>Settings</span>
+                            <span className={collapsed ? 'hidden' : ''}>{t('settings')}</span>
                         </NavLink>
                     )}
                     <NavLink to={'/'} onClick={onTriggerLogout}>
                         <LogoutIcon />
-                        <span className={collapsed ? 'hidden' : ''}>Logout</span>
+                        <span className={collapsed ? 'hidden' : ''}>{t('logout')}</span>
                     </NavLink>
                 </span>
                 <Sidebar.User>
@@ -117,7 +127,7 @@ function DashboardRouter() {
                                 'font-sans font-normal text-xs text-gray-300 whitespace-nowrap leading-tight select-none'
                             }
                         >
-                            <div className={'text-gray-400 text-sm'}>Welcome back,</div>
+                            <div className={'text-gray-400 text-sm'}>{t('welcomeBack')}</div>
                             {user.email}
                         </span>
                     </div>

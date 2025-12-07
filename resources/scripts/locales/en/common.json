@@ -96,5 +96,26 @@
     },
     "twoFactorEnabled": "2FA is Enabled",
     "twoFactorDisabled": "2FA is Disabled",
-    "userId": "User ID"
+    "userId": "User ID",
+    "welcomeBack": "Welcome back,",
+    "nav": {
+        "console": "Console",
+        "files": "Files",
+        "databases": "Databases",
+        "schedules": "Schedules",
+        "users": "Users",
+        "backups": "Backups",
+        "network": "Network",
+        "startup": "Startup",
+        "activity": "Activity",
+        "billing": "Billing",
+        "dashboard": "Dashboard",
+        "viewAsAdmin": "View as Admin",
+        "server": "Server",
+        "data": "Data",
+        "configuration": "Configuration",
+        "sshKeys": "SSH Keys",
+        "tickets": "Tickets",
+        "orders": "Orders"
+    }
 }

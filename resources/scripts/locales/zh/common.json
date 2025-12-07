@@ -96,5 +96,26 @@
     },
     "twoFactorEnabled": "双因素认证已启用",
     "twoFactorDisabled": "双因素认证已禁用",
-    "userId": "用户 ID"
+    "userId": "用户 ID",
+    "welcomeBack": "欢迎回来，",
+    "nav": {
+        "console": "控制台",
+        "files": "文件",
+        "databases": "数据库",
+        "schedules": "计划任务",
+        "users": "用户",
+        "backups": "备份",
+        "network": "网络",
+        "startup": "启动配置",
+        "activity": "活动日志",
+        "billing": "账单",
+        "dashboard": "仪表盘",
+        "viewAsAdmin": "以管理员身份查看",
+        "server": "服务器",
+        "data": "数据",
+        "configuration": "配置",
+        "sshKeys": "SSH 密钥",
+        "tickets": "工单",
+        "orders": "订单"
+    }
 }

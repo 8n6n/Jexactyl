@@ -20,6 +20,7 @@ import { CogIcon, DesktopComputerIcon, PuzzleIcon, ReplyIcon } from '@heroicons/
 import SidebarControls from '@/components/server/console/SidebarControls';
 import classNames from 'classnames';
 import NavigationBar from '@/components/NavigationBar';
+import { useTranslation } from 'react-i18next';
 
 function statusToColor(status: ServerStatus): string {
     switch (status) {
@@ -39,6 +40,7 @@ function statusToColor(status: ServerStatus): string {
 function ServerRouter() {
     const params = useParams<'id'>();
     const location = useLocation();
+    const { t } = useTranslation('common');
 
     const rootAdmin = useStoreState(state => state.user.data!.rootAdmin);
     const [error, setError] = useState('');
@@ -55,6 +57,19 @@ function ServerRouter() {
     const status = ServerContext.useStoreState(state => state.status.value);
 
     const categories = ['data', 'configuration'] as const;
+
+    // Helper function to get translated route name
+    const getRouteName = (route: { name?: string; nameKey?: string }) => {
+        if (route.nameKey) {
+            return t(route.nameKey);
+        }
+        return route.name || '';
+    };
+
+    // Helper function to get translated category name
+    const getCategoryName = (category: string) => {
+        return t(`nav.${category}`);
+    };
 
     useEffect(() => {
         clearServerState();
@@ -91,13 +106,13 @@ function ServerRouter() {
                             <MobileSidebar.Link
                                 key={route.route}
                                 icon={route.icon ?? PuzzleIcon}
-                                text={route.name}
+                                text={getRouteName(route)}
                                 linkTo={route.path}
                                 end={route.end}
                             />
                         ))}
                     {(user.rootAdmin || user.admin_role_id) && (
-                        <MobileSidebar.Link icon={CogIcon} text={'Admin'} linkTo={'/admin'} />
+                        <MobileSidebar.Link icon={CogIcon} text={t('admin')} linkTo={'/admin'} />
                     )}
                 </MobileSidebar>
                 <Sidebar className={'flex-none'} $collapsed={collapsed} theme={theme}>
@@ -120,9 +135,9 @@ function ServerRouter() {
                     <Sidebar.Wrapper theme={theme} className={'mb-auto'}>
                         <NavLink to={'/'} end className={'mb-[18px]'}>
                             <DesktopComputerIcon />
-                            <span>Dashboard</span>
+                            <span>{t('nav.dashboard')}</span>
                         </NavLink>
-                        <Sidebar.Section>Server {server?.uuid?.slice(0, 8)}</Sidebar.Section>
+                        <Sidebar.Section>{t('nav.server')} {server?.uuid?.slice(0, 8)}</Sidebar.Section>
                         {routes.server
                             .filter(
                                 route =>
@@ -133,7 +148,7 @@ function ServerRouter() {
                             .map(route => (
                                 <NavLink to={route.path} key={route.path} end={route.end}>
                                     <Sidebar.Icon icon={route.icon ?? PuzzleIcon} />
-                                    <span>{route.name}</span>
+                                    <span>{getRouteName(route)}</span>
                                 </NavLink>
                             ))}
                         {categories.map(category => {
@@ -144,11 +159,11 @@ function ServerRouter() {
 
                             return (
                                 <Fragment key={category}>
-                                    <Sidebar.Section>{category[0]!.toUpperCase() + category.slice(1)}</Sidebar.Section>
+                                    <Sidebar.Section>{getCategoryName(category)}</Sidebar.Section>
                                     {categoryRoutes.map(route => (
                                         <NavLink to={route.path} key={route.path} end={route.end}>
                                             <Sidebar.Icon icon={route.icon ?? PuzzleIcon} />
-                                            <span>{route.name}</span>
+                                            <span>{getRouteName(route)}</span>
                                         </NavLink>
                                     ))}
                                 </Fragment>
@@ -157,7 +172,7 @@ function ServerRouter() {
                         {user.rootAdmin && (
                             <NavLink to={`/admin/servers/${server?.internalId}`}>
                                 <ReplyIcon />
-                                <span>View as Admin</span>
+                                <span>{t('nav.viewAsAdmin')}</span>
                             </NavLink>
                         )}
                     </Sidebar.Wrapper>
@@ -178,7 +193,7 @@ function ServerRouter() {
                         <WebsocketHandler />
                         <NavigationBar />
                         {inConflictState &&
-                        (!rootAdmin || (rootAdmin && !location.pathname.endsWith(`/server/${server?.id}`))) ? (
+                            (!rootAdmin || (rootAdmin && !location.pathname.endsWith(`/server/${server?.id}`))) ? (
                             <ConflictStateRenderer />
                         ) : (
                             <ErrorBoundary>

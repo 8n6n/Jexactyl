@@ -21,6 +21,7 @@
     },
     "files": {
         "title": "文件管理器",
+        "description": "通过界面控制您的文件和文件夹。",
         "newFile": "新建文件",
         "newFolder": "新建文件夹",
         "upload": "上传",
@@ -33,7 +34,13 @@
         "delete": "删除",
         "chmod": "修改权限",
         "archiving": "正在归档文件...",
-        "deleting": "正在删除文件..."
+        "deleting": "正在删除文件...",
+        "emptyDirectory": "此目录似乎为空。",
+        "tooManyFiles": "此目录文件过多，无法在浏览器中完整显示，仅显示前 250 个文件。",
+        "sftpDetails": "SFTP 详情",
+        "serverAddress": "服务器地址",
+        "sftpPasswordHint": "您的 SFTP 密码与登录此面板的密码相同。",
+        "launchSftp": "启动 SFTP"
     },
     "databases": {
         "title": "数据库",

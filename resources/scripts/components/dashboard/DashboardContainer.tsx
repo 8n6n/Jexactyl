@@ -24,10 +24,13 @@ import { getServerGroups } from '@/api/server/groups';
 import { type ServerGroup } from '@/api/definitions/server';
 import ServerGroupDialog, { VisibleDialog } from '@/components/dashboard/groups/ServerGroupDialog';
 import ActivityLogContainer from './activity/ActivityLogContainer';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
     const { search } = useLocation();
     const defaultPage = Number(new URLSearchParams(search).get('page') || '1');
+    const { t } = useTranslation('dashboard');
+    const { t: ta } = useTranslation('auth');
 
     const [open, setOpen] = useState<VisibleDialog>({ open: 'none', serverId: undefined });
     const colors = useStoreState(state => state.theme.data!.colors);
@@ -72,7 +75,7 @@ export default () => {
     }, [error]);
 
     return (
-        <PageContentBlock title={`Welcome to ${name}`} header description={`Signed in as ${user.email}`}>
+        <PageContentBlock title={ta('welcomeTo', { name }) as string} header description={ta('signedInAs', { email: user.email }) as string}>
             <DashboardAlert />
             {open && <ServerGroupDialog open={open} setOpen={setOpen} groups={groups} setGroups={setGroups} />}
             <FlashMessageRender className={'my-4'} byKey={'dashboard'} />
@@ -89,7 +92,7 @@ export default () => {
                                     />
                                 </div>
                             )}
-                            {showOnlyAdmin ? 'Other' : 'Your'} Servers
+                            {showOnlyAdmin ? t('otherServers') : t('yourServers')}
                         </div>
                         <Button.Text size={Button.Sizes.Small} className={'mt-1'}>
                             <FontAwesomeIcon icon={faList} onClick={() => setOpen({ open: 'index' })} />
@@ -101,18 +104,16 @@ export default () => {
                                 <div className={'grid lg:grid-cols-2 gap-6 m-4'}>
                                     <ServerSvg color={colors.primary} />
                                     <div>
-                                        <h1 className={'text-gray-200 text-2xl font-bold'}>Deploy your first server</h1>
+                                        <h1 className={'text-gray-200 text-2xl font-bold'}>{t('deployFirstServer')}</h1>
                                         <div className={'mt-2'}>
-                                            It looks like you have no servers deployed to your account.&nbsp;
+                                            {t('noServersDeployed')}&nbsp;
                                             {billing ? (
                                                 <>
-                                                    With our billing portal, you can configure and purchase a new server
-                                                    plan and choose options like amount of CPU, memory and which game
-                                                    you&apos;d like to run.
+                                                    {t('billingPortalDescription')}
                                                     <div className={'text-right'}>
                                                         <Link to={'/account/billing/order'}>
                                                             <Button className={'w-1/2 text-white font-normal'}>
-                                                                View Options{' '}
+                                                                {t('viewOptions')}{' '}
                                                                 <FontAwesomeIcon
                                                                     icon={faCircleArrowRight}
                                                                     className={'ml-2'}
@@ -122,7 +123,7 @@ export default () => {
                                                     </div>
                                                 </>
                                             ) : (
-                                                <>Think this is a mistake? Please contact our support team.</>
+                                                <>{t('contactSupport')}</>
                                             )}
                                         </div>
                                     </div>
@@ -154,7 +155,7 @@ export default () => {
                                                             css={tw`w-2/3 h-auto select-none mx-auto`}
                                                         />
                                                         <h2 css={tw`mt-10 mb-6 text-white font-medium text-xl`}>
-                                                            No servers could be found.
+                                                            {t('noServersFound')}
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -166,7 +167,7 @@ export default () => {
                         )}
                     </ContentBox>
                 </div>
-                <ContentBox title={'Account Activity'}>
+                <ContentBox title={t('accountActivity') as string}>
                     <ActivityLogContainer />
                 </ContentBox>
             </div>

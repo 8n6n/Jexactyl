@@ -17,6 +17,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle, faDownload, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import EditServerDialog from './EditServerDialog';
 import PageContentBlock from '@/components/elements/PageContentBlock';
+import { useTranslation } from 'react-i18next';
 
 export type PowerAction = 'start' | 'stop' | 'restart' | 'kill';
 
@@ -32,6 +33,7 @@ function statusToColor(status: ServerStatus): string {
 }
 
 function ServerConsoleContainer() {
+    const { t } = useTranslation('server');
     const user = useStoreState(state => state.user.data!);
     const uuid = ServerContext.useStoreState(state => state.server.data!.uuid);
     const name = ServerContext.useStoreState(state => state.server.data!.name);
@@ -44,14 +46,14 @@ function ServerConsoleContainer() {
     const status = ServerContext.useStoreState(state => state.status.value);
 
     return (
-        <PageContentBlock title={'Server Console'} showFlashKey={'console:share'}>
+        <PageContentBlock title={t('console.title') as string} showFlashKey={'console:share'}>
             {(isNodeUnderMaintenance || isInstalling || isTransferring) && (
                 <Alert type={'warning'} className={'mb-4'}>
                     {isNodeUnderMaintenance
-                        ? 'The node of this server is currently under maintenance and all actions are unavailable.'
+                        ? t('console.maintenanceWarning')
                         : isInstalling
-                        ? 'This server is currently running its installation process and most actions are unavailable.'
-                        : 'This server is currently being transferred to another node and all actions are unavailable.'}
+                            ? t('console.installingWarning')
+                            : t('console.transferringWarning')}
                 </Alert>
             )}
             <div className={'mb-4 flex justify-between gap-4 bg-black/50 rounded-lg p-5'}>
@@ -62,13 +64,13 @@ function ServerConsoleContainer() {
                             {isInstalling && (
                                 <>
                                     <FontAwesomeIcon icon={faDownload} className={'my-auto mr-1'} />
-                                    Installing
+                                    {t('console.installing')}
                                 </>
                             )}
                             {isTransferring && (
                                 <>
                                     <FontAwesomeIcon icon={faSpinner} className={'animate-spin my-auto mr-1'} />
-                                    Transferring
+                                    {t('console.transferring')}
                                 </>
                             )}
                             {!isInstalling && !isTransferring && (

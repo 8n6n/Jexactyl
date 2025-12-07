@@ -19,12 +19,14 @@ const server: ServerRouteDefinition[] = [
     route('', ServerConsoleContainer, {
         permission: 'control.console',
         name: 'Console',
+        nameKey: 'nav.console',
         end: true,
         icon: Icon.TerminalIcon,
     }),
     route('files/*', FileManagerContainer, {
         permission: 'file.*',
         name: 'Files',
+        nameKey: 'nav.files',
         icon: Icon.FolderOpenIcon,
         category: 'data',
     }),
@@ -32,12 +34,14 @@ const server: ServerRouteDefinition[] = [
     route('databases/*', DatabasesContainer, {
         permission: 'database.*',
         name: 'Databases',
+        nameKey: 'nav.databases',
         icon: Icon.DatabaseIcon,
         category: 'data',
     }),
     route('schedules/*', ScheduleContainer, {
         permission: 'schedule.*',
         name: 'Schedules',
+        nameKey: 'nav.schedules',
         icon: Icon.ClockIcon,
         category: 'configuration',
     }),
@@ -45,31 +49,41 @@ const server: ServerRouteDefinition[] = [
     route('users/*', UsersContainer, {
         permission: 'user.*',
         name: 'Users',
+        nameKey: 'nav.users',
         icon: Icon.UsersIcon,
         category: 'configuration',
     }),
     route('backups/*', BackupContainer, {
         permission: 'backup.*',
         name: 'Backups',
+        nameKey: 'nav.backups',
         icon: Icon.ArchiveIcon,
         category: 'data',
     }),
     route('network/*', NetworkContainer, {
         permission: 'allocation.*',
         name: 'Network',
+        nameKey: 'nav.network',
         icon: Icon.WifiIcon,
         category: 'configuration',
     }),
     route('startup/*', StartupContainer, {
         permission: 'startup.*',
         name: 'Startup',
+        nameKey: 'nav.startup',
         icon: Icon.PlayIcon,
         category: 'configuration',
     }),
-    route('activity/*', ServerActivityLogContainer, { permission: 'activity.*', name: 'Activity', icon: Icon.EyeIcon }),
+    route('activity/*', ServerActivityLogContainer, {
+        permission: 'activity.*',
+        name: 'Activity',
+        nameKey: 'nav.activity',
+        icon: Icon.EyeIcon
+    }),
     route('billing/*', ServerBillingContainer, {
         permission: 'billing.*',
         name: 'Billing',
+        nameKey: 'nav.billing',
         icon: Icon.CashIcon,
         condition: flags => flags.billable,
     }),

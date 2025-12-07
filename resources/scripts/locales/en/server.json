@@ -21,6 +21,7 @@
     },
     "files": {
         "title": "File Manager",
+        "description": "Control your files and folders via the UI.",
         "newFile": "New File",
         "newFolder": "New Folder",
         "upload": "Upload",
@@ -33,7 +34,13 @@
         "delete": "Delete",
         "chmod": "Change Permissions",
         "archiving": "Archiving files...",
-        "deleting": "Deleting files..."
+        "deleting": "Deleting files...",
+        "emptyDirectory": "This directory seems to be empty.",
+        "tooManyFiles": "This directory is too large to display in the browser, limiting the output to the first 250 files.",
+        "sftpDetails": "SFTP Details",
+        "serverAddress": "Server Address",
+        "sftpPasswordHint": "Your SFTP password is the same as the password you use to access this panel.",
+        "launchSftp": "Launch SFTP"
     },
     "databases": {
         "title": "Databases",

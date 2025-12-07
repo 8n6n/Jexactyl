@@ -3,9 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import useEventListener from '@/plugins/useEventListener';
 import SearchModal from '@/components/dashboard/search/SearchModal';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
     const [visible, setVisible] = useState(false);
+    const { t } = useTranslation('common');
 
     useEventListener('keydown', (e: KeyboardEvent) => {
         if (['input', 'textarea'].indexOf(((e.target as HTMLElement).tagName || 'input').toLowerCase()) < 0) {
@@ -21,7 +23,7 @@ export default () => {
 
             <div className={'navigation-link'} onClick={() => setVisible(true)}>
                 <FontAwesomeIcon icon={faSearch} />
-                Search
+                {t('search')}
             </div>
         </>
     );
