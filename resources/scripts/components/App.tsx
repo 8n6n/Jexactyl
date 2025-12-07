@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import '@/i18n'; // Initialize i18n
 import '@/assets/tailwind.css';
 import { store } from '@/state';
 import { SiteTheme } from '@/state/theme';
@@ -95,7 +96,7 @@ function App() {
                     <>
                         {' '}
                         {PterodactylUser?.username.startsWith('null_user_') &&
-                        EverestConfiguration?.auth.modules.onboarding.enabled ? (
+                            EverestConfiguration?.auth.modules.onboarding.enabled ? (
                             <Onboarding />
                         ) : (
                             <div className="mx-auto w-auto">

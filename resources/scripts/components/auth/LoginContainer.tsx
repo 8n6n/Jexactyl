@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Reaptcha from 'reaptcha';
 import tw from 'twin.macro';
 import { object, string } from 'yup';
+import { useTranslation } from 'react-i18next';
 
 import { login, externalLogin } from '@/api/auth/login';
 import LoginFormContainer from '@/components/auth/LoginFormContainer';
@@ -25,6 +26,8 @@ interface Values {
 function LoginContainer() {
     const ref = useRef<Reaptcha>(null);
     const token = useRef('');
+    const { t } = useTranslation('auth');
+    const { t: tc } = useTranslation('common');
 
     const appName = useStoreState(state => state.settings.data!.name);
     const modules = useStoreState(state => state.everest.data!.auth.modules);
@@ -90,29 +93,29 @@ function LoginContainer() {
             onSubmit={onSubmit}
             initialValues={{ username: '', password: '' }}
             validationSchema={object().shape({
-                username: string().required('A username or email must be provided.'),
-                password: string().required('Please enter your account password.'),
+                username: string().required(t('validation.usernameRequired')),
+                password: string().required(t('validation.passwordRequired')),
             })}
         >
             {({ isSubmitting, setSubmitting, submitForm }) => (
-                <LoginFormContainer title={`Welcome to ${appName}`}>
+                <LoginFormContainer title={t('welcomeTo', { name: appName })}>
                     <Field
                         icon={faAt}
                         type={'text'}
-                        label={'Username or Email'}
+                        label={t('usernameOrEmail')}
                         name={'username'}
                         disabled={isSubmitting}
                         placeholder={'user@jexpanel.com'}
                     />
                     <div css={tw`mt-6`}>
                         <Label>
-                            Password
+                            {tc('password')}
                             <Link
                                 to={'/auth/password'}
                                 tabIndex={-1}
                                 className={'ml-1 text-green-400 hover:text-green-200 duration-300 text-xs'}
                             >
-                                Forgot Password?
+                                {t('forgotPassword')}
                             </Link>
                         </Label>
                         <Field
@@ -131,7 +134,7 @@ function LoginContainer() {
                             size={Button.Sizes.Large}
                             disabled={isSubmitting}
                         >
-                            Login
+                            {tc('login')}
                         </Button>
                     </div>
                     {recaptchaEnabled && (
@@ -150,22 +153,22 @@ function LoginContainer() {
                         />
                     )}
                     {(modules.discord.enabled || modules.google.enabled || registration) && (
-                        <div className={'w-full text-center my-3 text-gray-400'}>OR</div>
+                        <div className={'w-full text-center my-3 text-gray-400'}>{tc('or')}</div>
                     )}
                     <div className={'mt-4 w-full grid gap-4 grid-cols-2'}>
                         {modules.discord.enabled && (
                             <Button.Info onClick={() => useOauth('discord')} size={Button.Sizes.Small}>
-                                <FontAwesomeIcon icon={faDiscord} className={'mr-2 my-auto'} /> Use Discord SSO
+                                <FontAwesomeIcon icon={faDiscord} className={'mr-2 my-auto'} /> {t('useDiscordSSO')}
                             </Button.Info>
                         )}
                         {modules.google.enabled && (
                             <Button.Text onClick={() => useOauth('google')} size={Button.Sizes.Small}>
-                                <FontAwesomeIcon icon={faGoogle} className={'mr-2 my-auto'} /> Use Google SSO
+                                <FontAwesomeIcon icon={faGoogle} className={'mr-2 my-auto'} /> {t('useGoogleSSO')}
                             </Button.Text>
                         )}
                         {registration && (
                             <Button.Text onClick={() => navigate('/auth/register')} size={Button.Sizes.Small}>
-                                <FontAwesomeIcon icon={faEnvelope} className={'mr-2 my-auto'} /> Register with Email
+                                <FontAwesomeIcon icon={faEnvelope} className={'mr-2 my-auto'} /> {t('registerWithEmail')}
                             </Button.Text>
                         )}
                     </div>
@@ -176,3 +179,4 @@ function LoginContainer() {
 }
 
 export default LoginContainer;
+

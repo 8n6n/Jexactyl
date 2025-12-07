@@ -10,6 +10,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { ChevronRightIcon, HomeIcon } from '@heroicons/react/outline';
 import { useActivityLogs } from '@/api/account/activity';
 import Spinner from './elements/Spinner';
+import { useTranslation } from 'react-i18next';
 import { formatDistanceToNow } from 'date-fns';
 
 const RightNavigation = styled.div<{ theme: SiteTheme }>`
@@ -31,6 +32,7 @@ const RightNavigation = styled.div<{ theme: SiteTheme }>`
 const NavigationBar = () => {
     const [width, setWidth] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
+    const { t } = useTranslation('common');
 
     const location = useLocation();
     const theme = useStoreState(state => state.theme.data!);
@@ -100,14 +102,14 @@ const NavigationBar = () => {
                 return (
                     <>
                         <FontAwesomeIcon icon={faHeart} className={user.useTotp ? 'text-green-400' : 'text-red-400'} />
-                        2FA is {user.useTotp ? 'Enabled' : 'Disabled'}
+                        {user.useTotp ? t('twoFactorEnabled') : t('twoFactorDisabled')}
                     </>
                 );
             case 2:
                 return (
                     <>
                         <FontAwesomeIcon icon={faIdBadge} />
-                        User ID: {user.uuid.slice(0, 8)}
+                        {t('userId')}: {user.uuid.slice(0, 8)}
                     </>
                 );
             default:

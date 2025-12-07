@@ -1,0 +1,50 @@
+{
+    "overview": {
+        "title": "管理员概览"
+    },
+    "servers": {
+        "title": "服务器",
+        "createServer": "创建服务器",
+        "editServer": "编辑服务器"
+    },
+    "nodes": {
+        "title": "节点",
+        "createNode": "创建节点",
+        "editNode": "编辑节点"
+    },
+    "users": {
+        "title": "用户",
+        "createUser": "创建用户",
+        "editUser": "编辑用户"
+    },
+    "nests": {
+        "title": "预设组",
+        "createNest": "创建预设组",
+        "editNest": "编辑预设组"
+    },
+    "eggs": {
+        "title": "预设",
+        "createEgg": "创建预设",
+        "editEgg": "编辑预设",
+        "importEgg": "导入预设"
+    },
+    "mounts": {
+        "title": "挂载",
+        "createMount": "创建挂载"
+    },
+    "databases": {
+        "title": "数据库主机",
+        "createHost": "创建主机"
+    },
+    "locations": {
+        "title": "位置",
+        "createLocation": "创建位置"
+    },
+    "roles": {
+        "title": "角色",
+        "createRole": "创建角色"
+    },
+    "settings": {
+        "title": "设置"
+    }
+}

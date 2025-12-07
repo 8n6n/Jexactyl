@@ -1,0 +1,50 @@
+{
+    "overview": {
+        "title": "Admin Overview"
+    },
+    "servers": {
+        "title": "Servers",
+        "createServer": "Create Server",
+        "editServer": "Edit Server"
+    },
+    "nodes": {
+        "title": "Nodes",
+        "createNode": "Create Node",
+        "editNode": "Edit Node"
+    },
+    "users": {
+        "title": "Users",
+        "createUser": "Create User",
+        "editUser": "Edit User"
+    },
+    "nests": {
+        "title": "Nests",
+        "createNest": "Create Nest",
+        "editNest": "Edit Nest"
+    },
+    "eggs": {
+        "title": "Eggs",
+        "createEgg": "Create Egg",
+        "editEgg": "Edit Egg",
+        "importEgg": "Import Egg"
+    },
+    "mounts": {
+        "title": "Mounts",
+        "createMount": "Create Mount"
+    },
+    "databases": {
+        "title": "Database Hosts",
+        "createHost": "Create Host"
+    },
+    "locations": {
+        "title": "Locations",
+        "createLocation": "Create Location"
+    },
+    "roles": {
+        "title": "Roles",
+        "createRole": "Create Role"
+    },
+    "settings": {
+        "title": "Settings"
+    }
+}

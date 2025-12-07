@@ -1,0 +1,84 @@
+{
+    "console": {
+        "title": "Server Console",
+        "installing": "Installing",
+        "transferring": "Transferring",
+        "maintenanceWarning": "The node of this server is currently under maintenance and all actions are unavailable.",
+        "installingWarning": "This server is currently running its installation process and most actions are unavailable.",
+        "transferringWarning": "This server is currently being transferred to another node and all actions are unavailable."
+    },
+    "power": {
+        "start": "Start",
+        "stop": "Stop",
+        "restart": "Restart",
+        "kill": "Kill"
+    },
+    "status": {
+        "running": "Running",
+        "offline": "Offline",
+        "starting": "Starting",
+        "stopping": "Stopping"
+    },
+    "files": {
+        "title": "File Manager",
+        "newFile": "New File",
+        "newFolder": "New Folder",
+        "upload": "Upload",
+        "download": "Download",
+        "rename": "Rename",
+        "move": "Move",
+        "copy": "Copy",
+        "compress": "Compress",
+        "decompress": "Decompress",
+        "delete": "Delete",
+        "chmod": "Change Permissions",
+        "archiving": "Archiving files...",
+        "deleting": "Deleting files..."
+    },
+    "databases": {
+        "title": "Databases",
+        "createNew": "Create New Database",
+        "rotatePassword": "Rotate Password",
+        "showPassword": "Show Password",
+        "copyPassword": "Copy Password"
+    },
+    "schedules": {
+        "title": "Schedules",
+        "createNew": "Create Schedule",
+        "editSchedule": "Edit Schedule",
+        "runNow": "Run Now",
+        "deleteSchedule": "Delete Schedule"
+    },
+    "users": {
+        "title": "Users",
+        "addSubuser": "Add Subuser",
+        "editSubuser": "Edit Subuser",
+        "removeSubuser": "Remove Subuser"
+    },
+    "backups": {
+        "title": "Backups",
+        "createBackup": "Create Backup",
+        "restore": "Restore",
+        "download": "Download",
+        "delete": "Delete",
+        "lock": "Lock",
+        "unlock": "Unlock"
+    },
+    "network": {
+        "title": "Network",
+        "createAllocation": "Create Allocation",
+        "notes": "Notes"
+    },
+    "startup": {
+        "title": "Startup",
+        "dockerImage": "Docker Image",
+        "startupCommand": "Startup Command"
+    },
+    "settings": {
+        "title": "Settings",
+        "serverName": "Server Name",
+        "serverDescription": "Server Description",
+        "reinstall": "Reinstall Server",
+        "reinstallWarning": "Your server will be stopped and the installation process will start. You may lose data."
+    }
+}

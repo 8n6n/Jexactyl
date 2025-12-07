@@ -1,0 +1,12 @@
+{
+    "yourServers": "Your Servers",
+    "otherServers": "Other Servers",
+    "accountActivity": "Account Activity",
+    "deployFirstServer": "Deploy your first server",
+    "noServersDeployed": "It looks like you have no servers deployed to your account.",
+    "billingPortalDescription": "With our billing portal, you can configure and purchase a new server plan and choose options like amount of CPU, memory and which game you'd like to run.",
+    "viewOptions": "View Options",
+    "contactSupport": "Think this is a mistake? Please contact our support team.",
+    "noServersFound": "No servers could be found.",
+    "searchServers": "Search for servers..."
+}

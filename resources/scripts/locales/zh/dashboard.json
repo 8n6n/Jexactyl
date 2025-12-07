@@ -1,0 +1,12 @@
+{
+    "yourServers": "您的服务器",
+    "otherServers": "其他服务器",
+    "accountActivity": "账户活动",
+    "deployFirstServer": "部署您的第一台服务器",
+    "noServersDeployed": "您的账户中似乎还没有部署任何服务器。",
+    "billingPortalDescription": "通过我们的账单门户，您可以配置和购买新的服务器方案，选择 CPU、内存用量以及要运行的游戏等选项。",
+    "viewOptions": "查看选项",
+    "contactSupport": "认为这是个错误？请联系我们的支持团队。",
+    "noServersFound": "未找到服务器。",
+    "searchServers": "搜索服务器..."
+}

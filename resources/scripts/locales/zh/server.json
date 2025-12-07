@@ -1,0 +1,84 @@
+{
+    "console": {
+        "title": "服务器控制台",
+        "installing": "安装中",
+        "transferring": "迁移中",
+        "maintenanceWarning": "此服务器的节点当前正在维护中，所有操作均不可用。",
+        "installingWarning": "此服务器当前正在运行安装过程，大多数操作不可用。",
+        "transferringWarning": "此服务器当前正在迁移到另一个节点，所有操作均不可用。"
+    },
+    "power": {
+        "start": "启动",
+        "stop": "停止",
+        "restart": "重启",
+        "kill": "强制终止"
+    },
+    "status": {
+        "running": "运行中",
+        "offline": "离线",
+        "starting": "启动中",
+        "stopping": "停止中"
+    },
+    "files": {
+        "title": "文件管理器",
+        "newFile": "新建文件",
+        "newFolder": "新建文件夹",
+        "upload": "上传",
+        "download": "下载",
+        "rename": "重命名",
+        "move": "移动",
+        "copy": "复制",
+        "compress": "压缩",
+        "decompress": "解压",
+        "delete": "删除",
+        "chmod": "修改权限",
+        "archiving": "正在归档文件...",
+        "deleting": "正在删除文件..."
+    },
+    "databases": {
+        "title": "数据库",
+        "createNew": "创建新数据库",
+        "rotatePassword": "轮换密码",
+        "showPassword": "显示密码",
+        "copyPassword": "复制密码"
+    },
+    "schedules": {
+        "title": "计划任务",
+        "createNew": "创建计划任务",
+        "editSchedule": "编辑计划任务",
+        "runNow": "立即运行",
+        "deleteSchedule": "删除计划任务"
+    },
+    "users": {
+        "title": "用户",
+        "addSubuser": "添加子用户",
+        "editSubuser": "编辑子用户",
+        "removeSubuser": "移除子用户"
+    },
+    "backups": {
+        "title": "备份",
+        "createBackup": "创建备份",
+        "restore": "恢复",
+        "download": "下载",
+        "delete": "删除",
+        "lock": "锁定",
+        "unlock": "解锁"
+    },
+    "network": {
+        "title": "网络",
+        "createAllocation": "创建端口分配",
+        "notes": "备注"
+    },
+    "startup": {
+        "title": "启动配置",
+        "dockerImage": "Docker 镜像",
+        "startupCommand": "启动命令"
+    },
+    "settings": {
+        "title": "设置",
+        "serverName": "服务器名称",
+        "serverDescription": "服务器描述",
+        "reinstall": "重新安装服务器",
+        "reinstallWarning": "您的服务器将被停止并开始安装过程。您可能会丢失数据。"
+    }
+}
