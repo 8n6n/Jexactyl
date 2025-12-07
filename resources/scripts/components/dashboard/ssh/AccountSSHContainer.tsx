@@ -11,8 +11,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKey } from '@fortawesome/free-solid-svg-icons';
 import CreateSSHKeyForm from '@/components/dashboard/ssh/CreateSSHKeyForm';
 import DeleteSSHKeyButton from '@/components/dashboard/ssh/DeleteSSHKeyButton';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
+    const { t } = useTranslation('dashboard');
+    const { t: tc } = useTranslation('common');
     const { clearAndAddHttpError } = useFlashKey('account');
     const { data, isValidating, error } = useSSHKeys({
         revalidateOnMount: true,
@@ -27,17 +30,17 @@ export default () => {
     }, [error, data]);
 
     return (
-        <PageContentBlock title={'SSH Keys'} header description={'Create, use and delete SSH keys to access servers.'}>
+        <PageContentBlock title={t('ssh.title') as string} header description={t('ssh.description') as string}>
             <FlashMessageRender byKey={'account'} />
             <div css={tw`md:flex flex-nowrap my-10`}>
-                <ContentBox title={'Add SSH Key'} css={tw`flex-none w-full md:w-1/2`}>
+                <ContentBox title={t('ssh.addKey') as string} css={tw`flex-none w-full md:w-1/2`}>
                     <CreateSSHKeyForm />
                 </ContentBox>
-                <ContentBox title={'SSH Keys'} css={tw`flex-1 overflow-hidden mt-8 md:mt-0 md:ml-8`}>
+                <ContentBox title={t('ssh.keys') as string} css={tw`flex-1 overflow-hidden mt-8 md:mt-0 md:ml-8`}>
                     <SpinnerOverlay visible={!data && isValidating} />
                     {!data || !data.length ? (
                         <p css={tw`text-center text-sm`}>
-                            {!data ? 'Loading...' : 'No SSH Keys exist for this account.'}
+                            {!data ? tc('loading') : t('ssh.noKeys')}
                         </p>
                     ) : (
                         data.map((key, index) => (
@@ -52,7 +55,7 @@ export default () => {
                                         SHA256:{key.fingerprint}
                                     </p>
                                     <p css={tw`text-xs mt-1 text-gray-400 uppercase`}>
-                                        Added on:&nbsp;
+                                        {t('ssh.addedOn')}&nbsp;
                                         {key.created_at.toLocaleString()}
                                     </p>
                                 </div>
