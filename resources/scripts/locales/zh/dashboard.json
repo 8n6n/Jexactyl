@@ -15,7 +15,10 @@
         "addKey": "添加 SSH 密钥",
         "keys": "SSH 密钥",
         "noKeys": "此账户没有 SSH 密钥。",
-        "addedOn": "添加于："
+        "addedOn": "添加于：",
+        "keyName": "SSH 密钥名称",
+        "publicKey": "公钥",
+        "publicKeyDescription": "输入您的 SSH 公钥。"
     },
     "api": {
         "title": "账户 API",
@@ -24,7 +27,10 @@
         "keys": "API 密钥",
         "deleteKey": "删除 API 密钥",
         "deleteConfirm": "使用此密钥的所有请求都将失效。",
-        "noKeys": "此账户没有 API 密钥。"
+        "noKeys": "此账户没有 API 密钥。",
+        "descriptionHelp": "此 API 密钥的描述。",
+        "allowedIps": "允许的 IP",
+        "allowedIpsDescription": "留空以允许任何 IP 地址使用此 API 密钥，否则请在每行输入一个 IP 地址。"
     },
     "tickets": {
         "title": "支持工单",
@@ -33,5 +39,19 @@
         "supportTickets": "支持工单",
         "createTicket": "创建工单",
         "noTickets": "此账户没有工单。"
+    },
+    "password": {
+        "currentPassword": "当前密码",
+        "currentRequired": "请提供您的当前密码。",
+        "confirmMismatch": "确认密码与您输入的密码不匹配。",
+        "confirmNewPassword": "确认新密码",
+        "newPasswordDescription": "您的新密码应至少包含 8 个字符，且应为此网站独有的密码。",
+        "updatePassword": "更新密码"
+    },
+    "email": {
+        "confirmPassword": "确认密码",
+        "passwordRequired": "请提供您的账户密码。",
+        "updateEmail": "更新邮箱",
+        "updateSuccess": "您的主邮箱已更新。"
     }
 }

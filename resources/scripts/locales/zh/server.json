@@ -11,7 +11,9 @@
         "start": "启动",
         "stop": "停止",
         "restart": "重启",
-        "kill": "强制终止"
+        "kill": "强制终止",
+        "forceStopTitle": "强制停止进程",
+        "forceStopWarning": "强制停止服务器可能导致数据损坏。"
     },
     "status": {
         "running": "运行中",
@@ -51,7 +53,18 @@
         "copyPassword": "复制密码",
         "noDatabases": "您还没有创建任何数据库。",
         "limitZero": "无法为此服务器创建数据库。",
-        "databaseCount": "已为此服务器分配 {{count}}/{{limit}} 个数据库。"
+        "databaseCount": "已为此服务器分配 {{count}}/{{limit}} 个数据库。",
+        "databaseName": "数据库名称",
+        "databaseNameDescription": "数据库实例的描述性名称。",
+        "connectionsFrom": "连接来源",
+        "connectionsFromDescription": "允许从哪里进行连接。留空以允许来自任何地方的连接。",
+        "validation": {
+            "nameRequired": "必须提供数据库名称。",
+            "nameMin": "数据库名称至少需要 3 个字符。",
+            "nameMax": "数据库名称不能超过 48 个字符。",
+            "nameFormat": "数据库名称只能包含字母数字字符、下划线、短横线和/或句点。",
+            "hostFormat": "必须提供有效的主机地址。"
+        }
     },
     "schedules": {
         "title": "计划任务",

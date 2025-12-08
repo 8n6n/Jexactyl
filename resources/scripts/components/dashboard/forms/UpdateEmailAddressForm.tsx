@@ -8,22 +8,25 @@ import { httpErrorToHuman } from '@/api/http';
 import { ApplicationStore } from '@/state';
 import tw from 'twin.macro';
 import { Button } from '@elements/button/index';
+import { useTranslation } from 'react-i18next';
 
 interface Values {
     email: string;
     password: string;
 }
 
-const schema = Yup.object().shape({
-    email: Yup.string().email().required(),
-    password: Yup.string().required('You must provide your current account password.'),
-});
-
 export default () => {
+    const { t } = useTranslation('dashboard');
+    const { t: tc } = useTranslation('common');
     const user = useStoreState((state: State<ApplicationStore>) => state.user.data);
     const updateEmail = useStoreActions((state: Actions<ApplicationStore>) => state.user.updateUserEmail);
 
     const { clearFlashes, addFlash } = useStoreActions((actions: Actions<ApplicationStore>) => actions.flashes);
+
+    const schema = Yup.object().shape({
+        email: Yup.string().email().required(),
+        password: Yup.string().required(t('email.passwordRequired') as string),
+    });
 
     const submit = (values: Values, { resetForm, setSubmitting }: FormikHelpers<Values>) => {
         clearFlashes('account:email');
@@ -33,14 +36,14 @@ export default () => {
                 addFlash({
                     type: 'success',
                     key: 'account:email',
-                    message: 'Your primary email has been updated.',
+                    message: t('email.updateSuccess') as string,
                 }),
             )
             .catch(error =>
                 addFlash({
                     type: 'error',
                     key: 'account:email',
-                    title: 'Error',
+                    title: tc('error'),
                     message: httpErrorToHuman(error),
                 }),
             )
@@ -56,17 +59,17 @@ export default () => {
                 <Fragment>
                     <SpinnerOverlay size={'large'} visible={isSubmitting} />
                     <Form css={tw`m-0`}>
-                        <Field id={'current_email'} type={'email'} name={'email'} label={'Email'} />
+                        <Field id={'current_email'} type={'email'} name={'email'} label={tc('email') as string} />
                         <div css={tw`mt-6`}>
                             <Field
                                 id={'confirm_password'}
                                 type={'password'}
                                 name={'password'}
-                                label={'Confirm Password'}
+                                label={t('email.confirmPassword') as string}
                             />
                         </div>
                         <div css={tw`mt-6`}>
-                            <Button disabled={isSubmitting || !isValid}>Update Email</Button>
+                            <Button disabled={isSubmitting || !isValid}>{t('email.updateEmail')}</Button>
                         </div>
                     </Form>
                 </Fragment>

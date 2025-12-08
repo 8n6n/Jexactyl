@@ -11,7 +11,9 @@
         "start": "Start",
         "stop": "Stop",
         "restart": "Restart",
-        "kill": "Kill"
+        "kill": "Kill",
+        "forceStopTitle": "Forcibly Stop Process",
+        "forceStopWarning": "Forcibly stopping a server can lead to data corruption."
     },
     "status": {
         "running": "Running",
@@ -51,7 +53,18 @@
         "copyPassword": "Copy Password",
         "noDatabases": "It looks like you have no databases.",
         "limitZero": "Databases cannot be created for this server.",
-        "databaseCount": "{{count}} of {{limit}} databases have been allocated to this server."
+        "databaseCount": "{{count}} of {{limit}} databases have been allocated to this server.",
+        "databaseName": "Database Name",
+        "databaseNameDescription": "A descriptive name for your database instance.",
+        "connectionsFrom": "Connections From",
+        "connectionsFromDescription": "Where connections should be allowed from. Leave blank to allow connections from anywhere.",
+        "validation": {
+            "nameRequired": "A database name must be provided.",
+            "nameMin": "Database name must be at least 3 characters.",
+            "nameMax": "Database name must not exceed 48 characters.",
+            "nameFormat": "Database name should only contain alphanumeric characters, underscores, dashes, and/or periods.",
+            "hostFormat": "A valid host address must be provided."
+        }
     },
     "schedules": {
         "title": "Schedules",

@@ -9,6 +9,7 @@ import { httpErrorToHuman } from '@/api/http';
 import { ApplicationStore } from '@/state';
 import tw from 'twin.macro';
 import { Button } from '@elements/button/index';
+import { useTranslation } from 'react-i18next';
 
 interface Values {
     current: string;
@@ -16,21 +17,23 @@ interface Values {
     confirmPassword: string;
 }
 
-const schema = Yup.object().shape({
-    current: Yup.string().min(1).required('You must provide your current password.'),
-    password: Yup.string().min(8).required(),
-    confirmPassword: Yup.string().test(
-        'password',
-        'Password confirmation does not match the password you entered.',
-        function (value) {
-            return value === this.parent.password;
-        },
-    ),
-});
-
 export default () => {
+    const { t } = useTranslation('dashboard');
+    const { t: tc } = useTranslation('common');
     const user = useStoreState((state: State<ApplicationStore>) => state.user.data);
     const { clearFlashes, addFlash } = useStoreActions((actions: Actions<ApplicationStore>) => actions.flashes);
+
+    const schema = Yup.object().shape({
+        current: Yup.string().min(1).required(t('password.currentRequired') as string),
+        password: Yup.string().min(8).required(),
+        confirmPassword: Yup.string().test(
+            'password',
+            t('password.confirmMismatch') as string,
+            function (value) {
+                return value === this.parent.password;
+            },
+        ),
+    });
 
     if (!user) {
         return null;
@@ -47,7 +50,7 @@ export default () => {
                 addFlash({
                     key: 'account:password',
                     type: 'error',
-                    title: 'Error',
+                    title: tc('error'),
                     message: httpErrorToHuman(error),
                 }),
             )
@@ -69,17 +72,15 @@ export default () => {
                                 id={'current_password'}
                                 type={'password'}
                                 name={'current'}
-                                label={'Current Password'}
+                                label={t('password.currentPassword') as string}
                             />
                             <div css={tw`mt-6`}>
                                 <Field
                                     id={'new_password'}
                                     type={'password'}
                                     name={'password'}
-                                    label={'New Password'}
-                                    description={
-                                        'Your new password should be at least 8 characters in length and unique to this website.'
-                                    }
+                                    label={tc('newPassword') as string}
+                                    description={t('password.newPasswordDescription') as string}
                                 />
                             </div>
                             <div css={tw`mt-6`}>
@@ -87,11 +88,11 @@ export default () => {
                                     id={'confirm_new_password'}
                                     type={'password'}
                                     name={'confirmPassword'}
-                                    label={'Confirm New Password'}
+                                    label={t('password.confirmNewPassword') as string}
                                 />
                             </div>
                             <div css={tw`mt-6`}>
-                                <Button disabled={isSubmitting || !isValid}>Update Password</Button>
+                                <Button disabled={isSubmitting || !isValid}>{t('password.updatePassword')}</Button>
                             </div>
                         </Form>
                     </Fragment>
