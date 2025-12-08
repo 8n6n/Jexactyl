@@ -49,9 +49,11 @@
         "updatePassword": "更新密码"
     },
     "email": {
-        "confirmPassword": "确认密码",
-        "passwordRequired": "请提供您的账户密码。",
-        "updateEmail": "更新邮箱",
-        "updateSuccess": "您的主邮箱已更新。"
+        "disableDialog": {
+            "title": "禁用两步验证",
+            "description": "禁用两步验证将降低您账户的安全性。您确定要继续吗？",
+            "cancel": "取消",
+            "confirm": "禁用"
+        }
     }
 }

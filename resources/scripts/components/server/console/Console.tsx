@@ -24,6 +24,7 @@ import styles from './style.module.css';
 import { useStoreState } from '@/state/hooks';
 import { ArrowsExpandIcon } from '@heroicons/react/outline';
 import IntelligenceButton from './IntelligenceButton';
+import { useTranslation } from 'react-i18next';
 
 const theme: ITheme = {
     background: '#000000',
@@ -82,6 +83,7 @@ export default ({ expand, setExpand }: Props) => {
     const isTransferring = ServerContext.useStoreState(state => state.server.data!.isTransferring);
     const [history, setHistory] = usePersistedState<string[]>(`${serverId}:command_history`, []);
     const [historyIndex, setHistoryIndex] = useState(-1);
+    const { t } = useTranslation('server');
 
     // SearchBarAddon has hardcoded z-index: 999 :(
     const zIndex = `
@@ -243,7 +245,7 @@ export default ({ expand, setExpand }: Props) => {
                     <input
                         className={classNames('peer', styles.command_input)}
                         type={'text'}
-                        placeholder={'Type a command...'}
+                        placeholder={t('console.typeCommand', 'Type a command...') as string}
                         aria-label={'Console command input.'}
                         disabled={!instance || !connected}
                         onKeyDown={handleCommandKeyDown}

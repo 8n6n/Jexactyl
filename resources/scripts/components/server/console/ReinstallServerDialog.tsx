@@ -7,8 +7,10 @@ import { httpErrorToHuman } from '@/api/http';
 import tw from 'twin.macro';
 import { Button } from '@elements/button/index';
 import { Dialog } from '@elements/dialog';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
+    const { t } = useTranslation('server');
     const uuid = ServerContext.useStoreState(state => state.server.data!.uuid);
     const [modalVisible, setModalVisible] = useState(false);
     const { addFlash, clearFlashes } = useStoreActions((actions: Actions<ApplicationStore>) => actions.flashes);
@@ -20,7 +22,7 @@ export default () => {
                 addFlash({
                     key: 'settings',
                     type: 'success',
-                    message: 'Your server has begun the reinstallation process.',
+                    message: t('settings.reinstallConfirm.success', 'Your server has begun the reinstallation process.'),
                 });
             })
             .catch(error => {
@@ -39,24 +41,21 @@ export default () => {
         <>
             <Dialog.Confirm
                 open={modalVisible}
-                title={'Confirm server reinstallation'}
-                confirm={'Yes, reinstall server'}
+                title={t('settings.reinstallConfirm.title', 'Confirm server reinstallation') as string}
+                confirm={t('settings.reinstallConfirm.button', 'Yes, reinstall server') as string}
                 onClose={() => setModalVisible(false)}
                 onConfirmed={reinstall}
             >
                 <div css={tw`text-sm rounded-lg p-4 bg-yellow-500/25 mb-4`}>
-                    Reinstalling your server will stop it, and then re-run the installation script that initially set it
-                    up.&nbsp;
+                    {t('settings.reinstallConfirm.message', 'Reinstalling your server will stop it, and then re-run the installation script that initially set it up.')}&nbsp;
                     <strong css={tw`font-medium`}>
-                        Some files may be deleted or modified during this process, please back up your data before
-                        continuing.
+                        {t('settings.reinstallConfirm.warning', 'Some files may be deleted or modified during this process, please back up your data before continuing.')}
                     </strong>
                 </div>
-                Your server will be stopped and some files may be deleted or modified during this process, are you sure
-                you wish to continue?
+                {t('settings.reinstallConfirm.confirm', 'Your server will be stopped and some files may be deleted or modified during this process, are you sure you wish to continue?')}
             </Dialog.Confirm>
             <Button.Danger type={'button'} variant={Button.Variants.Secondary} onClick={() => setModalVisible(true)}>
-                Reinstall Server
+                {t('settings.reinstall', 'Reinstall Server')}
             </Button.Danger>
         </>
     );

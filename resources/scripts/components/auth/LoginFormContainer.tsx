@@ -31,7 +31,10 @@ const Container = styled.div<{ isVisible: boolean }>`
     `};
 `;
 
+import { useTranslation } from 'react-i18next';
+
 export default forwardRef<HTMLFormElement, Props>(({ title, ...props }, ref) => {
+    const { t } = useTranslation('auth');
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
@@ -51,14 +54,14 @@ export default forwardRef<HTMLFormElement, Props>(({ title, ...props }, ref) => 
                         </div>
                     </Form>
                     <p css={tw`text-center text-neutral-300 text-xs mt-4`}>
-                        &copy; {new Date().getFullYear()}&nbsp;
+                        {t('footer.copyright', { year: new Date().getFullYear(), defaultValue: `© ${new Date().getFullYear()}` })}&nbsp;
                         <a
                             rel={'noopener nofollow noreferrer'}
                             href={'https://jexpanel.com'}
                             target={'_blank'}
                             css={tw`no-underline text-neutral-300 hover:text-green-400 duration-300`}
                         >
-                            Jexpanel.com
+                            {t('footer.link', 'Jexpanel.com')}
                         </a>
                     </p>
                 </div>

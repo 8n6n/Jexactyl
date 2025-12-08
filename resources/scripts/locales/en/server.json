@@ -82,7 +82,26 @@
         "editSubuser": "Edit Subuser",
         "removeSubuser": "Remove Subuser",
         "noSubusers": "It looks like you don't have any subusers.",
-        "subuserCount": "{{count}} of {{limit}} subusers have been created for this server."
+        "subuserCount": "{{count}} of {{limit}} subusers have been created for this server.",
+        "new": "New User",
+        "delete": {
+            "title": "Delete this subuser?",
+            "description": "Are you sure you wish to remove this subuser? They will have all access to this server revoked immediately.",
+            "confirm": "Yes, remove subuser"
+        },
+        "configure": "Configure Permissions",
+        "email": "User Email",
+        "emailDescription": "Enter the email address of the user you wish to invite as a subuser for this server.",
+        "modifyPermissions": "Modify permissions for",
+        "createDescription": "Create new subuser",
+        "save": "Save",
+        "invite": "Invite User",
+        "onlyPermissionsWarning": "Only permissions which your account is currently assigned may be selected when creating or modifying other users.",
+        "validation": {
+            "emailMax": "Email addresses must not exceed 191 characters.",
+            "emailValid": "A valid email address must be provided.",
+            "emailRequired": "A valid email address must be provided."
+        }
     },
     "backups": {
         "title": "Backups",
@@ -126,11 +145,37 @@
         "serverName": "Server Name",
         "serverDescription": "Server Description",
         "reinstall": "Reinstall Server",
-        "reinstallWarning": "Your server will be stopped and the installation process will start. You may lose data."
+        "reinstallWarning": "Your server will be stopped and the installation process will start. You may lose data.",
+        "editDetails": "Edit Server Details",
+        "save": "Save",
+        "reinstallConfirm": {
+            "title": "Confirm server reinstallation",
+            "button": "Yes, reinstall server",
+            "message": "Reinstalling your server will stop it, and then re-run the installation script that initially set it up.",
+            "warning": "Some files may be deleted or modified during this process, please back up your data before continuing.",
+            "confirm": "Your server will be stopped and some files may be deleted or modified during this process, are you sure you wish to continue?",
+            "success": "Your server has begun the reinstallation process."
+        }
     },
     "activity": {
         "title": "Activity Log",
         "description": "View recent activity on your server.",
         "noLogs": "No activity logs available for this server."
+    },
+    "stats": {
+        "address": "Address",
+        "uptime": "Uptime",
+        "cpu": "CPU Load",
+        "memory": "Memory",
+        "disk": "Disk",
+        "offline": "Offline"
+    },
+    "graphs": {
+        "network": {
+            "in": "Network In",
+            "out": "Network Out",
+            "inbound": "Inbound",
+            "outbound": "Outbound"
+        }
     }
 }

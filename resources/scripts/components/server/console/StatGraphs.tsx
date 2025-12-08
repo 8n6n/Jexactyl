@@ -11,8 +11,10 @@ import { theme } from 'twin.macro';
 import ChartBlock from '@/components/server/console/ChartBlock';
 import Tooltip from '@elements/tooltip/Tooltip';
 import { useStoreState } from '@/state/hooks';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
+    const { t } = useTranslation('server');
     const { primary } = useStoreState(state => state.theme.data!.colors);
     const status = ServerContext.useStoreState(state => state.status.value);
     const limits = ServerContext.useStoreState(state => state.server.data!.limits);
@@ -36,7 +38,7 @@ export default () => {
         callback(opts, index) {
             return {
                 ...opts,
-                label: !index ? 'Network In' : 'Network Out',
+                label: !index ? t('graphs.network.in', 'Network In') : t('graphs.network.out', 'Network Out'),
                 borderColor: !index ? theme('colors.cyan.400') : primary,
                 backgroundColor: hexToRgba(!index ? theme('colors.cyan.700') : primary, 0.5),
             };
@@ -73,17 +75,17 @@ export default () => {
             <ChartBlock title={'CPU'}>
                 <Line {...cpu.props} />
             </ChartBlock>
-            <ChartBlock title={'Memory'}>
+            <ChartBlock title={t('stats.memory', 'Memory') as string}>
                 <Line {...memory.props} />
             </ChartBlock>
             <ChartBlock
                 title={'Network'}
                 legend={
                     <>
-                        <Tooltip arrow content={'Inbound'}>
+                        <Tooltip arrow content={t('graphs.network.inbound', 'Inbound') as string}>
                             <CloudDownloadIcon className={'mr-2 h-4 w-4 text-green-400'} />
                         </Tooltip>
-                        <Tooltip arrow content={'Outbound'}>
+                        <Tooltip arrow content={t('graphs.network.outbound', 'Outbound') as string}>
                             <CloudUploadIcon className={'h-4 w-4 text-cyan-400'} />
                         </Tooltip>
                     </>

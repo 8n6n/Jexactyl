@@ -82,7 +82,26 @@
         "editSubuser": "编辑子用户",
         "removeSubuser": "移除子用户",
         "noSubusers": "您还没有添加任何子用户。",
-        "subuserCount": "已为此服务器创建 {{count}}/{{limit}} 个子用户。"
+        "subuserCount": "已为此服务器创建 {{count}}/{{limit}} 个子用户。",
+        "new": "新建用户",
+        "delete": {
+            "title": "删除此子用户？",
+            "description": "您确定要移除此子用户吗？他们对此服务器的所有访问权限将立即被撤销。",
+            "confirm": "是的，移除子用户"
+        },
+        "configure": "配置权限",
+        "email": "用户邮箱",
+        "emailDescription": "输入您希望邀请为此服务器子用户的用户的电子邮件地址。",
+        "modifyPermissions": "修改权限：",
+        "createDescription": "创建新子用户",
+        "save": "保存",
+        "invite": "邀请用户",
+        "onlyPermissionsWarning": "创建或修改其他用户时，只能选择您当前账户已分配的权限。",
+        "validation": {
+            "emailMax": "邮箱地址长度不能超过 191 个字符。",
+            "emailValid": "必须提供有效的邮箱地址。",
+            "emailRequired": "必须提供有效的邮箱地址。"
+        }
     },
     "backups": {
         "title": "备份",
@@ -126,11 +145,37 @@
         "serverName": "服务器名称",
         "serverDescription": "服务器描述",
         "reinstall": "重新安装服务器",
-        "reinstallWarning": "您的服务器将被停止并开始安装过程。您可能会丢失数据。"
+        "reinstallWarning": "您的服务器将被停止并开始安装过程。您可能会丢失数据。",
+        "editDetails": "编辑服务器详情",
+        "save": "保存",
+        "reinstallConfirm": {
+            "title": "确认服务器重新安装",
+            "button": "是的，重新安装服务器",
+            "message": "重新安装您的服务器将停止它，然后重新运行最初设置它的安装脚本。",
+            "warning": "此过程中可能会删除或修改某些文件，请在继续之前备份您的数据。",
+            "confirm": "您的服务器将被停止，此过程中可能会删除或修改某些文件，您确定要继续吗？",
+            "success": "您的服务器已开始重新安装过程。"
+        }
     },
     "activity": {
         "title": "活动日志",
         "description": "查看服务器的近期活动。",
         "noLogs": "此服务器没有可用的活动日志。"
+    },
+    "stats": {
+        "address": "地址",
+        "uptime": "在线时间",
+        "cpu": "CPU 负载",
+        "memory": "内存",
+        "disk": "磁盘",
+        "offline": "离线"
+    },
+    "graphs": {
+        "network": {
+            "in": "入站流量",
+            "out": "出站流量",
+            "inbound": "入站",
+            "outbound": "出站"
+        }
     }
 }

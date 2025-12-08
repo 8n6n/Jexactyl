@@ -24,7 +24,7 @@ export default () => {
     const { clearFlashes, addFlash } = useStoreActions((actions: Actions<ApplicationStore>) => actions.flashes);
 
     const schema = Yup.object().shape({
-        email: Yup.string().email().required(),
+        email: Yup.string().email(t('validation.emailInvalid') as string).required(t('validation.emailRequired') as string),
         password: Yup.string().required(t('email.passwordRequired') as string),
     });
 

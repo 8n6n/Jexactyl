@@ -10,7 +10,10 @@ import { useFlashKey } from '@/plugins/useFlash';
 import { useStoreActions } from '@/state/hooks';
 import FlashMessageRender from '@/components/FlashMessageRender';
 
+import { useTranslation } from 'react-i18next';
+
 const DisableTOTPDialog = () => {
+    const { t } = useTranslation('dashboard');
     const [submitting, setSubmitting] = useState(false);
     const [password, setPassword] = useState('');
     const { clearAndAddHttpError } = useFlashKey('account:two-step');
@@ -42,7 +45,7 @@ const DisableTOTPDialog = () => {
         <form id={'disable-totp-form'} className={'mt-6'} onSubmit={submit}>
             <FlashMessageRender byKey={'account:two-step'} className={'-mt-2 mb-6'} />
             <label className={'block pb-1'} htmlFor={'totp-password'}>
-                Password
+                {t('twoStep.disableDialog.password', 'Password')}
             </label>
             <Input.Text
                 id={'totp-password'}
@@ -52,14 +55,14 @@ const DisableTOTPDialog = () => {
                 onChange={e => setPassword(e.currentTarget.value)}
             />
             <Dialog.Footer>
-                <Button.Text onClick={close}>Cancel</Button.Text>
+                <Button.Text onClick={close}>{t('twoStep.disableDialog.cancel', 'Cancel')}</Button.Text>
                 <Tooltip
                     delay={100}
                     disabled={password.length > 0}
-                    content={'You must enter your account password to continue.'}
+                    content={t('twoStep.disableDialog.enterPassword', 'You must enter your account password to continue.') as string}
                 >
                     <Button.Danger type={'submit'} form={'disable-totp-form'} disabled={submitting || !password.length}>
-                        Disable
+                        {t('twoStep.disableDialog.submit', 'Disable')}
                     </Button.Danger>
                 </Tooltip>
             </Dialog.Footer>

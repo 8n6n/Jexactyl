@@ -51,7 +51,11 @@
     "email": {
         "confirmPassword": "Confirm Password",
         "passwordRequired": "You must provide your current account password.",
-        "updateEmail": "Update Email",
-        "updateSuccess": "Your primary email has been updated."
+        "disableDialog": {
+            "title": "Disable Two-Step Verification",
+            "description": "Disabling two-step verification will make your account less secure. Are you sure you want to continue?",
+            "cancel": "Cancel",
+            "confirm": "Disable"
+        }
     }
 }
