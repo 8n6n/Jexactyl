@@ -20,6 +20,7 @@ import SpinnerOverlay from '@elements/SpinnerOverlay';
 import DatabaseDeleteButton from '@admin/management/databases/DatabaseDeleteButton';
 import type { ApplicationStore } from '@/state';
 import { faDatabase } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
 
 interface ctx {
     database: Database | undefined;
@@ -51,6 +52,7 @@ export interface Params {
 }
 
 export const InformationContainer = ({ title, initialValues, children, onSubmit }: Params) => {
+    const { t } = useTranslation(['admin', 'common']);
     const submit = (values: Values, helpers: FormikHelpers<Values>) => {
         onSubmit(values, helpers);
     };
@@ -84,29 +86,29 @@ export const InformationContainer = ({ title, initialValues, children, onSubmit 
 
                         <Form css={tw`mb-0`}>
                             <div>
-                                <Field id={'name'} name={'name'} label={'Name'} type={'text'} />
+                                <Field id={'name'} name={'name'} label={t('common:name', 'Name')} type={'text'} />
                             </div>
 
                             <div css={tw`md:w-full md:flex md:flex-row mt-6`}>
                                 <div css={tw`md:w-full md:flex md:flex-col md:mr-4 mt-6 md:mt-0`}>
-                                    <Field id={'host'} name={'host'} label={'Host'} type={'text'} />
+                                    <Field id={'host'} name={'host'} label={t('common:host', 'Host')} type={'text'} />
                                 </div>
 
                                 <div css={tw`md:w-full md:flex md:flex-col md:ml-4 mt-6 md:mt-0`}>
-                                    <Field id={'port'} name={'port'} label={'Port'} type={'text'} />
+                                    <Field id={'port'} name={'port'} label={t('common:port', 'Port')} type={'text'} />
                                 </div>
                             </div>
 
                             <div css={tw`md:w-full md:flex md:flex-row mt-6`}>
                                 <div css={tw`md:w-full md:flex md:flex-col md:mr-4 mt-6 md:mt-0`}>
-                                    <Field id={'username'} name={'username'} label={'Username'} type={'text'} />
+                                    <Field id={'username'} name={'username'} label={t('common:username', 'Username')} type={'text'} />
                                 </div>
 
                                 <div css={tw`md:w-full md:flex md:flex-col md:ml-4 mt-6 md:mt-0`}>
                                     <Field
                                         id={'password'}
                                         name={'password'}
-                                        label={'Password'}
+                                        label={t('common:password', 'Password')}
                                         type={'password'}
                                         placeholder={'••••••••'}
                                     />
@@ -117,7 +119,7 @@ export const InformationContainer = ({ title, initialValues, children, onSubmit 
                                 {children}
                                 <div css={tw`flex ml-auto`}>
                                     <Button type="submit" disabled={isSubmitting || !isValid}>
-                                        Save Changes
+                                        {t('admin:databases.saveChanges', 'Save Changes')}
                                     </Button>
                                 </div>
                             </div>
@@ -157,7 +159,7 @@ const EditInformationContainer = () => {
 
     return (
         <InformationContainer
-            title={'Edit Database'}
+            title={t('admin:databases.editDatabase', 'Edit Database') as string}
             initialValues={{
                 name: database.name,
                 host: database.host,

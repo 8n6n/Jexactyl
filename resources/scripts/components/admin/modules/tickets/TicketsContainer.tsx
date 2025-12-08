@@ -21,6 +21,7 @@ import { useStoreState } from '@/state/hooks';
 import Avatar from '@/components/Avatar';
 import { getTickets, Context as TicketsContext } from '@/api/admin/tickets';
 import { TicketFilters, type TicketStatus } from '@/api/admin/tickets/types';
+import { useTranslation } from 'react-i18next';
 
 export const statusToColor = (status: TicketStatus): string => {
     switch (status) {
@@ -36,6 +37,7 @@ export const statusToColor = (status: TicketStatus): string => {
 };
 
 function TicketContainer() {
+    const { t } = useTranslation('admin');
     const { data: tickets } = getTickets();
     const { colors } = useStoreState(state => state.theme.data!);
     const { setPage, setFilters, sort, setSort, sortDirection } = useContext(TicketsContext);
@@ -52,21 +54,21 @@ function TicketContainer() {
     };
 
     return (
-        <AdminContentBlock title={'Tickets'}>
+        <AdminContentBlock title={t('tickets.title', 'Tickets') as string}>
             <div className={'w-full flex flex-row items-center mb-8'}>
                 <div className={'flex flex-col flex-shrink'} style={{ minWidth: '0' }}>
-                    <h2 className={'text-2xl text-neutral-50 font-header font-medium'}>Tickets</h2>
+                    <h2 className={'text-2xl text-neutral-50 font-header font-medium'}>{t('tickets.title', 'Tickets')}</h2>
                     <p
                         className={
                             'hidden lg:block text-base text-neutral-400 whitespace-nowrap overflow-ellipsis overflow-hidden'
                         }
                     >
-                        Update settings and manage user tickets.
+                        {t('tickets.description', 'Update settings and manage user tickets.')}
                     </p>
                 </div>
                 <div css={tw`flex ml-auto pl-4`}>
                     <Link to={'/admin/tickets/new'}>
-                        <Button>New Ticket</Button>
+                        <Button>{t('tickets.newTicket', 'New Ticket')}</Button>
                     </Link>
                 </div>
             </div>

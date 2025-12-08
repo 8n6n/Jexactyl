@@ -20,8 +20,10 @@ import NewNestButton from '@admin/service/nests/NewNestButton';
 import FlashMessageRender from '@/components/FlashMessageRender';
 import useFlash from '@/plugins/useFlash';
 import { useStoreState } from '@/state/hooks';
+import { useTranslation } from 'react-i18next';
 
 const NestsContainer = () => {
+    const { t } = useTranslation('admin');
     const { setPage, setFilters, sort, setSort, sortDirection } = useContext(NestsContext);
     const { colors } = useStoreState(state => state.theme.data!);
     const { clearFlashes, clearAndAddHttpError } = useFlash();
@@ -50,14 +52,14 @@ const NestsContainer = () => {
     };
 
     return (
-        <AdminContentBlock title={'Nests'}>
+        <AdminContentBlock title={t('nests.title', 'Nests') as string}>
             <div css={tw`w-full flex flex-row items-center mb-8`}>
                 <div css={tw`flex flex-col flex-shrink`} style={{ minWidth: '0' }}>
-                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>Nests</h2>
+                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>{t('nests.title', 'Nests')}</h2>
                     <p
                         css={tw`hidden md:block text-base text-neutral-400 whitespace-nowrap overflow-ellipsis overflow-hidden`}
                     >
-                        All nests currently available on this system.
+                        {t('nests.description', 'All nests currently available on this system.')}
                     </p>
                 </div>
 

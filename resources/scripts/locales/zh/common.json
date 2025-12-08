@@ -39,6 +39,7 @@
     "success": "成功",
     "error": "错误",
     "info": "信息",
+    "information": "信息",
     "primary": "主要",
     "makePrimary": "设为主要",
     "none": "无",
@@ -134,5 +135,15 @@
     "showing": "显示",
     "to": "到",
     "of": "共",
-    "results": "条结果"
+    "results": "条结果",
+    "id": "ID",
+    "fqdn": "FQDN",
+    "host": "主机",
+    "twoFAEnabled": "已启用双因素认证",
+    "state": "状态",
+    "permissions": "权限",
+    "enabled": "已启用",
+    "disabled": "已禁用",
+    "active": "活跃",
+    "saveChanges": "保存更改"
 }

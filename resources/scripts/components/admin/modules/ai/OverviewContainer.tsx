@@ -10,6 +10,7 @@ import { handleQuery } from '@/api/admin/ai/handleQuery';
 import { useFlashKey } from '@/plugins/useFlash';
 import Spinner from '@elements/Spinner';
 import { Alert } from '@elements/alert';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     primary: string;
@@ -53,6 +54,7 @@ function DisplayMessage({ primary, result, loading }: Props) {
 }
 
 export default () => {
+    const { t } = useTranslation('admin');
     const [result, setResult] = useState<string>();
     const [loading, setLoading] = useState<boolean>(false);
     const { primary } = useStoreState(s => s.theme.data!.colors);
@@ -86,21 +88,18 @@ export default () => {
                 </div>
                 <div className={'w-full bg-zinc-800 rounded-b px-4 py-2 inline-flex'}>
                     <FontAwesomeIcon icon={faChevronRight} className={'my-auto mr-4'} />
-                    <Input className={'font-mono'} placeholder={'Ask Jexactyl AI a question'} onKeyDown={submit} />
+                    <Input className={'font-mono'} placeholder={t('ai.askQuestion', 'Ask Jexactyl AI a question')} onKeyDown={submit} />
                 </div>
             </div>
             <div className={'col-span-2 space-y-4'}>
                 <Alert type={'warning'} className={'mt-16 md:mt-0'}>
-                    Jexactyl AI relies on Google Gemini models for requests. Information provided could be inaccurate or
-                    outdated. Use with caution!
+                    {t('ai.geminiWarning', 'Jexactyl AI relies on Google Gemini models for requests. Information provided could be inaccurate or outdated. Use with caution!')}
                 </Alert>
                 <Alert type={'info'}>
-                    API requests are limited on Gemini&apos;s public API to 120/second - if you experience ratelimiting,
-                    you may need to upgrade your license.
+                    {t('ai.rateLimitWarning', "API requests are limited on Gemini's public API to 120/second - if you experience ratelimiting, you may need to upgrade your license.")}
                 </Alert>
-                <AdminBox title={'Disable Jexactyl AI'} className={'col-span-2 h-min'}>
-                    Clicking the button below will disable Jexactyl AI for both clients and administrators. Your API key
-                    will remain in the database unless you choose to delete it manually.
+                <AdminBox title={t('ai.disableTitle', 'Disable Jexactyl AI') as string} className={'col-span-2 h-min'}>
+                    {t('ai.disableDescription', 'Clicking the button below will disable Jexactyl AI for both clients and administrators. Your API key will remain in the database unless you choose to delete it manually.')}
                     <div className={'text-right mt-2'}>
                         <ToggleFeatureButton />
                     </div>

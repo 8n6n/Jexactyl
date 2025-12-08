@@ -1,6 +1,26 @@
 {
     "overview": {
-        "title": "Admin Overview"
+        "title": "Admin Overview",
+        "description": "A quick glance at your system.",
+        "versionInfo": "Version Information",
+        "debugWarning": "Jexactyl is running in debug mode. Do not use in production.",
+        "suggestedActions": "Suggested Actions",
+        "enableAutoUpdate": "Enable automatic updates",
+        "enableAutoUpdateDesc": "By setting up automatic updates, you can keep Jexactyl stable and secure in the background.",
+        "allowRegistration": "Allow user registration",
+        "allowRegistrationDesc": "Enabling the Authentication module allows users to signup via the login page.",
+        "addFirstNode": "Add your first node",
+        "addFirstNodeDesc": "Nodes are physical servers which Jexactyl's servers run on.",
+        "createFirstServer": "Create your first server",
+        "createFirstServerDesc": "Create a server to host your favourite game or program.",
+        "answerTickets": "Answer customer tickets",
+        "donateToJexactyl": "Donate to Jexactyl",
+        "donateDesc": "Support the project by leaving a donation to help us pay for testing servers and domains.",
+        "manage": "Manage",
+        "donate": "Donate",
+        "runningVersion": "You are currently running version",
+        "latestVersion": "with the latest release being",
+        "betaWarning": "You are running a beta release of Jexactyl v4, which may include several bugs or weird glitches. Do NOT use this software in production unless you don't care about losing data."
     },
     "servers": {
         "title": "Servers",
@@ -11,8 +31,15 @@
     },
     "nodes": {
         "title": "Nodes",
+        "description": "All nodes available on the system.",
+        "newNode": "New Node",
+        "createNew": "Create a New Node",
         "createNode": "Create Node",
-        "editNode": "Edit Node"
+        "editNode": "Edit Node",
+        "secure": "Secure",
+        "nonSecure": "Non-Secure",
+        "totalMemory": "Total Memory",
+        "totalDisk": "Total Disk"
     },
     "users": {
         "title": "Users",
@@ -20,38 +47,85 @@
         "description": "All users that have access to the system.",
         "newUser": "New User",
         "createUser": "Create User",
-        "editUser": "Edit User"
+        "editUser": "Edit User",
+        "enabled": "Enabled",
+        "disabled": "Disabled",
+        "suspended": "Suspended",
+        "active": "Active",
+        "admin": "Admin",
+        "fullAccess": "Full Access",
+        "standard": "Standard"
     },
     "nests": {
         "title": "Nests",
+        "description": "All nests currently available on this system.",
         "createNest": "Create Nest",
         "editNest": "Edit Nest"
     },
     "eggs": {
         "title": "Eggs",
+        "description": "All eggs available on the system.",
         "createEgg": "Create Egg",
         "editEgg": "Edit Egg",
         "importEgg": "Import Egg"
     },
     "mounts": {
         "title": "Mounts",
+        "description": "All mounts available on the system.",
         "createMount": "Create Mount"
     },
     "databases": {
         "title": "Database Hosts",
-        "createHost": "Create Host"
+        "description": "Modify node database hosts linked to the Panel.",
+        "createHost": "Create Host",
+        "createNew": "Create a New Database",
+        "newHost": "New Database Host",
+        "editDatabase": "Edit Database",
+        "saveChanges": "Save Changes"
     },
     "locations": {
         "title": "Locations",
+        "description": "All locations available on the system.",
         "createLocation": "Create Location"
     },
     "roles": {
         "title": "Roles",
         "adminRoles": "Administrator Roles",
         "description": "Roles are sets of permissions that you can assign to your panel administrators.",
-        "createRole": "Create Role"
+        "createRole": "Create Role",
+        "permissionCount": "Permission Count"
     },
     "settings": {
-        "title": "Settings"
+        "title": "Settings",
+        "description": "Configure your panel settings."
+    },
+    "tickets": {
+        "title": "Tickets",
+        "description": "Update settings and manage user tickets.",
+        "newTicket": "New Ticket"
+    },
+    "links": {
+        "title": "Custom Links",
+        "description": "Create custom links to external sites for clients.",
+        "newLink": "New Link"
+    },
+    "theme": {
+        "title": "System Theme",
+        "description": "View and update the theme of this interface.",
+        "confirmReset": "Are you sure?",
+        "resetWarning": "Performing this action will immediately wipe all of your custom theming settings. Only do this if you wish to return to the stock appearance of Jexactyl. This action cannot be reversed.",
+        "resetToDefaults": "Reset to Defaults"
+    },
+    "ai": {
+        "title": "Jexactyl AI",
+        "askQuestion": "Ask Jexactyl AI a question",
+        "geminiWarning": "Jexactyl AI relies on Google Gemini models for requests. Information provided could be inaccurate or outdated. Use with caution!",
+        "rateLimitWarning": "API requests are limited on Gemini's public API to 120/second - if you experience ratelimiting, you may need to upgrade your license.",
+        "disableTitle": "Disable Jexactyl AI",
+        "disableDescription": "Clicking the button below will disable Jexactyl AI for both clients and administrators. Your API key will remain in the database unless you choose to delete it manually."
+    },
+    "billing": {
+        "title": "Billing",
+        "description": "Manage billing and payment settings."
     }
 }

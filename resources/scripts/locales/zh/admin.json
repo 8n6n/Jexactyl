@@ -1,6 +1,26 @@
 {
     "overview": {
-        "title": "管理员概览"
+        "title": "管理员概览",
+        "description": "快速查看您的系统状态。",
+        "versionInfo": "版本信息",
+        "debugWarning": "Jexactyl 正在调试模式下运行。请勿在生产环境中使用。",
+        "suggestedActions": "建议操作",
+        "enableAutoUpdate": "启用自动更新",
+        "enableAutoUpdateDesc": "通过设置自动更新，您可以在后台保持 Jexactyl 的稳定和安全。",
+        "allowRegistration": "允许用户注册",
+        "allowRegistrationDesc": "启用认证模块允许用户通过登录页面注册。",
+        "addFirstNode": "添加您的第一个节点",
+        "addFirstNodeDesc": "节点是运行 Jexactyl 服务器的物理服务器。",
+        "createFirstServer": "创建您的第一台服务器",
+        "createFirstServerDesc": "创建一台服务器来托管您喜爱的游戏或程序。",
+        "answerTickets": "回复客户工单",
+        "donateToJexactyl": "捐赠给 Jexactyl",
+        "donateDesc": "通过捐赠支持该项目，帮助我们支付测试服务器和域名费用。",
+        "manage": "管理",
+        "donate": "捐赠",
+        "runningVersion": "您当前运行的版本是",
+        "latestVersion": "最新版本为",
+        "betaWarning": "您正在运行 Jexactyl v4 的测试版，可能包含一些错误或异常。除非您不在乎丢失数据，否则请勿在生产环境中使用此软件。"
     },
     "servers": {
         "title": "服务器",
@@ -11,8 +31,15 @@
     },
     "nodes": {
         "title": "节点",
+        "description": "系统上所有可用的节点。",
+        "newNode": "新建节点",
+        "createNew": "创建新节点",
         "createNode": "创建节点",
-        "editNode": "编辑节点"
+        "editNode": "编辑节点",
+        "secure": "安全",
+        "nonSecure": "不安全",
+        "totalMemory": "总内存",
+        "totalDisk": "总磁盘"
     },
     "users": {
         "title": "用户",
@@ -20,38 +47,85 @@
         "description": "所有可以访问系统的用户。",
         "newUser": "新建用户",
         "createUser": "创建用户",
-        "editUser": "编辑用户"
+        "editUser": "编辑用户",
+        "enabled": "已启用",
+        "disabled": "已禁用",
+        "suspended": "已暂停",
+        "active": "活跃",
+        "admin": "管理员",
+        "fullAccess": "完全访问权限",
+        "standard": "标准用户"
     },
     "nests": {
         "title": "预设组",
+        "description": "系统上当前可用的所有预设组。",
         "createNest": "创建预设组",
         "editNest": "编辑预设组"
     },
     "eggs": {
         "title": "预设",
+        "description": "系统上所有可用的预设。",
         "createEgg": "创建预设",
         "editEgg": "编辑预设",
         "importEgg": "导入预设"
     },
     "mounts": {
         "title": "挂载",
+        "description": "系统上所有可用的挂载。",
         "createMount": "创建挂载"
     },
     "databases": {
         "title": "数据库主机",
-        "createHost": "创建主机"
+        "description": "修改与面板关联的节点数据库主机。",
+        "createHost": "创建主机",
+        "createNew": "创建新数据库",
+        "newHost": "新数据库主机",
+        "editDatabase": "编辑数据库",
+        "saveChanges": "保存更改"
     },
     "locations": {
         "title": "位置",
+        "description": "系统上所有可用的位置。",
         "createLocation": "创建位置"
     },
     "roles": {
         "title": "角色",
         "adminRoles": "管理员角色",
         "description": "角色是一组权限，您可以将其分配给面板管理员。",
-        "createRole": "创建角色"
+        "createRole": "创建角色",
+        "permissionCount": "权限数量"
     },
     "settings": {
-        "title": "设置"
+        "title": "设置",
+        "description": "配置您的面板设置。"
+    },
+    "tickets": {
+        "title": "工单",
+        "description": "更新设置并管理用户工单。",
+        "newTicket": "新建工单"
+    },
+    "links": {
+        "title": "自定义链接",
+        "description": "为客户创建到外部站点的自定义链接。",
+        "newLink": "新建链接"
+    },
+    "theme": {
+        "title": "系统主题",
+        "description": "查看并更新此界面的主题。",
+        "confirmReset": "您确定吗？",
+        "resetWarning": "执行此操作将立即清除您所有的自定义主题设置。仅在您希望恢复 Jexactyl 的默认外观时才执行此操作。此操作无法撤销。",
+        "resetToDefaults": "重置为默认值"
+    },
+    "ai": {
+        "title": "Jexactyl AI",
+        "askQuestion": "向 Jexactyl AI 提问",
+        "geminiWarning": "Jexactyl AI 依赖 Google Gemini 模型处理请求。提供的信息可能不准确或过时。请谨慎使用！",
+        "rateLimitWarning": "Gemini 公共 API 的 API 请求限制为每秒 120 次 - 如果您遇到速率限制，可能需要升级您的许可证。",
+        "disableTitle": "禁用 Jexactyl AI",
+        "disableDescription": "点击下面的按钮将为客户和管理员禁用 Jexactyl AI。您的 API 密钥将保留在数据库中，除非您选择手动删除它。"
+    },
+    "billing": {
+        "title": "账单",
+        "description": "管理账单和支付设置。"
     }
 }

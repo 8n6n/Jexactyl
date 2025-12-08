@@ -26,6 +26,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import getMetrics, { MetricData } from '@/api/admin/getMetrics';
 import { Alert } from '@elements/alert';
+import { useTranslation } from 'react-i18next';
 
 interface SuggestionProps {
     icon: IconDefinition;
@@ -62,6 +63,7 @@ const SuggestionCard = ({ icon, title, description, link, action }: SuggestionPr
 };
 
 export default () => {
+    const { t } = useTranslation('admin');
     const [loading, setLoading] = useState<boolean>(true);
     const { clearFlashes, clearAndAddHttpError } = useFlash();
 
@@ -89,24 +91,24 @@ export default () => {
     }, []);
 
     return (
-        <AdminContentBlock title={'Overview'}>
+        <AdminContentBlock title={t('overview.title', 'Overview') as string}>
             <div css={tw`w-full flex flex-row items-center mb-8`}>
                 <div css={tw`flex flex-col flex-shrink`} style={{ minWidth: '0' }}>
-                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>Overview</h2>
+                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>{t('overview.title', 'Overview')}</h2>
                     <p
                         css={tw`hidden md:block text-base text-neutral-400 whitespace-nowrap overflow-ellipsis overflow-hidden`}
                     >
-                        A quick glance at your system.
+                        {t('overview.description', 'A quick glance at your system.')}
                     </p>
                 </div>
             </div>
 
             <FlashMessageRender byKey={'overview'} css={tw`mb-4`} />
 
-            <AdminBox title={'Version Information'} icon={faDesktop}>
+            <AdminBox title={t('overview.versionInfo', 'Version Information') as string} icon={faDesktop}>
                 {settings.debug && (
                     <Alert type={'warning'} className={'mb-3'}>
-                        Jexactyl is running in debug mode. Do not use in production.
+                        {t('overview.debugWarning', 'Jexactyl is running in debug mode. Do not use in production.')}
                     </Alert>
                 )}
                 {loading ? (
@@ -134,7 +136,7 @@ export default () => {
                     </>
                 )}
             </AdminBox>
-            <AdminBox title={'Suggested Actions'} className={'mt-6'} icon={faQuestionCircle}>
+            <AdminBox title={t('overview.suggestedActions', 'Suggested Actions') as string} className={'mt-6'} icon={faQuestionCircle}>
                 <div className={'grid lg:grid-cols-3 gap-4'}>
                     {!settings.auto_update && (
                         <SuggestionCard

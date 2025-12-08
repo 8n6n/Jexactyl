@@ -39,6 +39,7 @@
     "success": "Success",
     "error": "Error",
     "info": "Info",
+    "information": "Information",
     "primary": "Primary",
     "makePrimary": "Make Primary",
     "none": "None",
@@ -134,5 +135,15 @@
     "showing": "Showing",
     "to": "to",
     "of": "of",
-    "results": "results"
+    "results": "results",
+    "id": "ID",
+    "fqdn": "FQDN",
+    "host": "Host",
+    "twoFAEnabled": "2FA Enabled",
+    "state": "State",
+    "permissions": "Permissions",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "active": "Active",
+    "saveChanges": "Save Changes"
 }

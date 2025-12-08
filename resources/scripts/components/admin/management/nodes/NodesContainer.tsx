@@ -23,8 +23,10 @@ import { bytesToString, mbToBytes } from '@/lib/formatters';
 import { useStoreState } from '@/state/hooks';
 import { Dialog } from '@/components/elements/dialog';
 import NewNodeContainer from './NewNodeContainer';
+import { useTranslation } from 'react-i18next';
 
 const NodesContainer = () => {
+    const { t } = useTranslation('admin');
     const { colors } = useStoreState(state => state.theme.data!);
     const { setPage, setFilters, sort, setSort, sortDirection } = useContext(NodesContext);
     const { clearFlashes, clearAndAddHttpError } = useFlash();
@@ -54,23 +56,23 @@ const NodesContainer = () => {
     };
 
     return (
-        <AdminContentBlock title={'Nodes'}>
-            <Dialog title={'Create a New Node'} open={open} onClose={() => setOpen(false)} size={'xl'}>
+        <AdminContentBlock title={t('nodes.title', 'Nodes') as string}>
+            <Dialog title={t('nodes.createNew', 'Create a New Node') as string} open={open} onClose={() => setOpen(false)} size={'xl'}>
                 <NewNodeContainer />
             </Dialog>
             <div css={tw`w-full flex flex-row items-center mb-8`}>
                 <div css={tw`flex flex-col flex-shrink`} style={{ minWidth: '0' }}>
-                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>Nodes</h2>
+                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>{t('nodes.title', 'Nodes')}</h2>
                     <p
                         css={tw`hidden md:block text-base text-neutral-400 whitespace-nowrap overflow-ellipsis overflow-hidden`}
                     >
-                        All nodes available on the system.
+                        {t('nodes.description', 'All nodes available on the system.')}
                     </p>
                 </div>
 
                 <div css={tw`flex ml-auto pl-4`}>
                     <Button type={'button'} css={tw`h-10 px-4 py-0 whitespace-nowrap`} onClick={() => setOpen(true)}>
-                        New Node
+                        {t('nodes.newNode', 'New Node')}
                     </Button>
                 </div>
             </div>
