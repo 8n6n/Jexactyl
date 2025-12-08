@@ -35,7 +35,7 @@ class DetailsModificationService
                 'owner_id' => Arr::get($data, 'owner_id'),
                 'name' => Arr::get($data, 'name'),
                 'description' => Arr::get($data, 'description') ?? '',
-                'renewal_date' => Arr::get($data, 'renewal_date') ?? 0,
+                'renewal_date' => Arr::get($data, 'renewal_date') ?? null,
                 'billing_product_id' => Arr::get($data, 'billing_product_id') ?? null,
             ])->saveOrFail();
 
