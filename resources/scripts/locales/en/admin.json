@@ -93,7 +93,10 @@
         "adminRoles": "Administrator Roles",
         "description": "Roles are sets of permissions that you can assign to your panel administrators.",
         "createRole": "Create Role",
-        "permissionCount": "Permission Count"
+        "permissionCount": "Permission Count",
+        "editRole": "Edit Role",
+        "rolePermissions": "Role Permissions",
+        "rolePermissionsDesc": "This table contains the permissions that you can assign to the role."
     },
     "settings": {
         "title": "Settings",
@@ -153,5 +156,61 @@
         "description": "Get detailed insights into what actions administrators are performing.",
         "clearFilters": "Clear Filters",
         "noLogs": "There are no admin logs available at this time."
+    },
+    "api": {
+        "title": "API Keys",
+        "newApiKey": "New API Key",
+        "notUsed": "Not Used",
+        "keyIdentifier": "Key Identifier",
+        "lastUsed": "Last Used",
+        "createdAt": "Created At"
+    },
+    "webhooks": {
+        "title": "Webhooks",
+        "searchPlaceholder": "Search for a webhook event...",
+        "sendTest": "Send Test",
+        "disableAll": "Disable All",
+        "enableAll": "Enable All",
+        "testSuccess": "Webhook sent successfully!"
+    },
+    "billingOverview": {
+        "last7Days": "Last 7 days",
+        "last14Days": "Last 14 days",
+        "lastMonth": "Last month",
+        "last2Months": "Last 2 months",
+        "last3Months": "Last 3 months",
+        "last6Months": "Last 6 months",
+        "lastYear": "Last year",
+        "suggestedActions": "Suggested Actions",
+        "enableBilling": "Enable billing module",
+        "addFirstProduct": "Add your first product",
+        "firstSale": "Secure your first sale",
+        "addPaypal": "Add PayPal support",
+        "conversionRate": "conversion rate",
+        "ordersProcessed": "Out of {{total}} orders, {{success}} were processed.",
+        "totalRevenue": "total revenue",
+        "revenueDescription": "Your {{count}} successful orders have generated {{symbol}}{{revenue}} {{code}} over the last {{days}} days."
+    },
+    "billingSettings": {
+        "addPaypal": "Add PayPal integration",
+        "paypalDescription": "Adding PayPal to Jexactyl allows users to purchase products via another channel, improving order success rate and global payment availability.",
+        "paypalStatus": "PayPal module is currently",
+        "addLink": "Add Link integration",
+        "linkDescription": "Adding Link to Jexactyl allows users to purchase products via another channel, improving order success rate and global payment availability.",
+        "linkStatus": "Link module is currently",
+        "setupInstructions": "Setup Instructions",
+        "primaryCurrency": "Primary Currency",
+        "currencyDescription": "Choose a primary currency to charge users.",
+        "currencyLabel": "Currency Code / Name",
+        "importExport": "Import/Export Configuration",
+        "importExportDescription": "Use the below options to either export your current billing configurations, or use the Import button to import a pre-created set of categories and products to Jexactyl.",
+        "inputStripeKeys": "Input Stripe API Keys",
+        "stripeKeysMissing": "Without Stripe API authentication, your billing system will not work. Customers may proceed to the checkout area but will be met with errors unless you add valid API keys which can be obtained through the Stripe dashboard.",
+        "addApiKeys": "Add API keys",
+        "resetStripeKeys": "Reset Stripe API keys",
+        "resetKeysWarning": "By resetting the Stripe API keys saved to the panel, all billing services (such as purchasing or renewing a product) will stop working until new API keys are entered. Are you sure you wish to continue?",
+        "deleteApiKeys": "Yes, delete API keys",
+        "disableBilling": "Disable Billing Module",
+        "disableBillingWarning": "Clicking the button below will disable all modules of the billing system - such as subscriptions, server purchasing and more. Make sure that this will not impact your users before disabling."
     }
 }

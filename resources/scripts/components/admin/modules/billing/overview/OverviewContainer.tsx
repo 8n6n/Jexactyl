@@ -46,34 +46,34 @@ export default () => {
             <SetupStripe />
             <ol className="space-y-4 w-full">
                 <Select onChange={e => setHistory(Number(e.currentTarget.value))}>
-                    <option value={7}>Last 7 days</option>
+                    <option value={7}>{t('billingOverview.last7Days', 'Last 7 days')}</option>
                     <option selected value={14}>
-                        Last 14 days
+                        {t('billingOverview.last14Days', 'Last 14 days')}
                     </option>
-                    <option value={30}>Last month</option>
-                    <option value={60}>Last 2 months</option>
-                    <option value={90}>Last 3 months</option>
-                    <option value={180}>Last 6 months</option>
-                    <option value={360}>Last year</option>
+                    <option value={30}>{t('billingOverview.lastMonth', 'Last month')}</option>
+                    <option value={60}>{t('billingOverview.last2Months', 'Last 2 months')}</option>
+                    <option value={90}>{t('billingOverview.last3Months', 'Last 3 months')}</option>
+                    <option value={180}>{t('billingOverview.last6Months', 'Last 6 months')}</option>
+                    <option value={360}>{t('billingOverview.lastYear', 'Last year')}</option>
                 </Select>
-                <h2 className={'text-neutral-300 mb-4 px-4 text-2xl'}>Suggested Actions</h2>
-                <Stepper className={'text-green-500'} icon={faCheck} content={'Enable billing module'} />
+                <h2 className={'text-neutral-300 mb-4 px-4 text-2xl'}>{t('billingOverview.suggestedActions', 'Suggested Actions')}</h2>
+                <Stepper className={'text-green-500'} icon={faCheck} content={t('billingOverview.enableBilling', 'Enable billing module') as string} />
                 <Stepper
                     className={hasProducts ? 'text-green-500' : 'text-blue-500'}
                     icon={hasProducts ? faCheck : faArrowRight}
-                    content={'Add your first product'}
+                    content={t('billingOverview.addFirstProduct', 'Add your first product') as string}
                     link={'/admin/billing/categories'}
                 />
                 <Stepper
                     className={hasOrders ? 'text-green-500' : hasProducts ? 'text-blue-500' : 'text-gray-500'}
                     icon={hasOrders ? faCheck : faEllipsis}
-                    content={'Secure your first sale'}
+                    content={t('billingOverview.firstSale', 'Secure your first sale') as string}
                     link={'/admin/billing/orders'}
                 />
                 <Stepper
                     className={settings.link || settings.paypal ? 'text-green-500' : 'text-blue-500'}
                     icon={settings.link || settings.paypal ? faCheck : faArrowRight}
-                    content={'Add PayPal support'}
+                    content={t('billingOverview.addPaypal', 'Add PayPal support') as string}
                     link={'/admin/billing/settings'}
                 />
             </ol>
@@ -81,21 +81,20 @@ export default () => {
                 <div className={'w-full grid grid-cols-3 mb-auto gap-6'}>
                     <ContentBox>
                         <h1 className={'text-2xl font-bold'}>
-                            <span className={'text-4xl'}>{successRate}</span>% conversion rate
+                            <span className={'text-4xl'}>{successRate}</span>% {t('billingOverview.conversionRate', 'conversion rate')}
                         </h1>
                         <p className={'text-gray-400 text-sm mt-2'}>
-                            Out of {allOrders.length} orders, {successfulOrders.length} were processed.
+                            {t('billingOverview.ordersProcessed', 'Out of {{total}} orders, {{success}} were processed.', { total: allOrders.length, success: successfulOrders.length })}
                         </p>
                         <SuccessChart data={analytics} history={history} />
                     </ContentBox>
                     <ContentBox className={'col-span-2'}>
                         <h1 className={'text-2xl font-bold'}>
                             {settings.currency.symbol}
-                            <span className={'text-4xl'}>{revenue}</span> total revenue
+                            <span className={'text-4xl'}>{revenue}</span> {t('billingOverview.totalRevenue', 'total revenue')}
                         </h1>
                         <p className={'text-gray-400 text-sm mt-2'}>
-                            Your {successfulOrders.length} successful orders have generated {settings.currency.symbol}
-                            {revenue} {settings.currency.code} over the last {history} days.
+                            {t('billingOverview.revenueDescription', 'Your {{count}} successful orders have generated {{symbol}}{{revenue}} {{code}} over the last {{days}} days.', { count: successfulOrders.length, symbol: settings.currency.symbol, revenue: revenue, code: settings.currency.code, days: history })}
                         </p>
                         <RevenueChart data={analytics} history={history} />
                     </ContentBox>

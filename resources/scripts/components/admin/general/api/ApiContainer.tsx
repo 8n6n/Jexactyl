@@ -20,8 +20,10 @@ import DeleteApiKeyButton from './DeleteApiKeyButton';
 import FlashMessageRender from '@/components/FlashMessageRender';
 import { useStoreState } from '@/state/hooks';
 import { PlusIcon } from '@heroicons/react/outline';
+import { useTranslation } from 'react-i18next';
 
 function ApiContainer() {
+    const { t } = useTranslation('admin');
     const { data: apiKeys } = useGetApiKeys();
     const { colors } = useStoreState(state => state.theme.data!);
     const { setPage, setFilters, sort, setSort, sortDirection } = useContext(ApiContext);
@@ -41,7 +43,7 @@ function ApiContainer() {
         <>
             <div css={tw`flex ml-auto pl-4 mb-2`}>
                 <Link to={'/admin/api/new'}>
-                    <Button icon={PlusIcon}>New API Key</Button>
+                    <Button icon={PlusIcon}>{t('api.newApiKey', 'New API Key')}</Button>
                 </Link>
             </div>
             <FlashMessageRender byKey={'api'} className={'my-4'} />
@@ -92,7 +94,7 @@ function ApiContainer() {
                                                 <td css={tw`px-6 text-sm text-neutral-200 text-left whitespace-nowrap`}>
                                                     {key.last_used_at && new Date(key.last_used_at).getTime() > 0
                                                         ? format(key.last_used_at, 'MMM do, yyyy h:mma')
-                                                        : 'Not Used'}
+                                                        : t('api.notUsed', 'Not Used')}
                                                 </td>
                                                 <td css={tw`px-6 text-sm text-neutral-200 text-left whitespace-nowrap`}>
                                                     {Math.abs(differenceInHours(key.created_at!, new Date())) > 48

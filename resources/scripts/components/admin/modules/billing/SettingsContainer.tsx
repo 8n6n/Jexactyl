@@ -15,10 +15,12 @@ import ExportConfigButton from './config/ExportConfigButton';
 import FlashMessageRender from '@/components/FlashMessageRender';
 import ImportConfigButton from './config/ImportConfigButton';
 import { deleteStripeKeys, updateSettings } from '@/api/admin/billing';
+import { useTranslation } from 'react-i18next';
 
 export type BillingSetupDialog = 'paypal' | 'link' | 'setup' | 'none';
 
 export default () => {
+    const { t } = useTranslation('admin');
     const settings = useStoreState(s => s.everest.data!.billing);
     const updateEverest = useStoreActions(s => s.everest.updateEverest);
     const [open, setOpen] = useState<BillingSetupDialog>('none');
@@ -49,13 +51,12 @@ export default () => {
             {open === 'paypal' && <SetupPayPal setOpen={setOpen} />}
             {open === 'link' && <SetupLink setOpen={setOpen} />}
             {open === 'setup' && <SetupStripe extOpen />}
-            <AdminBox title={'Add PayPal integration'} icon={faPaypal}>
-                Adding PayPal to Jexactyl allows users to purchase products via another channel, improving order success
-                rate and global payment availability.
+            <AdminBox title={t('billingSettings.addPaypal', 'Add PayPal integration') as string} icon={faPaypal}>
+                {t('billingSettings.paypalDescription', 'Adding PayPal to Jexactyl allows users to purchase products via another channel, improving order success rate and global payment availability.')}
                 <p className={'text-gray-400 mt-2'}>
-                    PayPal module is currently{' '}
+                    {t('billingSettings.paypalStatus', 'PayPal module is currently')}{' '}
                     <span className={settings.paypal ? 'text-green-500' : 'text-red-500'}>
-                        {settings.paypal ? 'enabled' : 'disabled'}
+                        {settings.paypal ? t('common:enabled', 'enabled') : t('common:disabled', 'disabled')}
                     </span>
                     .
                 </p>
@@ -66,21 +67,20 @@ export default () => {
                             onClick={() => setOpen('paypal')}
                             variant={Button.Variants.Secondary}
                         >
-                            Setup Instructions
+                            {t('billingSettings.setupInstructions', 'Setup Instructions')}
                         </Button.Text>
                     )}
                     <Button.Text onClick={() => submit('paypal', !settings.paypal)}>
-                        {settings.paypal ? 'Disable' : 'Enable'}
+                        {settings.paypal ? t('common:disable', 'Disable') : t('common:enable', 'Enable')}
                     </Button.Text>
                 </div>
             </AdminBox>
-            <AdminBox title={'Add Link integration'} icon={faStripe}>
-                Adding Link to Jexactyl allows users to purchase products via another channel, improving order success
-                rate and global payment availability.
+            <AdminBox title={t('billingSettings.addLink', 'Add Link integration') as string} icon={faStripe}>
+                {t('billingSettings.linkDescription', 'Adding Link to Jexactyl allows users to purchase products via another channel, improving order success rate and global payment availability.')}
                 <p className={'text-gray-400 mt-2'}>
-                    Link module is currently{' '}
+                    {t('billingSettings.linkStatus', 'Link module is currently')}{' '}
                     <span className={settings.link ? 'text-green-500' : 'text-red-500'}>
-                        {settings.link ? 'enabled' : 'disabled'}
+                        {settings.link ? t('common:enabled', 'enabled') : t('common:disabled', 'disabled')}
                     </span>
                     .
                 </p>
@@ -91,18 +91,18 @@ export default () => {
                             onClick={() => setOpen('link')}
                             variant={Button.Variants.Secondary}
                         >
-                            Setup Instructions
+                            {t('billingSettings.setupInstructions', 'Setup Instructions')}
                         </Button.Text>
                     )}
                     <Button.Text onClick={() => submit('link', !settings.link)}>
-                        {settings.link ? 'Disable' : 'Enable'}
+                        {settings.link ? t('common:disable', 'Disable') : t('common:enable', 'Enable')}
                     </Button.Text>
                 </div>
             </AdminBox>
-            <AdminBox title={'Primary Currency'} icon={faDollar}>
-                Choose a primary currency to charge users.
+            <AdminBox title={t('billingSettings.primaryCurrency', 'Primary Currency') as string} icon={faDollar}>
+                {t('billingSettings.currencyDescription', 'Choose a primary currency to charge users.')}
                 <div className={'mt-4'}>
-                    <Label>Currency Code / Name</Label>
+                    <Label>{t('billingSettings.currencyLabel', 'Currency Code / Name')}</Label>
                     <Select onChange={handleCurrencyChange}>
                         {Object.keys(currencyDictionary).map(code => (
                             <option
@@ -117,37 +117,31 @@ export default () => {
                     </Select>
                 </div>
             </AdminBox>
-            <AdminBox title={'Import/Export Configuration'} icon={faExchange}>
+            <AdminBox title={t('billingSettings.importExport', 'Import/Export Configuration') as string} icon={faExchange}>
                 <FlashMessageRender byKey={'billing:config'} className={'mb-2'} />
-                Use the below options to either export your current billing configurations, or use the Import button to
-                import a pre-created set of categories and products to Jexactyl.
+                {t('billingSettings.importExportDescription', 'Use the below options to either export your current billing configurations, or use the Import button to import a pre-created set of categories and products to Jexactyl.')}
                 <div className={'text-right mt-3'}>
                     <ExportConfigButton />
                     <ImportConfigButton />
                 </div>
             </AdminBox>
             {!settings.keys.publishable || !settings.keys.secret ? (
-                <AdminBox title={'Input Stripe API Keys'} icon={faKey}>
-                    Without Stripe API authentication, your billing system will not work. Customers may proceed to the
-                    checkout area but will be met with errors unless you add valid API keys which can be obtained
-                    through the Stripe dashboard.
+                <AdminBox title={t('billingSettings.inputStripeKeys', 'Input Stripe API Keys') as string} icon={faKey}>
+                    {t('billingSettings.stripeKeysMissing', 'Without Stripe API authentication, your billing system will not work. Customers may proceed to the checkout area but will be met with errors unless you add valid API keys which can be obtained through the Stripe dashboard.')}
                     <div className={'text-right mt-3'}>
-                        <Button onClick={() => setOpen('setup')}>Add API keys</Button>
+                        <Button onClick={() => setOpen('setup')}>{t('billingSettings.addApiKeys', 'Add API keys')}</Button>
                     </div>
                 </AdminBox>
             ) : (
-                <AdminBox title={'Reset Stripe API keys'} icon={faKey}>
-                    By resetting the Stripe API keys saved to the panel, all billing services (such as purchasing or
-                    renewing a product) will stop working until new API keys are entered. Are you sure you wish to
-                    continue?
+                <AdminBox title={t('billingSettings.resetStripeKeys', 'Reset Stripe API keys') as string} icon={faKey}>
+                    {t('billingSettings.resetKeysWarning', 'By resetting the Stripe API keys saved to the panel, all billing services (such as purchasing or renewing a product) will stop working until new API keys are entered. Are you sure you wish to continue?')}
                     <div className={'text-right mt-3'}>
-                        <Button.Danger onClick={onDeleteKeys}>Yes, delete API keys</Button.Danger>
+                        <Button.Danger onClick={onDeleteKeys}>{t('billingSettings.deleteApiKeys', 'Yes, delete API keys')}</Button.Danger>
                     </div>
                 </AdminBox>
             )}
-            <AdminBox title={'Disable Billing Module'} icon={faPowerOff}>
-                Clicking the button below will disable all modules of the billing system - such as subscriptions, server
-                purchasing and more. Make sure that this will not impact your users before disabling.
+            <AdminBox title={t('billingSettings.disableBilling', 'Disable Billing Module') as string} icon={faPowerOff}>
+                {t('billingSettings.disableBillingWarning', 'Clicking the button below will disable all modules of the billing system - such as subscriptions, server purchasing and more. Make sure that this will not impact your users before disabling.')}
                 <div className={'text-right mt-3'}>
                     <ToggleFeatureButton />
                 </div>

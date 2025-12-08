@@ -15,6 +15,7 @@ import { Button } from '@elements/button';
 import type { ApplicationStore } from '@/state';
 import NodeBillingContainer from './NodeBillingContainer';
 import { PlusIcon } from '@heroicons/react/outline';
+import { useTranslation } from 'react-i18next';
 
 type Values2 = Omit<Omit<Values, 'behindProxy'>, 'public' | 'deployable' | 'deployableFree'> & {
     behindProxy: string;
@@ -47,6 +48,7 @@ const initialValues: Values2 = {
 };
 
 export default () => {
+    const { t } = useTranslation('common');
     const navigate = useNavigate();
 
     const { clearFlashes, clearAndAddHttpError } = useStoreActions(
@@ -120,7 +122,7 @@ export default () => {
                                         disabled={isSubmitting || !isValid}
                                         icon={PlusIcon}
                                     >
-                                        Create
+                                        {t('create', 'Create')}
                                     </Button>
                                 </div>
                             </div>

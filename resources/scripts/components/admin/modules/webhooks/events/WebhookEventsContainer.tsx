@@ -6,8 +6,10 @@ import { Button } from '@elements/button';
 import { useStoreState } from '@/state/hooks';
 import useFlash from '@/plugins/useFlash';
 import Input from '@elements/Input';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
+    const { t } = useTranslation('admin');
     const { colors } = useStoreState(s => s.theme.data!);
     const [events, setEvents] = useState<WebhookEvent[]>();
     const [filteredEvents, setFilteredEvents] = useState<WebhookEvent[]>();
@@ -48,7 +50,7 @@ export default () => {
 
         sendTestEvent()
             .then(() => {
-                addFlash({ key: 'admin:webhooks', type: 'success', message: 'Webhook sent successfully!' });
+                addFlash({ key: 'admin:webhooks', type: 'success', message: t('webhooks.testSuccess', 'Webhook sent successfully!') as string });
             })
             .catch(error => clearAndAddHttpError({ key: 'admin:webhooks', error }));
     };
@@ -59,17 +61,17 @@ export default () => {
         <>
             <div className={'flex grid lg:grid-cols-2 mb-6'}>
                 <Input
-                    placeholder={'Search for a webhook event...'}
+                    placeholder={t('webhooks.searchPlaceholder', 'Search for a webhook event...') as string}
                     value={searchTerm}
                     onChange={e => handleSearch(e.target.value)}
                 />
                 <div className={'flex justify-end'}>
                     <div className={'p-2 w-fit rounded-lg space-x-3'} style={{ background: colors.secondary }}>
                         <Button.Text onClick={doTest} variant={Button.Variants.Secondary}>
-                            Send Test
+                            {t('webhooks.sendTest', 'Send Test')}
                         </Button.Text>
-                        <Button.Danger onClick={doDisable}>Disable All</Button.Danger>
-                        <Button onClick={doEnable}>Enable All</Button>
+                        <Button.Danger onClick={doDisable}>{t('webhooks.disableAll', 'Disable All')}</Button.Danger>
+                        <Button onClick={doEnable}>{t('webhooks.enableAll', 'Enable All')}</Button>
                     </div>
                 </div>
             </div>

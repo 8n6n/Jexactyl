@@ -25,6 +25,7 @@ import Label from '@elements/Label';
 import NestDeleteButton from '@admin/service/nests/NestDeleteButton';
 import NestEggTable from '@admin/service/nests/NestEggTable';
 import type { ApplicationStore } from '@/state';
+import { useTranslation } from 'react-i18next';
 
 interface ctx {
     nest: Nest | undefined;
@@ -65,6 +66,7 @@ interface Values {
 }
 
 const EditInformationContainer = () => {
+    const { t } = useTranslation('admin');
     const navigate = useNavigate();
 
     const { clearFlashes, clearAndAddHttpError } = useStoreActions(
@@ -104,7 +106,7 @@ const EditInformationContainer = () => {
         >
             {({ isSubmitting, isValid }) => (
                 <>
-                    <AdminBox title={'Edit Nest'} css={tw`flex-1 self-start w-full relative mb-8 lg:mb-0 mr-0 lg:mr-4`}>
+                    <AdminBox title={t('nests.editNest', 'Edit Nest') as string} css={tw`flex-1 self-start w-full relative mb-8 lg:mb-0 mr-0 lg:mr-4`}>
                         <SpinnerOverlay visible={isSubmitting} />
 
                         <Form>
@@ -119,7 +121,7 @@ const EditInformationContainer = () => {
 
                                 <div css={tw`flex ml-auto`}>
                                     <Button type="submit" disabled={isSubmitting || !isValid}>
-                                        Save Changes
+                                        {t('common:saveChanges', 'Save Changes')}
                                     </Button>
                                 </div>
                             </div>

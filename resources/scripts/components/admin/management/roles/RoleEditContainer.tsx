@@ -17,6 +17,7 @@ import { UserRole } from '@definitions/admin';
 import { useNavigate, useParams } from 'react-router-dom';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
 import PermissionsTable from './PermissionsTable';
+import { useTranslation } from 'react-i18next';
 
 interface ctx {
     role: UserRole | undefined;
@@ -38,6 +39,7 @@ interface Values {
 }
 
 const EditInformationContainer = () => {
+    const { t } = useTranslation('admin');
     const navigate = useNavigate();
 
     const { clearFlashes, clearAndAddHttpError } = useStoreActions(
@@ -79,7 +81,7 @@ const EditInformationContainer = () => {
         >
             {({ isSubmitting, isValid }) => (
                 <React.Fragment>
-                    <AdminBox title={'Edit Role'} css={tw`relative mb-6`} icon={faPencil}>
+                    <AdminBox title={t('roles.editRole', 'Edit Role') as string} css={tw`relative mb-6`} icon={faPencil}>
                         <SpinnerOverlay visible={isSubmitting} />
 
                         <Form css={tw`mb-0`}>
@@ -102,7 +104,7 @@ const EditInformationContainer = () => {
 
                                 <div css={tw`flex ml-auto`}>
                                     <Button type={'submit'} disabled={isSubmitting || !isValid}>
-                                        Save Changes
+                                        {t('common:saveChanges', 'Save Changes')}
                                     </Button>
                                 </div>
                             </div>
@@ -115,6 +117,7 @@ const EditInformationContainer = () => {
 };
 
 const RoleEditContainer = () => {
+    const { t } = useTranslation('admin');
     const params = useParams<'id'>();
 
     const { clearFlashes, clearAndAddHttpError } = useStoreActions(
@@ -161,7 +164,7 @@ const RoleEditContainer = () => {
                     </h2>
                     {(role.description || '').length < 1 ? (
                         <p css={tw`text-base text-neutral-400`}>
-                            <span css={tw`italic`}>No description</span>
+                            <span css={tw`italic`}>{t('common:noDescription', 'No description')}</span>
                         </p>
                     ) : (
                         <p css={tw`text-base text-neutral-400 whitespace-nowrap overflow-ellipsis overflow-hidden`}>
@@ -174,9 +177,9 @@ const RoleEditContainer = () => {
             <EditInformationContainer />
             <div css={tw`w-full flex flex-row items-center my-8`}>
                 <div css={tw`flex flex-col flex-shrink`} style={{ minWidth: '0' }}>
-                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>Role Permissions</h2>
+                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>{t('roles.rolePermissions', 'Role Permissions')}</h2>
                     <p css={tw`text-base text-neutral-400 whitespace-nowrap overflow-ellipsis overflow-hidden`}>
-                        This table contains the permissions that you can assign to the role.
+                        {t('roles.rolePermissionsDesc', 'This table contains the permissions that you can assign to the role.')}
                     </p>
                 </div>
             </div>

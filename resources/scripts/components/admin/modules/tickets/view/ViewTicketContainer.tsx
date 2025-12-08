@@ -23,8 +23,10 @@ import useStatus from '@/plugins/useStatus';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TicketStatus, Values } from '@/api/admin/tickets/types';
 import { updateTicket, useTicketFromRoute } from '@/api/admin/tickets';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
+    const { t } = useTranslation('admin');
     const { data: ticket, isLoading } = useTicketFromRoute();
     const boxStatus = useStatus();
 
@@ -57,7 +59,7 @@ export default () => {
     if (!ticket.user)
         return (
             <Alert type={'danger'}>
-                This ticket was created without an assigned user. This ticket must be deleted.&nbsp;
+                {t('tickets.noUserAssigned', 'This ticket was created without an assigned user. This ticket must be deleted.')}&nbsp;
                 <DeleteTicketDialog ticketId={ticket.id} />
             </Alert>
         );
@@ -82,7 +84,7 @@ export default () => {
                             'text-base text-sm mt-1 text-neutral-400 whitespace-nowrap overflow-ellipsis overflow-hidden'
                         }
                     >
-                        First created&nbsp;
+                        {t('tickets.firstCreated', 'First created')}&nbsp;
                         {Math.abs(differenceInHours(ticket.created_at, new Date())) > 48
                             ? format(ticket.created_at, 'MMM do, yyyy h:mma')
                             : formatDistanceToNow(ticket.created_at, { addSuffix: true })}
@@ -103,18 +105,18 @@ export default () => {
                         <AdminBox title={'Ticket Options'} icon={faGears} status={boxStatus.status}>
                             <div className={'grid lg:grid-cols-3 gap-4'}>
                                 <div>
-                                    <Label>Update ticket status</Label>
+                                    <Label>{t('tickets.updateStatus', 'Update ticket status')}</Label>
                                     <Select
                                         defaultValue={ticket.status}
                                         onChange={e => setStatus(String(e.target.value) as TicketStatus)}
                                     >
-                                        <option value={'pending'}>Pending</option>
-                                        <option value={'in-progress'}>In Progress</option>
-                                        <option value={'resolved'}>Resolved</option>
-                                        <option value={'unresolved'}>Unresolved</option>
+                                        <option value={'pending'}>{t('tickets.statusPending', 'Pending')}</option>
+                                        <option value={'in-progress'}>{t('tickets.statusInProgress', 'In Progress')}</option>
+                                        <option value={'resolved'}>{t('tickets.statusResolved', 'Resolved')}</option>
+                                        <option value={'unresolved'}>{t('tickets.statusUnresolved', 'Unresolved')}</option>
                                     </Select>
                                     <p className={'text-xs mt-1 text-gray-400'}>
-                                        Change the state of this ticket for the user.
+                                        {t('tickets.changeStateDesc', 'Change the state of this ticket for the user.')}
                                     </p>
                                 </div>
                                 <div>
