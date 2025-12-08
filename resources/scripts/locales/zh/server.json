@@ -114,5 +114,10 @@
         "serverDescription": "服务器描述",
         "reinstall": "重新安装服务器",
         "reinstallWarning": "您的服务器将被停止并开始安装过程。您可能会丢失数据。"
+    },
+    "activity": {
+        "title": "活动日志",
+        "description": "查看服务器的近期活动。",
+        "noLogs": "此服务器没有可用的活动日志。"
     }
 }

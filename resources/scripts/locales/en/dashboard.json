@@ -8,5 +8,30 @@
     "viewOptions": "View Options",
     "contactSupport": "Think this is a mistake? Please contact our support team.",
     "noServersFound": "No servers could be found.",
-    "searchServers": "Search for servers..."
+    "searchServers": "Search for servers...",
+    "ssh": {
+        "title": "SSH Keys",
+        "description": "Create, use and delete SSH keys to access servers.",
+        "addKey": "Add SSH Key",
+        "keys": "SSH Keys",
+        "noKeys": "No SSH Keys exist for this account.",
+        "addedOn": "Added on:"
+    },
+    "api": {
+        "title": "Account API",
+        "description": "Create, edit and delete API keys to access the Panel.",
+        "createKey": "Create API Key",
+        "keys": "API Keys",
+        "deleteKey": "Delete API Key",
+        "deleteConfirm": "All requests using this key will be invalidated.",
+        "noKeys": "No API keys exist for this account."
+    },
+    "tickets": {
+        "title": "Support Tickets",
+        "yourTickets": "Your Support Tickets",
+        "description": "Create a ticket to gain support from an administrator.",
+        "supportTickets": "Support Tickets",
+        "createTicket": "Create Ticket",
+        "noTickets": "No tickets exist for this account."
+    }
 }

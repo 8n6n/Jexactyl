@@ -117,5 +117,6 @@
         "sshKeys": "SSH Keys",
         "tickets": "Tickets",
         "orders": "Orders"
-    }
+    },
+    "clearFilters": "Clear Filters"
 }

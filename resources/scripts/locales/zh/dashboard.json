@@ -3,10 +3,35 @@
     "otherServers": "其他服务器",
     "accountActivity": "账户活动",
     "deployFirstServer": "部署您的第一台服务器",
-    "noServersDeployed": "您的账户中似乎还没有部署任何服务器。",
-    "billingPortalDescription": "通过我们的账单门户，您可以配置和购买新的服务器方案，选择 CPU、内存用量以及要运行的游戏等选项。",
+    "noServersDeployed": "您的账户下似乎还没有部署任何服务器。",
+    "billingPortalDescription": "通过我们的计费门户，您可以配置和购买新的服务器计划，并选择 CPU、内存数量以及您想运行的游戏等选项。",
     "viewOptions": "查看选项",
     "contactSupport": "认为这是个错误？请联系我们的支持团队。",
-    "noServersFound": "未找到服务器。",
-    "searchServers": "搜索服务器..."
+    "noServersFound": "未找到任何服务器。",
+    "searchServers": "搜索服务器...",
+    "ssh": {
+        "title": "SSH 密钥",
+        "description": "创建、使用和删除 SSH 密钥以访问服务器。",
+        "addKey": "添加 SSH 密钥",
+        "keys": "SSH 密钥",
+        "noKeys": "此账户没有 SSH 密钥。",
+        "addedOn": "添加于："
+    },
+    "api": {
+        "title": "账户 API",
+        "description": "创建、编辑和删除用于访问面板的 API 密钥。",
+        "createKey": "创建 API 密钥",
+        "keys": "API 密钥",
+        "deleteKey": "删除 API 密钥",
+        "deleteConfirm": "使用此密钥的所有请求都将失效。",
+        "noKeys": "此账户没有 API 密钥。"
+    },
+    "tickets": {
+        "title": "支持工单",
+        "yourTickets": "您的支持工单",
+        "description": "创建工单以获得管理员的支持。",
+        "supportTickets": "支持工单",
+        "createTicket": "创建工单",
+        "noTickets": "此账户没有工单。"
+    }
 }

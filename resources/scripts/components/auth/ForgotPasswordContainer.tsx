@@ -12,6 +12,7 @@ import LoginFormContainer from '@/components/auth/LoginFormContainer';
 import { Button } from '@elements/button';
 import Field from '@elements/Field';
 import useFlash from '@/plugins/useFlash';
+import { useTranslation } from 'react-i18next';
 
 interface Values {
     email: string;
@@ -21,6 +22,8 @@ interface Values {
 }
 
 function ForgotPasswordContainer() {
+    const { t } = useTranslation('auth');
+    const { t: tc } = useTranslation('common');
     const ref = useRef<Reaptcha>(null);
     const [token, setToken] = useState('');
 
@@ -44,7 +47,7 @@ function ForgotPasswordContainer() {
                 console.error(error);
 
                 setSubmitting(false);
-                addFlash({ type: 'error', title: 'Error', message: httpErrorToHuman(error) });
+                addFlash({ type: 'error', title: tc('error'), message: httpErrorToHuman(error) });
             });
 
             return;
@@ -53,11 +56,11 @@ function ForgotPasswordContainer() {
         requestPasswordReset(email, code, password, password_confirm, token)
             .then(response => {
                 resetForm();
-                addFlash({ type: 'success', title: 'Success', message: response });
+                addFlash({ type: 'success', title: tc('success'), message: response });
             })
             .catch(error => {
                 console.error(error);
-                addFlash({ type: 'error', title: 'Error', message: httpErrorToHuman(error) });
+                addFlash({ type: 'error', title: tc('error'), message: httpErrorToHuman(error) });
             })
             .then(() => {
                 setToken('');
@@ -75,48 +78,46 @@ function ForgotPasswordContainer() {
             initialValues={{ email: '', code: '', password: '', password_confirm: '' }}
             validationSchema={object().shape({
                 email: string()
-                    .email('A valid email address must be provided to continue.')
-                    .required('A valid email address must be provided to continue.'),
-                code: string().required('You must enter your account recovery code to continue.'),
+                    .email(t('emailRequired') as string)
+                    .required(t('emailRequired') as string),
+                code: string().required(t('recoveryCodeRequired') as string),
                 password: string().min(8).required(),
                 password_confirm: string().min(8).required(),
             })}
         >
             {({ isSubmitting, setSubmitting, submitForm }) => (
-                <LoginFormContainer title={'Reset your Password'} css={tw`w-full flex`}>
+                <LoginFormContainer title={t('resetPassword') as string} css={tw`w-full flex`}>
                     <Field
-                        label={'Email Address'}
-                        description={'Enter your account email address that you use to access the Panel.'}
+                        label={tc('email') as string}
+                        description={t('emailDescription') as string}
                         name={'email'}
                         type={'email'}
                     />
                     <div className={'mt-6'}>
                         <Field
-                            label={'Account Recovery Code'}
-                            description={
-                                "Enter the account recovery code you were given when your account was created. Don't have this code? Contact our support for assistance."
-                            }
+                            label={t('recoveryCode') as string}
+                            description={t('recoveryCodeDescription') as string}
                             name={'code'}
                             type={'text'}
                         />
                     </div>
                     <div className={'my-6'}>
                         <Field
-                            label={'New Password'}
-                            description={"Enter the new password you'd like to use for this user account."}
+                            label={tc('newPassword') as string}
+                            description={t('newPasswordDescription') as string}
                             name={'password'}
                             type={'password'}
                         />
                     </div>
                     <Field
-                        label={'Confirm New Password'}
-                        description={'For extra security, re-enter the above password.'}
+                        label={t('confirmNewPassword') as string}
+                        description={t('confirmNewPasswordDescription') as string}
                         name={'password_confirm'}
                         type={'password'}
                     />
                     <div css={tw`mt-6`}>
                         <Button type={'submit'} className={'w-full'} size={Button.Sizes.Large} disabled={isSubmitting}>
-                            Attempt Login
+                            {t('attemptLogin')}
                         </Button>
                     </div>
                     {recaptchaEnabled && (
@@ -139,7 +140,7 @@ function ForgotPasswordContainer() {
                             to={'/auth/login'}
                             css={tw`text-xs text-neutral-300 tracking-wide no-underline uppercase font-medium hover:text-neutral-600`}
                         >
-                            Return to Login
+                            {t('returnToLogin')}
                         </Link>
                     </div>
                 </LoginFormContainer>

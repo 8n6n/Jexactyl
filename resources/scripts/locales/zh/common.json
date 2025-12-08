@@ -117,5 +117,6 @@
         "sshKeys": "SSH 密钥",
         "tickets": "工单",
         "orders": "订单"
-    }
+    },
+    "clearFilters": "清除筛选"
 }

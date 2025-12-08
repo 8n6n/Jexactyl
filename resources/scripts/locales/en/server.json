@@ -114,5 +114,10 @@
         "serverDescription": "Server Description",
         "reinstall": "Reinstall Server",
         "reinstallWarning": "Your server will be stopped and the installation process will start. You may lose data."
+    },
+    "activity": {
+        "title": "Activity Log",
+        "description": "View recent activity on your server.",
+        "noLogs": "No activity logs available for this server."
     }
 }
