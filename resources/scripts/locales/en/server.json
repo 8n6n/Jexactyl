@@ -152,7 +152,12 @@
             "unknownAction": "Unknown Action",
             "ignoringFilesLabel": "Ignoring files & folders:",
             "continuesOnFailure": "Continues on Failure",
-            "secondsLater": "s later"
+            "secondsLater": "s later",
+            "payloadRequired": "A task payload must be provided.",
+            "timeOffsetRequired": "A time offset value must be provided.",
+            "timeOffsetTypeError": "The time offset must be a valid number between 0 and 900.",
+            "timeOffsetMin": "The time offset must be at least 0 seconds.",
+            "timeOffsetMax": "The time offset must be less than 900 seconds."
         }
     },
     "users": {

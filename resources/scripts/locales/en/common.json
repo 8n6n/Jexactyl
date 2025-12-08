@@ -86,6 +86,7 @@
     "minutes": "Minutes",
     "underMaintenance": "Under Maintenance",
     "suspended": "Suspended",
+    "twoFactorRequired": "Your account must have two-factor authentication enabled in order to continue.",
     "days": {
         "sun": "Sunday",
         "mon": "Monday",

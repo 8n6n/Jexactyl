@@ -38,7 +38,18 @@
         "description": "Create a ticket to gain support from an administrator.",
         "supportTickets": "Support Tickets",
         "createTicket": "Create Ticket",
-        "noTickets": "No tickets exist for this account."
+        "noTickets": "No tickets exist for this account.",
+        "ticketName": "Ticket Name",
+        "ticketNameDescription": "Enter a user-friendly name for this ticket.",
+        "message": "Message",
+        "messageDescription": "Enter a message for this ticket.",
+        "viewTicket": "View Ticket",
+        "noMessages": "There are no messages assigned to this ticket.",
+        "you": "You",
+        "supportAdmin": "Support - Administrator",
+        "sent": "Sent",
+        "sortedByLatest": "Sorted by latest message",
+        "addMessage": "Add Message"
     },
     "password": {
         "currentPassword": "Current Password",
@@ -51,12 +62,18 @@
     "email": {
         "confirmPassword": "Confirm Password",
         "passwordRequired": "You must provide your current account password.",
+        "updateEmail": "Update Email",
+        "updateSuccess": "Your email address has been updated.",
         "disableDialog": {
             "title": "Disable Two-Step Verification",
             "description": "Disabling two-step verification will make your account less secure. Are you sure you want to continue?",
             "cancel": "Cancel",
             "confirm": "Disable"
         }
+    },
+    "validation": {
+        "emailInvalid": "Please enter a valid email address.",
+        "emailRequired": "An email address must be provided."
     },
     "groupRemovedSuccess": "Server group removed successfully.",
     "addGroup": "Add Group"

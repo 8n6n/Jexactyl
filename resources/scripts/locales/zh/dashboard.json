@@ -38,7 +38,18 @@
         "description": "创建工单以获得管理员的支持。",
         "supportTickets": "支持工单",
         "createTicket": "创建工单",
-        "noTickets": "此账户没有工单。"
+        "noTickets": "此账户没有工单。",
+        "ticketName": "工单名称",
+        "ticketNameDescription": "为此工单输入一个用户友好的名称。",
+        "message": "消息",
+        "messageDescription": "为此工单输入一条消息。",
+        "viewTicket": "查看工单",
+        "noMessages": "此工单暂无消息。",
+        "you": "您",
+        "supportAdmin": "支持 - 管理员",
+        "sent": "发送于",
+        "sortedByLatest": "按最新消息排序",
+        "addMessage": "添加消息"
     },
     "password": {
         "currentPassword": "当前密码",
@@ -49,12 +60,20 @@
         "updatePassword": "更新密码"
     },
     "email": {
+        "confirmPassword": "确认密码",
+        "passwordRequired": "请输入您当前的账户密码。",
+        "updateEmail": "更新邮箱",
+        "updateSuccess": "您的邮箱地址已更新。",
         "disableDialog": {
             "title": "禁用两步验证",
             "description": "禁用两步验证将降低您账户的安全性。您确定要继续吗？",
             "cancel": "取消",
             "confirm": "禁用"
         }
+    },
+    "validation": {
+        "emailInvalid": "请输入有效的邮箱地址。",
+        "emailRequired": "必须提供邮箱地址。"
     },
     "groupRemovedSuccess": "服务器组移除成功。",
     "addGroup": "添加分组"

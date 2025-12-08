@@ -34,7 +34,7 @@ export default () => {
         <PageContentBlock title={t('account') as string} header description={t('settings') as string}>
             {state?.twoFactorRedirect && (
                 <MessageBox title={t('twoFactor') as string} type="error">
-                    Your account must have two-factor authentication enabled in order to continue.
+                    {t('twoFactorRequired') as string}
                 </MessageBox>
             )}
 

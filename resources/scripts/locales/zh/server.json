@@ -152,7 +152,12 @@
             "unknownAction": "未知动作",
             "ignoringFilesLabel": "忽略的文件和文件夹：",
             "continuesOnFailure": "失败后继续",
-            "secondsLater": "秒后"
+            "secondsLater": "秒后",
+            "payloadRequired": "必须提供任务载荷。",
+            "timeOffsetRequired": "必须提供时间偏移值。",
+            "timeOffsetTypeError": "时间偏移必须是 0 到 900 之间的有效数字。",
+            "timeOffsetMin": "时间偏移至少为 0 秒。",
+            "timeOffsetMax": "时间偏移必须小于 900 秒。"
         }
     },
     "users": {

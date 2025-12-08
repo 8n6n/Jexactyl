@@ -63,15 +63,15 @@ const TaskDetailsModal = ({ schedule, task }: Props) => {
         action: string().required().oneOf(['command', 'power', 'backup']),
         payload: string().when('action', {
             is: (v: string) => v !== 'backup',
-            then: string().required('A task payload must be provided.'),
+            then: string().required(t('schedules.task.payloadRequired') as string),
             otherwise: string(),
         }),
         continueOnFailure: boolean(),
         timeOffset: number()
-            .typeError('The time offset must be a valid number between 0 and 900.')
-            .required('A time offset value must be provided.')
-            .min(0, 'The time offset must be at least 0 seconds.')
-            .max(900, 'The time offset must be less than 900 seconds.'),
+            .typeError(t('schedules.task.timeOffsetTypeError') as string)
+            .required(t('schedules.task.timeOffsetRequired') as string)
+            .min(0, t('schedules.task.timeOffsetMin') as string)
+            .max(900, t('schedules.task.timeOffsetMax') as string),
     });
 
     useEffect(() => {

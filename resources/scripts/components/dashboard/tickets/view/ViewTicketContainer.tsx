@@ -9,6 +9,7 @@ import Spinner from '@elements/Spinner';
 import classNames from 'classnames';
 import { formatDistanceToNow } from 'date-fns';
 import { useStoreState } from '@/state/hooks';
+import { useTranslation } from 'react-i18next';
 
 export const statusToColor = (status: string): string => {
     switch (status) {
@@ -24,6 +25,7 @@ export const statusToColor = (status: string): string => {
 };
 
 export default () => {
+    const { t } = useTranslation('dashboard');
     const { email } = useStoreState(state => state.user.data!);
     const { colors } = useStoreState(state => state.theme.data!);
     const { data: ticket, error, isLoading } = useTicketFromRoute();
@@ -34,7 +36,7 @@ export default () => {
     }, [error]);
 
     return (
-        <PageContentBlock title={`View Ticket`}>
+        <PageContentBlock title={t('tickets.viewTicket') as string}>
             <FlashMessageRender byKey={'account:tickets'} />
             {isLoading || !ticket ? (
                 <Spinner size={'large'} centered />
@@ -54,7 +56,7 @@ export default () => {
                         </h2>
                         <ContentBox>
                             {!ticket.relationships.messages ? (
-                                'There are no messages assigned to this ticket.'
+                                t('tickets.noMessages')
                             ) : (
                                 <>
                                     {ticket.relationships.messages
@@ -67,14 +69,14 @@ export default () => {
                                                 >
                                                     <p className={'mr-2 font-semibold text-primary-400'}>
                                                         {message.author.email === email
-                                                            ? 'You'
-                                                            : 'Support - Administrator'}
+                                                            ? t('tickets.you')
+                                                            : t('tickets.supportAdmin')}
                                                         :
                                                     </p>
                                                     {message.message.toString()}
                                                 </div>
                                                 <p className={'text-2xs text-gray-300 mt-1 text-right'}>
-                                                    Sent&nbsp;
+                                                    {t('tickets.sent')}&nbsp;
                                                     {formatDistanceToNow(message.createdAt, {
                                                         includeSeconds: true,
                                                         addSuffix: true,
@@ -86,9 +88,9 @@ export default () => {
                                 </>
                             )}
                         </ContentBox>
-                        <p className={'text-xs text-gray-400 mt-2'}>Sorted by latest message</p>
+                        <p className={'text-xs text-gray-400 mt-2'}>{t('tickets.sortedByLatest')}</p>
                     </div>
-                    <ContentBox title={'Add Message'}>
+                    <ContentBox title={t('tickets.addMessage') as string}>
                         <AddTicketMessageForm ticketId={ticket.id} />
                     </ContentBox>
                 </div>
