@@ -12,15 +12,17 @@ import Onboarding from '@admin/modules/auth/modules/Onboarding';
 import GoogleSSO from './modules/GoogleSSO';
 import JGuard from './modules/JGuard';
 import Unfinished from '@elements/Unfinished';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
+    const { t } = useTranslation('admin');
     const [visible, setVisible] = useState<boolean>(false);
     const modules = useStoreState(state => state.everest.data!.auth.modules);
 
     return (
-        <AdminContentBlock title={'Authentication'}>
+        <AdminContentBlock title={t('auth.title', 'Authentication') as string}>
             {visible && (
-                <Dialog title={'Add Modules'} open={visible} onClose={() => setVisible(false)}>
+                <Dialog title={t('auth.addModules', 'Add Modules') as string} open={visible} onClose={() => setVisible(false)}>
                     <div className={'space-y-3'}>
                         <AuthModules />
                     </div>
@@ -28,11 +30,11 @@ export default () => {
             )}
             <div css={tw`w-full flex flex-row items-center mb-8`}>
                 <div css={tw`flex flex-col flex-shrink`} style={{ minWidth: '0' }}>
-                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>Authentication</h2>
+                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>{t('auth.title', 'Authentication')}</h2>
                     <p
                         css={tw`hidden lg:block text-base text-neutral-400 whitespace-nowrap overflow-ellipsis overflow-hidden`}
                     >
-                        Configure and manage the authentication flow for users.
+                        {t('auth.description', 'Configure and manage the authentication flow for users.')}
                     </p>
                 </div>
                 <div css={tw`flex ml-auto pl-4`}>
@@ -42,7 +44,7 @@ export default () => {
                         onClick={() => setVisible(true)}
                         css={tw`h-10 px-4 py-0 whitespace-nowrap`}
                     >
-                        Add Module
+                        {t('auth.addModule', 'Add Module')}
                     </Button>
                 </div>
             </div>

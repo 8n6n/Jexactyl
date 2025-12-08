@@ -127,5 +127,31 @@
     "billing": {
         "title": "账单",
         "description": "管理账单和支付设置。"
+    },
+    "auth": {
+        "title": "认证",
+        "description": "配置和管理用户的认证流程。",
+        "addModules": "添加模块",
+        "addModule": "添加模块"
+    },
+    "billingOrders": {
+        "title": "账单订单",
+        "orders": "订单",
+        "description": "此面板上的订单列表。",
+        "importantInfo": "重要信息",
+        "importantInfoText": "待处理订单将在 7 天后自动设置为过期并删除，从而在管理区域不再可见。如果您希望手动从 Jexactyl 删除账单订单，必须进行数据库查询。不建议手动删除订单。"
+    },
+    "billingProducts": {
+        "viewCategory": "查看分类",
+        "products": "产品",
+        "productsInCategory": "{{category}} 分类中的可用产品列表。",
+        "createProduct": "创建产品",
+        "viewProduct": "查看产品"
+    },
+    "activity": {
+        "title": "管理员活动",
+        "description": "详细了解管理员正在执行的操作。",
+        "clearFilters": "清除筛选",
+        "noLogs": "目前没有可用的管理员日志。"
     }
 }

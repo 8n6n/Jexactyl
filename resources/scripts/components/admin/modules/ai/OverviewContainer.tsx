@@ -88,7 +88,7 @@ export default () => {
                 </div>
                 <div className={'w-full bg-zinc-800 rounded-b px-4 py-2 inline-flex'}>
                     <FontAwesomeIcon icon={faChevronRight} className={'my-auto mr-4'} />
-                    <Input className={'font-mono'} placeholder={t('ai.askQuestion', 'Ask Jexactyl AI a question')} onKeyDown={submit} />
+                    <Input className={'font-mono'} placeholder={t('ai.askQuestion', 'Ask Jexactyl AI a question') as string} onKeyDown={submit} />
                 </div>
             </div>
             <div className={'col-span-2 space-y-4'}>

@@ -11,8 +11,10 @@ import Select from '@elements/Select';
 import SetupStripe from '../guides/SetupStripe';
 import { getBillingAnalytics } from '@/api/admin/billing';
 import { BillingAnalytics, Order } from '@/api/definitions/admin';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
+    const { t } = useTranslation('admin');
     const now = new Date();
     const [history, setHistory] = useState<number>(14);
     const settings = useStoreState(s => s.everest.data!.billing);
