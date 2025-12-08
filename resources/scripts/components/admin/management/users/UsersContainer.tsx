@@ -28,8 +28,10 @@ import AdminTable, {
 } from '@/components/elements/AdminTable';
 import { useStoreState } from '@/state/hooks';
 import Pill from '@/components/elements/Pill';
+import { useTranslation } from 'react-i18next';
 
 function UsersContainer() {
+    const { t } = useTranslation('admin');
     const { data: users, error, isValidating } = useGetUsers();
     const { colors } = useStoreState(state => state.theme.data!);
     const { setPage, sort, sortDirection, setSort, setFilters } = useContext(UsersContext);
@@ -51,21 +53,21 @@ function UsersContainer() {
     };
 
     return (
-        <AdminContentBlock title={'User Accounts'}>
+        <AdminContentBlock title={t('users.accounts', 'User Accounts') as string}>
             <div css={tw`w-full flex flex-row items-center mb-8`}>
                 <div css={tw`flex flex-col flex-shrink`} style={{ minWidth: '0' }}>
-                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>User Accounts</h2>
+                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>{t('users.accounts', 'User Accounts')}</h2>
                     <p
                         css={tw`hidden md:block text-base text-neutral-400 whitespace-nowrap overflow-ellipsis overflow-hidden`}
                     >
-                        All users that have access to the system.
+                        {t('users.description', 'All users that have access to the system.')}
                     </p>
                 </div>
 
                 <div css={tw`flex ml-auto pl-4`}>
                     <Link to={'/admin/users/new'}>
                         <Button>
-                            <FontAwesomeIcon icon={faPlus} className={'mr-2 my-auto'} /> New User
+                            <FontAwesomeIcon icon={faPlus} className={'mr-2 my-auto'} /> {t('users.newUser', 'New User')}
                         </Button>
                     </Link>
                 </div>

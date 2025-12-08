@@ -12,6 +12,7 @@ import PaymentContainer from '../server/billing/PaymentContainer';
 import { Product, getProduct } from '@/api/billing/products';
 import { useState, useEffect } from 'react';
 import Spinner from './Spinner';
+import { useTranslation } from 'react-i18next';
 
 interface BaseProps {
     title: string;
@@ -78,20 +79,25 @@ type ServerErrorProps = (Omit<PropsWithBack, 'image' | 'title'> | Omit<PropsWith
     title?: string;
 };
 
-const ServerError = ({ title, ...props }: ServerErrorProps) => (
-    <ScreenBlock title={title || 'Something went wrong'} image={ServerErrorSvg} {...props} />
-);
+const ServerError = ({ title, ...props }: ServerErrorProps) => {
+    const { t } = useTranslation('common');
+    return <ScreenBlock title={title || t('somethingWentWrong', 'Something went wrong')} image={ServerErrorSvg} {...props} />;
+};
 
-const NotFound = ({ title, message, onBack }: Partial<Pick<ScreenBlockProps, 'title' | 'message' | 'onBack'>>) => (
-    <ScreenBlock
-        title={title || '404'}
-        image={NotFoundSvg}
-        message={message || 'The requested resource was not found.'}
-        onBack={onBack}
-    />
-);
+const NotFound = ({ title, message, onBack }: Partial<Pick<ScreenBlockProps, 'title' | 'message' | 'onBack'>>) => {
+    const { t } = useTranslation('common');
+    return (
+        <ScreenBlock
+            title={title || '404'}
+            image={NotFoundSvg}
+            message={message || t('notFoundMessage', 'The requested resource was not found.')}
+            onBack={onBack}
+        />
+    );
+};
 
 const Suspended = ({ date, id }: { date: Date; id?: number }) => {
+    const { t } = useTranslation('common');
     const [product, setProduct] = useState<Product>();
 
     const navigate = useNavigate();
@@ -122,13 +128,13 @@ const Suspended = ({ date, id }: { date: Date; id?: number }) => {
                             <FontAwesomeIcon icon={faArrowLeft} />
                         </ActionButton>
                     </div>
-                    <h2 css={tw`text-white font-bold text-4xl`}>Suspended - No Payment</h2>
+                    <h2 css={tw`text-white font-bold text-4xl`}>{t('suspendedTitle', 'Suspended - No Payment')}</h2>
                     <p css={tw`text-sm text-neutral-400 mt-2`}>
-                        Your server has been suspended due to a lack of payment. Your server will be deleted{' '}
-                        <span className={'font-bold'}>on {date.toDateString()}</span>
-                        if you do not choose to pay the monthly cost for your server.
+                        {t('suspendedDescription', 'Your server has been suspended due to a lack of payment. Your server will be deleted')}{' '}
+                        <span className={'font-bold'}>{t('suspendedOnDate', 'on {{date}}', { date: date.toDateString() })}</span>
+                        {t('suspendedIfNoPay', 'if you do not choose to pay the monthly cost for your server.')}
                         <div className={'mt-2 text-gray-300 font-semibold'}>
-                            Your outstanding balance is:
+                            {t('outstandingBalance', 'Your outstanding balance is:')}
                             <span className={'text-white ml-2 font-bold'}>
                                 {currency}
                                 {product.price}

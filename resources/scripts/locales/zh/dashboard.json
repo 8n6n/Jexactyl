@@ -33,7 +33,10 @@
         "noKeys": "此账户没有 API 密钥。",
         "descriptionHelp": "此 API 密钥的描述。",
         "allowedIps": "允许的 IP",
-        "allowedIpsDescription": "留空以允许任何 IP 地址使用此 API 密钥，否则请在每行输入一个 IP 地址。"
+        "allowedIpsDescription": "留空以允许任何 IP 地址使用此 API 密钥，否则请在每行输入一个 IP 地址。",
+        "yourApiKey": "您的 API 密钥",
+        "apiKeyWarning": "您请求的 API 密钥如下所示。请将其存储在安全的位置，它不会再次显示。",
+        "close": "关闭"
     },
     "tickets": {
         "title": "支持工单",

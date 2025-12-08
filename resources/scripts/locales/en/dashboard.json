@@ -33,7 +33,10 @@
         "noKeys": "No API keys exist for this account.",
         "descriptionHelp": "A description of this API key.",
         "allowedIps": "Allowed IPs",
-        "allowedIpsDescription": "Leave blank to allow any IP address to use this API key, otherwise provide each IP address on a new line."
+        "allowedIpsDescription": "Leave blank to allow any IP address to use this API key, otherwise provide each IP address on a new line.",
+        "yourApiKey": "Your API Key",
+        "apiKeyWarning": "The API key you have requested is shown below. Please store this in a safe location, it will not be shown again.",
+        "close": "Close"
     },
     "tickets": {
         "title": "Support Tickets",

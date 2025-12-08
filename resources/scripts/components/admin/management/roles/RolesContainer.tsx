@@ -20,8 +20,10 @@ import AdminTable, {
 } from '@elements/AdminTable';
 import CopyOnClick from '@/components/elements/CopyOnClick';
 import { useStoreState } from '@/state/hooks';
+import { useTranslation } from 'react-i18next';
 
 const RolesContainer = () => {
+    const { t } = useTranslation('admin');
     const { page, setPage, setFilters, sort, setSort, sortDirection } = useContext(RolesContext);
     const { clearFlashes, clearAndAddHttpError } = useFlash();
     const { data: roles, error, isValidating } = getRoles();
@@ -57,12 +59,12 @@ const RolesContainer = () => {
     }, [page]);
 
     return (
-        <AdminContentBlock title={'Roles'}>
+        <AdminContentBlock title={t('roles.title', 'Roles') as string}>
             <div css={tw`w-full flex flex-row items-center mb-8`}>
                 <div css={tw`flex flex-col flex-shrink`} style={{ minWidth: '0' }}>
-                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>Administrator Roles</h2>
+                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>{t('roles.adminRoles', 'Administrator Roles')}</h2>
                     <p css={tw`text-base text-neutral-400 whitespace-nowrap overflow-ellipsis overflow-hidden`}>
-                        Roles are sets of permissions that you can assign to your panel administrators.
+                        {t('roles.description', 'Roles are sets of permissions that you can assign to your panel administrators.')}
                     </p>
                 </div>
 

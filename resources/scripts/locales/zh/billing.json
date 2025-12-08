@@ -27,5 +27,14 @@
         "createdAt": "创建时间",
         "paymentState": "支付状态",
         "orderType": "订单类型"
-    }
+    },
+    "orderProcessed": "订单已处理",
+    "orderProcessedDescription": "感谢您的付款 - 您的服务器已创建。请导航到屏幕顶部的「服务器」选项卡来查看您的新服务器。",
+    "orderCancelled": "订单已取消",
+    "orderCancelledDescription": "您的订单已取消，因为未向Stripe提交付款。您尚未被收费。如果您想重试此订单，请点击上方的「订单」。",
+    "processingOrder": "订单处理中",
+    "processingOrderDescription": "我们的系统正在将您的服务器部署到我们的系统。请稍等，您的新服务器即将部署完成！",
+    "orderFulfillError": "您的订单无法完成。请联系管理员。",
+    "session": "会话",
+    "unknown": "未知"
 }

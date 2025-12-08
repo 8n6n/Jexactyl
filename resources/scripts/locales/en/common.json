@@ -120,5 +120,19 @@
         "tickets": "Tickets",
         "orders": "Orders"
     },
-    "clearFilters": "Clear Filters"
+    "clearFilters": "Clear Filters",
+    "somethingWentWrong": "Something went wrong",
+    "notFoundMessage": "The requested resource was not found.",
+    "accessDenied": "Access Denied",
+    "noPermission": "You do not have permission to access this page.",
+    "suspendedTitle": "Suspended - No Payment",
+    "suspendedDescription": "Your server has been suspended due to a lack of payment. Your server will be deleted",
+    "suspendedOnDate": "on {{date}}",
+    "suspendedIfNoPay": "if you do not choose to pay the monthly cost for your server.",
+    "outstandingBalance": "Your outstanding balance is:",
+    "noItemsFound": "No items could be found, it's almost like they are hiding.",
+    "showing": "Showing",
+    "to": "to",
+    "of": "of",
+    "results": "results"
 }

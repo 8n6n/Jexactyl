@@ -1,8 +1,10 @@
 import { useStoreState } from '@/state/hooks';
 import CancelSvg from '@/assets/images/themed/CancelSvg';
 import PageContentBlock from '@elements/PageContentBlock';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
+    const { t } = useTranslation('billing');
     const { colors } = useStoreState(s => s.theme.data!);
 
     return (
@@ -13,10 +15,9 @@ export default () => {
                     style={{ backgroundColor: colors.secondary }}
                 >
                     <CancelSvg color={colors.primary} />
-                    <h2 className={'mt-10 text-white font-bold text-4xl'}>Order Cancelled</h2>
+                    <h2 className={'mt-10 text-white font-bold text-4xl'}>{t('orderCancelled')}</h2>
                     <p className={'text-sm text-neutral-400 mt-2'}>
-                        Your order was cancelled due to payment not being submitted to Stripe. You have not been
-                        charged. If you&apos;d like to retry this order, please click &apos;Order&apos; above.
+                        {t('orderCancelledDescription')}
                     </p>
                 </div>
             </div>

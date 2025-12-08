@@ -120,5 +120,19 @@
         "tickets": "工单",
         "orders": "订单"
     },
-    "clearFilters": "清除筛选"
+    "clearFilters": "清除筛选",
+    "somethingWentWrong": "出了一些问题",
+    "notFoundMessage": "请求的资源未找到。",
+    "accessDenied": "访问被拒绝",
+    "noPermission": "您没有权限访问此页面。",
+    "suspendedTitle": "已暂停 - 未付款",
+    "suspendedDescription": "您的服务器已因未付款而被暂停。您的服务器将被删除",
+    "suspendedOnDate": "于 {{date}}",
+    "suspendedIfNoPay": "如果您不选择支付服务器的月费。",
+    "outstandingBalance": "您的未付余额为：",
+    "noItemsFound": "未找到任何项目，它们似乎藏起来了。",
+    "showing": "显示",
+    "to": "到",
+    "of": "共",
+    "results": "条结果"
 }

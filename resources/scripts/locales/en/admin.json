@@ -4,6 +4,8 @@
     },
     "servers": {
         "title": "Servers",
+        "description": "All servers available on the system.",
+        "newServer": "New Server",
         "createServer": "Create Server",
         "editServer": "Edit Server"
     },
@@ -14,6 +16,9 @@
     },
     "users": {
         "title": "Users",
+        "accounts": "User Accounts",
+        "description": "All users that have access to the system.",
+        "newUser": "New User",
         "createUser": "Create User",
         "editUser": "Edit User"
     },
@@ -42,6 +47,8 @@
     },
     "roles": {
         "title": "Roles",
+        "adminRoles": "Administrator Roles",
+        "description": "Roles are sets of permissions that you can assign to your panel administrators.",
         "createRole": "Create Role"
     },
     "settings": {

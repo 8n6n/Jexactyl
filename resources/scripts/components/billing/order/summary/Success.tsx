@@ -1,8 +1,10 @@
 import { useStoreState } from '@/state/hooks';
 import PageContentBlock from '@elements/PageContentBlock';
 import SuccessSvg from '@/assets/images/themed/SuccessSvg';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
+    const { t } = useTranslation('billing');
     const { colors } = useStoreState(s => s.theme.data!);
 
     return (
@@ -13,10 +15,9 @@ export default () => {
                     style={{ backgroundColor: colors.secondary }}
                 >
                     <SuccessSvg color={colors.primary} />
-                    <h2 className={'mt-10 text-white font-bold text-4xl'}>Order Processed</h2>
+                    <h2 className={'mt-10 text-white font-bold text-4xl'}>{t('orderProcessed')}</h2>
                     <p className={'text-sm text-neutral-400 mt-2'}>
-                        Thank you for your payment - your server has now been created. Navigate to the
-                        &apos;Servers&apos; tab at the top of your screen to view your new server.
+                        {t('orderProcessedDescription')}
                     </p>
                 </div>
             </div>

@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 
 import { ServerError } from '@elements/ScreenBlock';
 import { usePermissions } from '@/plugins/usePermissions';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     children?: ReactNode;
@@ -10,6 +11,8 @@ interface Props {
 }
 
 function PermissionRoute({ children, permission }: Props): JSX.Element {
+    const { t } = useTranslation('common');
+
     if (permission === undefined) {
         return <>{children}</>;
     }
@@ -20,7 +23,7 @@ function PermissionRoute({ children, permission }: Props): JSX.Element {
         return <>{children}</>;
     }
 
-    return <ServerError title="Access Denied" message="You do not have permission to access this page." />;
+    return <ServerError title={t('accessDenied', 'Access Denied')} message={t('noPermission', 'You do not have permission to access this page.')} />;
 }
 
 export default PermissionRoute;

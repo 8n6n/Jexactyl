@@ -6,8 +6,10 @@ import processOrder from '@/api/billing/processOrder';
 import useFlash from '@/plugins/useFlash';
 import FlashMessageRender from '@/components/FlashMessageRender';
 import Spinner from '@elements/Spinner';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
+    const { t } = useTranslation('billing');
     const location = useLocation();
     const navigate = useNavigate();
     const params = new URLSearchParams(location.search);
@@ -25,7 +27,7 @@ export default () => {
             addFlash({
                 key: 'billing:process',
                 type: 'error',
-                message: 'Your order could not be fulfilled. Please contact an administrator.',
+                message: t('orderFulfillError') as string,
             });
 
             return;
@@ -49,13 +51,12 @@ export default () => {
                 >
                     <FlashMessageRender byKey={'billing:process'} className={'mb-6'} />
                     <h2 className={'text-white font-bold text-4xl'}>
-                        Processing Order <Spinner centered />
+                        {t('processingOrder')} <Spinner centered />
                     </h2>
                     <p className={'text-sm text-neutral-200 mt-2'}>
-                        Our systems are currently working on deploying your server to our systems. Sit tight while your
-                        new server is deployed!
+                        {t('processingOrderDescription')}
                     </p>
-                    <p className={'text-2xs text-neutral-400 mt-8'}>Session {intent ?? 'Unknown'}</p>
+                    <p className={'text-2xs text-neutral-400 mt-8'}>{t('session')} {intent ?? t('unknown')}</p>
                 </div>
             </div>
         </PageContentBlock>

@@ -4,6 +4,8 @@
     },
     "servers": {
         "title": "服务器",
+        "description": "系统上所有可用的服务器。",
+        "newServer": "新建服务器",
         "createServer": "创建服务器",
         "editServer": "编辑服务器"
     },
@@ -14,6 +16,9 @@
     },
     "users": {
         "title": "用户",
+        "accounts": "用户账户",
+        "description": "所有可以访问系统的用户。",
+        "newUser": "新建用户",
         "createUser": "创建用户",
         "editUser": "编辑用户"
     },
@@ -42,6 +47,8 @@
     },
     "roles": {
         "title": "角色",
+        "adminRoles": "管理员角色",
+        "description": "角色是一组权限，您可以将其分配给面板管理员。",
         "createRole": "创建角色"
     },
     "settings": {
