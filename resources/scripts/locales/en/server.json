@@ -19,7 +19,10 @@
         "running": "Running",
         "offline": "Offline",
         "starting": "Starting",
-        "stopping": "Stopping"
+        "stopping": "Stopping",
+        "installing": "Installing",
+        "transferring": "Transferring",
+        "restoring_backup": "Restoring Backup"
     },
     "files": {
         "title": "File Manager",
@@ -73,7 +76,45 @@
         "editSchedule": "Edit Schedule",
         "runNow": "Run Now",
         "deleteSchedule": "Delete Schedule",
-        "noSchedules": "There are no schedules configured for this server."
+        "noSchedules": "There are no schedules configured for this server.",
+        "editor": {
+            "title": "Edit Schedule",
+            "createTitle": "Create New Schedule",
+            "name": "Schedule Name",
+            "nameDescription": "A human readable identifier for this schedule.",
+            "cheatsheet": "Show Cheatsheet",
+            "cheatsheetDescription": "Show the cron cheatsheet for some examples.",
+            "onlineOnly": "Only When Server Is Online",
+            "onlineOnlyDescription": "Only execute this schedule when the server is in a running state.",
+            "enabled": "Schedule Enabled",
+            "enabledDescription": "This schedule will be executed automatically if enabled.",
+            "save": "Save Changes",
+            "create": "Create Schedule"
+        },
+        "time": {
+            "minute": "Minute",
+            "hour": "Hour",
+            "dayOfMonth": "Day of Month",
+            "month": "Month",
+            "dayOfWeek": "Day of Week"
+        },
+        "task": {
+            "editTitle": "Edit Task",
+            "createTitle": "Create Task",
+            "action": "Action",
+            "command": "Send command",
+            "power": "Send power action",
+            "backup": "Create backup",
+            "payload": "Payload",
+            "ignoredFiles": "Ignored Files",
+            "ignoredFilesDescription": "Optional. Include the files and folders to be excluded in this backup. By default, the contents of your .pteroignore file will be used. If you have reached your backup limit, the oldest backup will be rotated.",
+            "timeOffset": "Time offset (in seconds)",
+            "timeOffsetDescription": "The amount of time to wait after the previous task executes before running this one. If this is the first task on a schedule this will not be applied.",
+            "continueOnFailure": "Continue on Failure",
+            "continueOnFailureDescription": "Future tasks will be run when this task fails.",
+            "save": "Save Changes",
+            "create": "Create Task"
+        }
     },
     "users": {
         "title": "Users",
@@ -138,6 +179,7 @@
         "startupCommand": "Startup Command",
         "dockerImageDescription": "This is an advanced feature allowing you to select a Docker image to use when running this server instance.",
         "customImageNotice": "This server's Docker image has been manually set by an administrator and cannot be changed through this UI.",
+        "readOnly": "Read Only",
         "variables": "Variables"
     },
     "settings": {

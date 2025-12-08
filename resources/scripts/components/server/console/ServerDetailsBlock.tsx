@@ -6,7 +6,6 @@ import { SocketEvent, SocketRequest } from '@/components/server/events';
 import UptimeDuration from '@/components/server/UptimeDuration';
 import StatBlock from '@/components/server/console/StatBlock';
 import { bytesToString, ip, mbToBytes } from '@/lib/formatters';
-import { capitalize } from '@/lib/strings';
 import { ServerContext } from '@/state/server';
 import useWebsocketEvent from '@/plugins/useWebsocketEvent';
 import { useTranslation } from 'react-i18next';
@@ -106,7 +105,7 @@ function ServerDetailsBlock({ className }: { className?: string }) {
                 ) : stats.uptime > 0 ? (
                     <UptimeDuration uptime={stats.uptime / 1000} />
                 ) : (
-                    capitalize(status)
+                    t(`status.${status}`) as string
                 )}
             </StatBlock>
             <StatBlock

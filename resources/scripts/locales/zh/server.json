@@ -19,7 +19,10 @@
         "running": "运行中",
         "offline": "离线",
         "starting": "启动中",
-        "stopping": "停止中"
+        "stopping": "停止中",
+        "installing": "安装中",
+        "transferring": "迁移中",
+        "restoring_backup": "正在恢复备份"
     },
     "files": {
         "title": "文件管理器",
@@ -73,7 +76,45 @@
         "editSchedule": "编辑计划任务",
         "runNow": "立即运行",
         "deleteSchedule": "删除计划任务",
-        "noSchedules": "此服务器尚未配置任何计划任务。"
+        "noSchedules": "此服务器尚未配置任何计划任务。",
+        "editor": {
+            "title": "编辑计划任务",
+            "createTitle": "创建新计划任务",
+            "name": "计划任务名称",
+            "nameDescription": "此计划任务的可读标识符。",
+            "cheatsheet": "显示速查表",
+            "cheatsheetDescription": "显示 Cron 速查表以获取示例。",
+            "onlineOnly": "仅当服务器在线时",
+            "onlineOnlyDescription": "仅当服务器处于运行状态时执行此计划任务。",
+            "enabled": "启用计划任务",
+            "enabledDescription": "如果启用，此计划任务将自动执行。",
+            "save": "保存更改",
+            "create": "创建计划任务"
+        },
+        "time": {
+            "minute": "分钟",
+            "hour": "小时",
+            "dayOfMonth": "几号",
+            "month": "月份",
+            "dayOfWeek": "星期几"
+        },
+        "task": {
+            "editTitle": "编辑任务",
+            "createTitle": "创建任务",
+            "action": "动作",
+            "command": "发送命令",
+            "power": "发送电源动作",
+            "backup": "创建备份",
+            "payload": "负载 (Payload)",
+            "ignoredFiles": "忽略的文件",
+            "ignoredFilesDescription": "可选。包含在此备份中排除的文件和文件夹。默认情况下，将使用您的 .pteroignore 文件的内容。如果您已达到备份限制，旧备份将被轮换。",
+            "timeOffset": "时间偏移 (秒)",
+            "timeOffsetDescription": "执行上一个任务后等待多长时间再运行此任务。如果这是计划中的第一个任务，则不会应用此项。",
+            "continueOnFailure": "失败后继续",
+            "continueOnFailureDescription": "当此任务失败时，后续任务仍将运行。",
+            "save": "保存更改",
+            "create": "创建任务"
+        }
     },
     "users": {
         "title": "用户",
@@ -138,7 +179,8 @@
         "startupCommand": "启动命令",
         "dockerImageDescription": "这是一个高级功能，允许您选择运行此服务器实例时使用的 Docker 镜像。",
         "customImageNotice": "此服务器的 Docker 镜像已由管理员手动设置，无法通过此界面更改。",
-        "variables": "变量"
+        "variables": "变量",
+        "readOnly": "只读"
     },
     "settings": {
         "title": "设置",

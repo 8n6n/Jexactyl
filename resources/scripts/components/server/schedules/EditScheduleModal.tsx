@@ -15,6 +15,7 @@ import asModal from '@/hoc/asModal';
 import Switch from '@elements/Switch';
 import ScheduleCheatsheetCards from '@/components/server/schedules/ScheduleCheatsheetCards';
 import { useStoreState } from '@/state/hooks';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     schedule?: Schedule;
@@ -32,6 +33,7 @@ interface Values {
 }
 
 const EditScheduleModal = ({ schedule }: Props) => {
+    const { t } = useTranslation('server');
     const { addError, clearFlashes } = useFlash();
     const { dismiss } = useContext(ModalContext);
 
@@ -92,23 +94,22 @@ const EditScheduleModal = ({ schedule }: Props) => {
         >
             {({ isSubmitting }) => (
                 <Form>
-                    <h3 css={tw`text-2xl mb-6`}>{schedule ? 'Edit schedule' : 'Create new schedule'}</h3>
+                    <h3 css={tw`text-2xl mb-6`}>{schedule ? (t('schedules.editor.title') as string) : (t('schedules.editor.createTitle') as string)}</h3>
                     <FlashMessageRender byKey={'schedule:edit'} css={tw`mb-6`} />
                     <Field
                         name={'name'}
-                        label={'Schedule name'}
-                        description={'A human readable identifier for this schedule.'}
+                        label={t('schedules.editor.name') as string}
+                        description={t('schedules.editor.nameDescription') as string}
                     />
                     <div css={tw`grid grid-cols-2 sm:grid-cols-5 gap-4 mt-6`}>
-                        <Field name={'minute'} label={'Minute'} />
-                        <Field name={'hour'} label={'Hour'} />
-                        <Field name={'dayOfMonth'} label={'Day of month'} />
-                        <Field name={'month'} label={'Month'} />
-                        <Field name={'dayOfWeek'} label={'Day of week'} />
+                        <Field name={'minute'} label={t('schedules.time.minute') as string} />
+                        <Field name={'hour'} label={t('schedules.time.hour') as string} />
+                        <Field name={'dayOfMonth'} label={t('schedules.time.dayOfMonth') as string} />
+                        <Field name={'month'} label={t('schedules.time.month') as string} />
+                        <Field name={'dayOfWeek'} label={t('schedules.time.dayOfWeek') as string} />
                     </div>
                     <p css={tw`text-neutral-400 text-xs mt-2`}>
-                        The schedule system supports the use of Cronjob syntax when defining when tasks should begin
-                        running. Use the fields above to specify when these tasks should begin running.
+                        {t('schedules.description') as string}
                     </p>
                     <div
                         css={tw`mt-6 border-2 border-black/25 shadow-inner p-4 rounded`}
@@ -116,8 +117,8 @@ const EditScheduleModal = ({ schedule }: Props) => {
                     >
                         <Switch
                             name={'show_cheatsheet'}
-                            description={'Show the cron cheatsheet for some examples.'}
-                            label={'Show Cheatsheet'}
+                            description={t('schedules.editor.cheatsheetDescription') as string}
+                            label={t('schedules.editor.cheatsheet') as string}
                             defaultChecked={showCheatsheet}
                             onChange={() => setShowCheetsheet(s => !s)}
                         />
@@ -133,8 +134,8 @@ const EditScheduleModal = ({ schedule }: Props) => {
                     >
                         <FormikSwitch
                             name={'onlyWhenOnline'}
-                            description={'Only execute this schedule when the server is in a running state.'}
-                            label={'Only When Server Is Online'}
+                            description={t('schedules.editor.onlineOnlyDescription') as string}
+                            label={t('schedules.editor.onlineOnly') as string}
                         />
                     </div>
                     <div
@@ -143,13 +144,13 @@ const EditScheduleModal = ({ schedule }: Props) => {
                     >
                         <FormikSwitch
                             name={'enabled'}
-                            description={'This schedule will be executed automatically if enabled.'}
-                            label={'Schedule Enabled'}
+                            description={t('schedules.editor.enabledDescription') as string}
+                            label={t('schedules.editor.enabled') as string}
                         />
                     </div>
                     <div css={tw`mt-6 text-right`}>
                         <Button className={'w-full sm:w-auto'} type={'submit'} disabled={isSubmitting}>
-                            {schedule ? 'Save changes' : 'Create schedule'}
+                            {schedule ? (t('schedules.editor.save') as string) : (t('schedules.editor.create') as string)}
                         </Button>
                     </div>
                 </Form>
