@@ -25,9 +25,9 @@ import { NavLink } from 'react-router-dom';
 
 export default () => {
     const [node, setNode] = useState<Node | undefined>();
-    const { data: server } = useServerFromRoute();
+    const { data: server, mutate } = useServerFromRoute();
     const { secondary } = useStoreState(state => state.theme.data!.colors);
-    const { clearFlashes, clearAndAddHttpError } = useStoreActions(actions => actions.flashes);
+    const { clearFlashes, clearAndAddHttpError, addFlash } = useStoreActions(actions => actions.flashes);
 
     if (!server) return null;
 
@@ -36,7 +36,8 @@ export default () => {
 
         updateServer(server.id, values)
             .then(() => {
-                // setServer({ ...server, ...s });
+                mutate();
+                addFlash({ type: 'success', key: 'server', message: 'Server has been updated successfully.\n Please refresh your page to see update.' });
 
                 // TODO: Figure out how to properly clear react-selects for allocations.
                 setFieldValue('addAllocations', []);
