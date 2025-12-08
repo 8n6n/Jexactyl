@@ -18,7 +18,10 @@
         "addedOn": "Added on:",
         "keyName": "SSH Key Name",
         "publicKey": "Public Key",
-        "publicKeyDescription": "Enter your public SSH key."
+        "publicKeyDescription": "Enter your public SSH key.",
+        "deleteKey": "Delete SSH Key",
+        "deleteKeyConfirm": "Delete Key",
+        "deleteKeyDescription": "Removing the {{name}} SSH key will invalidate its usage across the Panel."
     },
     "api": {
         "title": "Account API",
@@ -49,7 +52,11 @@
         "supportAdmin": "Support - Administrator",
         "sent": "Sent",
         "sortedByLatest": "Sorted by latest message",
-        "addMessage": "Add Message"
+        "addMessage": "Add Message",
+        "messageContent": "Message Content",
+        "addToTicket": "Add to Ticket",
+        "deleteTicketTitle": "Confirm ticket deletion",
+        "deleteTicketConfirm": "Are you sure you want to delete this ticket and the associated messages?"
     },
     "password": {
         "currentPassword": "Current Password",

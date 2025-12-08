@@ -5,7 +5,10 @@
         "transferring": "正在迁移",
         "maintenanceWarning": "此服务器所在的节点当前正在维护中，所有操作不可用。",
         "installingWarning": "此服务器当前正在运行安装过程，大多数操作不可用。",
-        "transferringWarning": "此服务器当前正在迁移到另一个节点，所有操作不可用。"
+        "transferringWarning": "此服务器当前正在迁移到另一个节点，所有操作不可用。",
+        "askAI": "询问 AI",
+        "serverAssistant": "服务器助手",
+        "error": "错误"
     },
     "power": {
         "start": "启动",
@@ -109,6 +112,18 @@
         "delete": "删除",
         "deleteScheduleConfirm": "所有任务将被移除，任何正在运行的进程将被终止。",
         "noSchedules": "此服务器尚未配置任何计划任务。",
+        "active": "已启用",
+        "inactive": "已禁用",
+        "lastRunAt": "上次运行：",
+        "nextRunAt": "下次运行：",
+        "edit": "编辑",
+        "cron": {
+            "minute": "分钟",
+            "hour": "小时",
+            "dayOfMonth": "日期 (月)",
+            "month": "月份",
+            "dayOfWeek": "星期"
+        },
         "editor": {
             "title": "编辑计划任务",
             "createTitle": "创建新计划任务",

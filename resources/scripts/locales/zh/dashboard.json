@@ -18,7 +18,10 @@
         "addedOn": "添加于：",
         "keyName": "SSH 密钥名称",
         "publicKey": "公钥",
-        "publicKeyDescription": "输入您的 SSH 公钥。"
+        "publicKeyDescription": "输入您的 SSH 公钥。",
+        "deleteKey": "删除 SSH 密钥",
+        "deleteKeyConfirm": "删除密钥",
+        "deleteKeyDescription": "删除 {{name}} SSH 密钥将使其在整个面板中失效。"
     },
     "api": {
         "title": "账户 API",
@@ -49,7 +52,11 @@
         "supportAdmin": "支持 - 管理员",
         "sent": "发送于",
         "sortedByLatest": "按最新消息排序",
-        "addMessage": "添加消息"
+        "addMessage": "添加消息",
+        "messageContent": "消息内容",
+        "addToTicket": "添加到工单",
+        "deleteTicketTitle": "确认删除工单",
+        "deleteTicketConfirm": "您确定要删除此工单及其相关消息吗？"
     },
     "password": {
         "currentPassword": "当前密码",

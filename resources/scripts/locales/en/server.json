@@ -5,7 +5,10 @@
         "transferring": "Transferring",
         "maintenanceWarning": "The node of this server is currently under maintenance and all actions are unavailable.",
         "installingWarning": "This server is currently running its installation process and most actions are unavailable.",
-        "transferringWarning": "This server is currently being transferred to another node and all actions are unavailable."
+        "transferringWarning": "This server is currently being transferred to another node and all actions are unavailable.",
+        "askAI": "Ask AI",
+        "serverAssistant": "Server Assistant",
+        "error": "Error"
     },
     "power": {
         "start": "Start",
@@ -109,6 +112,18 @@
         "delete": "Delete",
         "deleteScheduleConfirm": "All tasks will be removed and any running processes will be terminated.",
         "noSchedules": "There are no schedules configured for this server.",
+        "active": "Active",
+        "inactive": "Inactive",
+        "lastRunAt": "Last run at:",
+        "nextRunAt": "Next run at:",
+        "edit": "Edit",
+        "cron": {
+            "minute": "Minute",
+            "hour": "Hour",
+            "dayOfMonth": "Day (Month)",
+            "month": "Month",
+            "dayOfWeek": "Day (Week)"
+        },
         "editor": {
             "title": "Edit Schedule",
             "createTitle": "Create New Schedule",

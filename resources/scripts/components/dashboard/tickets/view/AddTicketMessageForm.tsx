@@ -10,6 +10,7 @@ import { useFlashKey } from '@/plugins/useFlash';
 import FlashMessageRender from '@/components/FlashMessageRender';
 import { createMessage } from '@/api/account/tickets';
 import DeleteTicketDialog from './DeleteTicketDialog';
+import { useTranslation } from 'react-i18next';
 
 interface Values {
     message: string;
@@ -20,6 +21,7 @@ const CustomTextarea = styled(Textarea)`
 `;
 
 export default ({ ticketId }: { ticketId: number }) => {
+    const { t } = useTranslation('dashboard');
     const { clearAndAddHttpError } = useFlashKey('account:tickets:view');
 
     const submit = (values: Values, { setSubmitting }: FormikHelpers<Values>) => {
@@ -47,15 +49,15 @@ export default ({ ticketId }: { ticketId: number }) => {
                         <FlashMessageRender byKey={'account:tickets:view'} className={'mb-4'} />
                         <SpinnerOverlay visible={isSubmitting} />
                         <FormikFieldWrapper
-                            label={'Message Content'}
+                            label={t('tickets.messageContent') as string}
                             name={'message'}
-                            description={'Enter a message for this ticket.'}
+                            description={t('tickets.messageDescription') as string}
                         >
                             <Field name={'message'} as={CustomTextarea} />
                         </FormikFieldWrapper>
                         <div css={tw`flex justify-end mt-6`}>
                             <DeleteTicketDialog />
-                            <Button>Add to Ticket</Button>
+                            <Button>{t('tickets.addToTicket')}</Button>
                         </div>
                     </Form>
                 )}

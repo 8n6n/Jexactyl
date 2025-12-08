@@ -18,6 +18,7 @@ import { format } from 'date-fns';
 import ScheduleCronRow from '@/components/server/schedules/ScheduleCronRow';
 import RunScheduleButton from '@/components/server/schedules/RunScheduleButton';
 import { useStoreState } from '@/state/hooks';
+import { useTranslation } from 'react-i18next';
 
 const CronBox = ({ title, value, color }: { title: string; value: string; color: string }) => (
     <div css={tw`rounded p-3`} style={{ backgroundColor: color }}>
@@ -26,18 +27,19 @@ const CronBox = ({ title, value, color }: { title: string; value: string; color:
     </div>
 );
 
-const ActivePill = ({ active }: { active: boolean }) => (
+const ActivePill = ({ active, t }: { active: boolean; t: (key: string) => string }) => (
     <span
         css={[
             tw`rounded-full px-2 py-px text-xs ml-4 uppercase`,
             active ? tw`bg-green-600 text-green-100` : tw`bg-red-600 text-red-100`,
         ]}
     >
-        {active ? 'Active' : 'Inactive'}
+        {active ? t('schedules.active') : t('schedules.inactive')}
     </span>
 );
 
 export default () => {
+    const { t } = useTranslation('server');
     const { id: scheduleId } = useParams<'id'>();
     const navigate = useNavigate();
 
@@ -77,7 +79,7 @@ export default () => {
     }, []);
 
     return (
-        <PageContentBlock title={'Schedules'}>
+        <PageContentBlock title={t('schedules.title') as string}>
             <FlashMessageRender byKey={'schedules'} css={tw`mb-4`} />
             {!schedule || isLoading ? (
                 <Spinner size={'large'} centered />
@@ -100,18 +102,18 @@ export default () => {
                                             Processing
                                         </span>
                                     ) : (
-                                        <ActivePill active={schedule.isActive} />
+                                        <ActivePill active={schedule.isActive} t={t} />
                                     )}
                                 </h3>
                                 <p css={tw`mt-1 text-sm text-neutral-200`}>
-                                    Last run at:&nbsp;
+                                    {t('schedules.lastRunAt')}&nbsp;
                                     {schedule.lastRunAt ? (
                                         format(schedule.lastRunAt, "MMM do 'at' h:mma")
                                     ) : (
                                         <span css={tw`text-neutral-300`}>n/a</span>
                                     )}
                                     <span css={tw`ml-4 pl-4 border-l-4 border-neutral-600 py-px`}>
-                                        Next run at:&nbsp;
+                                        {t('schedules.nextRunAt')}&nbsp;
                                         {schedule.nextRunAt ? (
                                             format(schedule.nextRunAt, "MMM do 'at' h:mma")
                                         ) : (
@@ -123,32 +125,32 @@ export default () => {
                             <div css={tw`flex sm:block mt-3 sm:mt-0`}>
                                 <Can action={'schedule.update'}>
                                     <Button.Text className={'mr-4 flex-1'} onClick={toggleEditModal}>
-                                        Edit
+                                        {t('schedules.edit')}
                                     </Button.Text>
                                     <NewTaskButton schedule={schedule} />
                                 </Can>
                             </div>
                         </div>
                         <div css={tw`hidden sm:grid grid-cols-5 md:grid-cols-5 gap-4 mb-4 mt-4`}>
-                            <CronBox color={colors.secondary} title={'Minute'} value={schedule.cron.minute} />
-                            <CronBox color={colors.secondary} title={'Hour'} value={schedule.cron.hour} />
-                            <CronBox color={colors.secondary} title={'Day (Month)'} value={schedule.cron.dayOfMonth} />
-                            <CronBox color={colors.secondary} title={'Month'} value={schedule.cron.month} />
-                            <CronBox color={colors.secondary} title={'Day (Week)'} value={schedule.cron.dayOfWeek} />
+                            <CronBox color={colors.secondary} title={t('schedules.cron.minute') as string} value={schedule.cron.minute} />
+                            <CronBox color={colors.secondary} title={t('schedules.cron.hour') as string} value={schedule.cron.hour} />
+                            <CronBox color={colors.secondary} title={t('schedules.cron.dayOfMonth') as string} value={schedule.cron.dayOfMonth} />
+                            <CronBox color={colors.secondary} title={t('schedules.cron.month') as string} value={schedule.cron.month} />
+                            <CronBox color={colors.secondary} title={t('schedules.cron.dayOfWeek') as string} value={schedule.cron.dayOfWeek} />
                         </div>
                         <div css={tw`bg-neutral-700 rounded-b`}>
                             {schedule.tasks.length > 0
                                 ? schedule.tasks
-                                      .sort((a, b) =>
-                                          a.sequenceId === b.sequenceId ? 0 : a.sequenceId > b.sequenceId ? 1 : -1,
-                                      )
-                                      .map(task => (
-                                          <ScheduleTaskRow
-                                              key={`${schedule.id}_${task.id}`}
-                                              task={task}
-                                              schedule={schedule}
-                                          />
-                                      ))
+                                    .sort((a, b) =>
+                                        a.sequenceId === b.sequenceId ? 0 : a.sequenceId > b.sequenceId ? 1 : -1,
+                                    )
+                                    .map(task => (
+                                        <ScheduleTaskRow
+                                            key={`${schedule.id}_${task.id}`}
+                                            task={task}
+                                            schedule={schedule}
+                                        />
+                                    ))
                                 : null}
                         </div>
                     </div>

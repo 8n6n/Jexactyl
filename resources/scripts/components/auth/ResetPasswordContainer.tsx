@@ -12,6 +12,7 @@ import Input from '@elements/Input';
 import tw from 'twin.macro';
 import { Button } from '@elements/button';
 import Label from '@elements/Label';
+import { useTranslation } from 'react-i18next';
 
 interface Values {
     password: string;
@@ -19,6 +20,8 @@ interface Values {
 }
 
 function ResetPasswordContainer() {
+    const { t } = useTranslation('auth');
+    const { t: tc } = useTranslation('common');
     const [email, setEmail] = useState('');
 
     const { clearFlashes, addFlash } = useStoreActions((actions: Actions<ApplicationStore>) => actions.flashes);
@@ -41,7 +44,7 @@ function ResetPasswordContainer() {
                 console.error(error);
 
                 setSubmitting(false);
-                addFlash({ type: 'error', title: 'Error', message: httpErrorToHuman(error) });
+                addFlash({ type: 'error', title: tc('error') as string, message: httpErrorToHuman(error) });
             });
     };
 
@@ -54,33 +57,33 @@ function ResetPasswordContainer() {
             }}
             validationSchema={object().shape({
                 password: string()
-                    .required('A new password is required.')
-                    .min(8, 'Your new password should be at least 8 characters in length.'),
+                    .required(t('validation.passwordRequired') as string)
+                    .min(8, t('validation.passwordMin') as string),
                 passwordConfirmation: string()
-                    .required('Your new password does not match.')
-                    .oneOf([ref('password')], 'Your new password does not match.'),
+                    .required(t('validation.passwordMismatch') as string)
+                    .oneOf([ref('password')], t('validation.passwordMismatch') as string),
             })}
         >
             {({ isSubmitting }) => (
-                <LoginFormContainer title={'Reset Password'} css={tw`w-full flex`}>
+                <LoginFormContainer title={t('resetPassword') as string} css={tw`w-full flex`}>
                     <div>
-                        <Label>Email Address</Label>
+                        <Label>{t('emailAddress')}</Label>
                         <Input value={email} disabled />
                     </div>
                     <div css={tw`mt-6`}>
                         <Field
-                            label={'New Password'}
+                            label={t('newPassword') as string}
                             name={'password'}
                             type={'password'}
-                            description={'Passwords must be at least 8 characters in length.'}
+                            description={t('newPasswordDescription') as string}
                         />
                     </div>
                     <div css={tw`mt-6`}>
-                        <Field label={'Confirm New Password'} name={'passwordConfirmation'} type={'password'} />
+                        <Field label={t('confirmNewPassword') as string} name={'passwordConfirmation'} type={'password'} />
                     </div>
                     <div css={tw`mt-6`}>
                         <Button className={'w-full'} size={Button.Sizes.Large} type={'submit'} disabled={isSubmitting}>
-                            Reset Password
+                            {t('resetPassword')}
                         </Button>
                     </div>
                     <div css={tw`mt-6 text-center`}>
@@ -88,7 +91,7 @@ function ResetPasswordContainer() {
                             to={'/auth/login'}
                             css={tw`text-xs text-neutral-300 tracking-wide no-underline uppercase font-medium hover:text-neutral-600`}
                         >
-                            Return to Login
+                            {t('returnToLogin')}
                         </Link>
                     </div>
                 </LoginFormContainer>
