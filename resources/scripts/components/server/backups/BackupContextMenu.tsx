@@ -20,6 +20,7 @@ import http, { httpErrorToHuman } from '@/api/http';
 import { Dialog } from '@elements/dialog';
 import { Button } from '@elements/button';
 import SpinnerOverlay from '@elements/SpinnerOverlay';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     backup: Backup;
@@ -28,6 +29,7 @@ interface Props {
 }
 
 export default ({ backup, visible, setVisible }: Props) => {
+    const { t } = useTranslation('server');
     const uuid = ServerContext.useStoreState(state => state.server.data!.uuid);
     const setServerFromState = ServerContext.useStoreActions(actions => actions.server.setServerFromState);
     const [modal, setModal] = useState('');
@@ -107,9 +109,9 @@ export default ({ backup, visible, setVisible }: Props) => {
                                 b.uuid !== backup.uuid
                                     ? b
                                     : {
-                                          ...b,
-                                          isLocked: !b.isLocked,
-                                      },
+                                        ...b,
+                                        isLocked: !b.isLocked,
+                                    },
                             ),
                         }),
                         false,
@@ -124,21 +126,20 @@ export default ({ backup, visible, setVisible }: Props) => {
             <Dialog.Confirm
                 open={modal === 'unlock'}
                 onClose={() => setModal('')}
-                title={`Unlock "${backup.name}"`}
+                title={t('backups.unlockTitle', { name: backup.name }) as string}
                 onConfirmed={onLockToggle}
             >
-                This backup will no longer be protected from automated or accidental deletions.
+                {t('backups.unlockWarning')}
             </Dialog.Confirm>
             <Dialog.Confirm
                 open={modal === 'restore'}
                 onClose={() => setModal('')}
-                confirm={'Restore'}
-                title={`Restore "${backup.name}"`}
+                confirm={t('backups.restore') as string}
+                title={t('backups.restoreTitle', { name: backup.name }) as string}
                 onConfirmed={() => doRestorationAction()}
             >
                 <p>
-                    Your server will be stopped. You will not be able to control the power state, access the file
-                    manager, or create additional backups until completed.
+                    {t('backups.restoreWarning')}
                 </p>
                 <p css={tw`mt-4 -mb-2 bg-slate-700 p-3 rounded`}>
                     <label htmlFor={'restore_truncate'} css={tw`text-base flex items-center cursor-pointer`}>
@@ -150,18 +151,18 @@ export default ({ backup, visible, setVisible }: Props) => {
                             checked={truncate}
                             onChange={() => setTruncate(s => !s)}
                         />
-                        Delete all files before restoring backup.
+                        {t('backups.deleteBeforeRestore')}
                     </label>
                 </p>
             </Dialog.Confirm>
             <Dialog.Confirm
-                title={`Delete "${backup.name}"`}
-                confirm={'Continue'}
+                title={t('backups.deleteTitle', { name: backup.name }) as string}
+                confirm={t('backups.continue') as string}
                 open={modal === 'delete'}
                 onClose={() => setModal('')}
                 onConfirmed={doDeletion}
             >
-                This is a permanent operation. The backup cannot be recovered once deleted.
+                {t('backups.deleteWarning')}
             </Dialog.Confirm>
             {!backup.completedAt ? (
                 <FontAwesomeIcon
@@ -173,19 +174,19 @@ export default ({ backup, visible, setVisible }: Props) => {
             ) : (
                 <FontAwesomeIcon icon={faEllipsisH} onClick={() => setVisible(visible => !visible)} size={'lg'} />
             )}
-            <Dialog open={visible} onClose={() => setVisible(false)} title={'Edit Backup'}>
+            <Dialog open={visible} onClose={() => setVisible(false)} title={t('backups.editBackup') as string}>
                 <SpinnerOverlay visible={loading} />
                 <div css={tw`text-sm grid grid-cols-2 lg:grid-cols-3 gap-4`}>
                     <Can action={'backup.download'}>
                         <Button onClick={doDownload}>
                             <FontAwesomeIcon fixedWidth icon={faCloudDownloadAlt} css={tw`text-xs`} />
-                            <span css={tw`ml-2`}>Download</span>
+                            <span css={tw`ml-2`}>{t('backups.download')}</span>
                         </Button>
                     </Can>
                     <Can action={'backup.restore'}>
                         <Button onClick={() => setModal('restore')}>
                             <FontAwesomeIcon fixedWidth icon={faBoxOpen} css={tw`text-xs`} />
-                            <span css={tw`ml-2`}>Restore</span>
+                            <span css={tw`ml-2`}>{t('backups.restore')}</span>
                         </Button>
                     </Can>
                     <Can action={'backup.delete'}>
@@ -196,12 +197,12 @@ export default ({ backup, visible, setVisible }: Props) => {
                                     icon={backup.isLocked ? faUnlock : faLock}
                                     css={tw`text-xs mr-2`}
                                 />
-                                {backup.isLocked ? 'Unlock' : 'Lock'}
+                                {backup.isLocked ? t('backups.unlock') : t('backups.lock')}
                             </Button>
                             {!backup.isLocked && (
                                 <Button.Danger onClick={() => setModal('delete')}>
                                     <FontAwesomeIcon fixedWidth icon={faTrashAlt} css={tw`text-xs`} />
-                                    <span css={tw`ml-2`}>Delete</span>
+                                    <span css={tw`ml-2`}>{t('backups.delete')}</span>
                                 </Button.Danger>
                             )}
                         </>

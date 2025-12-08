@@ -15,14 +15,11 @@ import { Dialog, DialogWrapperContext } from '@elements/dialog';
 import Code from '@elements/Code';
 import asDialog from '@/hoc/asDialog';
 import { FileObject } from '@/api/definitions/server';
+import { useTranslation } from 'react-i18next';
 
 interface Values {
     directoryName: string;
 }
-
-const schema = object().shape({
-    directoryName: string().required('A valid directory name must be provided.'),
-});
 
 const generateDirectoryData = (name: string): FileObject => ({
     key: `dir_${name.split('/', 1)[0] ?? name}`,
@@ -41,13 +38,17 @@ const generateDirectoryData = (name: string): FileObject => ({
 
 const NewDirectoryDialog = asDialog({
     title: 'Create Directory',
-})(() => {
+})(({ t }: { t: (key: string) => string }) => {
     const uuid = ServerContext.useStoreState(state => state.server.data!.uuid);
     const directory = ServerContext.useStoreState(state => state.files.directory);
 
     const { mutate } = useFileManagerSwr();
     const { close } = useContext(DialogWrapperContext);
     const { clearAndAddHttpError } = useFlashKey('files:directory-modal');
+
+    const schema = object().shape({
+        directoryName: string().required('A valid directory name must be provided.'),
+    });
 
     useEffect(() => {
         return () => {
@@ -71,9 +72,9 @@ const NewDirectoryDialog = asDialog({
                 <>
                     <FlashMessageRender key={'files:directory-modal'} />
                     <Form css={tw`m-0`}>
-                        <Field autoFocus id={'directoryName'} name={'directoryName'} label={'Name'} />
+                        <Field autoFocus id={'directoryName'} name={'directoryName'} label={t('files.directoryName')} />
                         <p css={tw`mt-2 text-sm md:text-base break-all`}>
-                            <span css={tw`text-neutral-200`}>This directory will be created as&nbsp;</span>
+                            <span css={tw`text-neutral-200`}>{t('files.directoryWillBeCreated')}&nbsp;</span>
                             <Code>
                                 /home/container/
                                 <span css={tw`text-cyan-200`}>
@@ -84,10 +85,10 @@ const NewDirectoryDialog = asDialog({
                     </Form>
                     <Dialog.Footer>
                         <Button.Text className={'w-full sm:w-auto'} onClick={close}>
-                            Cancel
+                            {t('files.cancel')}
                         </Button.Text>
                         <Button className={'w-full sm:w-auto'} onClick={submitForm}>
-                            Create
+                            {t('files.create')}
                         </Button>
                     </Dialog.Footer>
                 </>
@@ -97,13 +98,14 @@ const NewDirectoryDialog = asDialog({
 });
 
 export default ({ className }: WithClassname) => {
+    const { t } = useTranslation('server');
     const [open, setOpen] = useState(false);
 
     return (
         <>
-            <NewDirectoryDialog open={open} onClose={setOpen.bind(this, false)} />
+            <NewDirectoryDialog open={open} onClose={setOpen.bind(this, false)} t={t} />
             <Button.Text onClick={setOpen.bind(this, true)} className={className}>
-                Create Directory
+                {t('files.createDirectory')}
             </Button.Text>
         </>
     );

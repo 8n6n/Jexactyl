@@ -34,10 +34,12 @@
         "rename": "Rename",
         "move": "Move",
         "copy": "Copy",
+        "copyFile": "Copy File",
         "compress": "Compress",
         "decompress": "Decompress",
         "delete": "Delete",
         "chmod": "Change Permissions",
+        "permissions": "Permissions",
         "archiving": "Archiving files...",
         "deleting": "Deleting files...",
         "emptyDirectory": "This directory seems to be empty.",
@@ -45,7 +47,23 @@
         "sftpDetails": "SFTP Details",
         "serverAddress": "Server Address",
         "sftpPasswordHint": "Your SFTP password is the same as the password you use to access this panel.",
-        "launchSftp": "Launch SFTP"
+        "launchSftp": "Launch SFTP",
+        "fileOptions": "File Options",
+        "extractFiles": "Extract Files",
+        "archiveFile": "Archive File",
+        "archive": "Archive",
+        "deleteFile": "Delete {{type}}",
+        "deleteFileConfirm": "You will not be able to recover the contents of {{name}} once deleted.",
+        "deleteFilesTitle": "Delete Files",
+        "deleteFilesConfirm": "Are you sure you want to delete {{count}} files? This is a permanent action and the files cannot be recovered.",
+        "andOthers": "and {{count}} others",
+        "createDirectory": "Create Directory",
+        "directoryName": "Name",
+        "directoryWillBeCreated": "This directory will be created as",
+        "cancel": "Cancel",
+        "create": "Create",
+        "file": "File",
+        "directory": "Directory"
     },
     "databases": {
         "title": "Databases",
@@ -61,6 +79,18 @@
         "databaseNameDescription": "A descriptive name for your database instance.",
         "connectionsFrom": "Connections From",
         "connectionsFromDescription": "Where connections should be allowed from. Leave blank to allow connections from anywhere.",
+        "confirmDelete": "Confirm database deletion",
+        "deleteWarning": "Deleting a database is a permanent action, it cannot be undone. This will permanently delete the {{name}} database and remove all associated data.",
+        "confirmName": "Confirm Database Name",
+        "confirmNameDescription": "Enter the database name to confirm deletion.",
+        "cancel": "Cancel",
+        "deleteDatabase": "Delete Database",
+        "connectionDetails": "Database connection details",
+        "endpoint": "Endpoint",
+        "username": "Username",
+        "password": "Password",
+        "jdbcString": "JDBC Connection String",
+        "close": "Close",
         "validation": {
             "nameRequired": "A database name must be provided.",
             "nameMin": "Database name must be at least 3 characters.",
@@ -76,6 +106,8 @@
         "editSchedule": "Edit Schedule",
         "runNow": "Run Now",
         "deleteSchedule": "Delete Schedule",
+        "delete": "Delete",
+        "deleteScheduleConfirm": "All tasks will be removed and any running processes will be terminated.",
         "noSchedules": "There are no schedules configured for this server.",
         "editor": {
             "title": "Edit Schedule",
@@ -113,7 +145,14 @@
             "continueOnFailure": "Continue on Failure",
             "continueOnFailureDescription": "Future tasks will be run when this task fails.",
             "save": "Save Changes",
-            "create": "Create Task"
+            "create": "Create Task",
+            "confirmDelete": "Confirm task deletion",
+            "deleteButton": "Delete Task",
+            "deleteConfirm": "Are you sure you want to delete this task? This action cannot be undone.",
+            "unknownAction": "Unknown Action",
+            "ignoringFilesLabel": "Ignoring files & folders:",
+            "continuesOnFailure": "Continues on Failure",
+            "secondsLater": "s later"
         }
     },
     "users": {
@@ -142,7 +181,9 @@
             "emailMax": "Email addresses must not exceed 191 characters.",
             "emailValid": "A valid email address must be provided.",
             "emailRequired": "A valid email address must be provided."
-        }
+        },
+        "twoFactorEnabled": "2FA Enabled",
+        "permissions": "Permissions"
     },
     "backups": {
         "title": "Backups",
@@ -163,14 +204,28 @@
         "ignoredFilesDescription": "Enter the files or folders to ignore while generating this backup. Leave blank to use the contents of the .pteroignore file in the root of the server directory if present. Wildcard matching of files and folders is supported in addition to negating a rule by prefixing the path with an exclamation point.",
         "locked": "Locked",
         "lockedDescription": "Prevents this backup from being deleted until explicitly unlocked.",
-        "startBackup": "Start backup"
+        "startBackup": "Start backup",
+        "editBackup": "Edit Backup",
+        "unlockTitle": "Unlock \"{{name}}\"",
+        "unlockWarning": "This backup will no longer be protected from automated or accidental deletions.",
+        "restoreTitle": "Restore \"{{name}}\"",
+        "restoreWarning": "Your server will be stopped. You will not be able to control the power state, access the file manager, or create additional backups until completed.",
+        "deleteBeforeRestore": "Delete all files before restoring backup.",
+        "deleteTitle": "Delete \"{{name}}\"",
+        "deleteWarning": "This is a permanent operation. The backup cannot be recovered once deleted.",
+        "continue": "Continue"
     },
     "network": {
         "title": "Network",
         "description": "Assign, edit and remove ports from this server.",
         "createAllocation": "Create Allocation",
         "notes": "Notes",
-        "allocationCount": "You are currently using {{count}} of {{limit}} allowed allocations for this server."
+        "allocationCount": "You are currently using {{count}} of {{limit}} allowed allocations for this server.",
+        "hostname": "Hostname",
+        "ipAddress": "IP Address",
+        "port": "Port",
+        "primary": "Primary",
+        "makePrimary": "Make Primary"
     },
     "startup": {
         "title": "Startup",
@@ -219,5 +274,36 @@
             "inbound": "Inbound",
             "outbound": "Outbound"
         }
+    },
+    "conflict": {
+        "installerTitle": "Running Installer",
+        "installerMessage": "Your server should be ready soon, please try again in a few minutes.",
+        "suspendedTitle": "Server Suspended",
+        "suspendedMessage": "This server is suspended and cannot be accessed.",
+        "maintenanceTitle": "Node under Maintenance",
+        "maintenanceMessage": "The node of this server is currently under maintenance.",
+        "transferringTitle": "Transferring",
+        "transferringMessage": "Your server is being transferred to a new node, please check back later.",
+        "restoringTitle": "Restoring from Backup",
+        "restoringMessage": "Your server is currently being restored from a backup, please check back in a few minutes."
+    },
+    "billing": {
+        "title": "Server Billing",
+        "description": "Control your billing settings for this server.",
+        "productNotExist": "The product package you purchase initially no longer exists, so some details may not be shown.",
+        "noRenewalDate": "There is no present renewal date for your server.",
+        "summary": "Summary",
+        "nextRenewal": "Next renewal due",
+        "yourPackage": "Your package",
+        "unknown": "Unknown",
+        "planCost": "Plan cost",
+        "every30Days": "every 30 days",
+        "viewOrder": "View order",
+        "renewServer": "Renew Server",
+        "renewDescription": "If you renew now, your server will be active for a further 30 days, making your next renewal date",
+        "productNoLongerExists": "The product package that the server was made with no longer exists. In order to renew your server, you'll need to speak to an administrator.",
+        "cannotRenewFree": "You cannot renew a free server. It will be renewed automatically.",
+        "days": "days",
+        "hours": "hours"
     }
 }

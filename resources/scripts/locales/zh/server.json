@@ -34,10 +34,12 @@
         "rename": "重命名",
         "move": "移动",
         "copy": "复制",
+        "copyFile": "复制文件",
         "compress": "压缩",
         "decompress": "解压",
         "delete": "删除",
         "chmod": "修改权限",
+        "permissions": "权限",
         "archiving": "正在归档文件...",
         "deleting": "正在删除文件...",
         "emptyDirectory": "此目录似乎为空。",
@@ -45,7 +47,23 @@
         "sftpDetails": "SFTP 详情",
         "serverAddress": "服务器地址",
         "sftpPasswordHint": "您的 SFTP 密码与登录此面板的密码相同。",
-        "launchSftp": "启动 SFTP"
+        "launchSftp": "启动 SFTP",
+        "fileOptions": "文件选项",
+        "extractFiles": "解压文件",
+        "archiveFile": "归档文件",
+        "archive": "归档",
+        "deleteFile": "删除{{type}}",
+        "deleteFileConfirm": "删除后将无法恢复 {{name}} 的内容。",
+        "deleteFilesTitle": "删除文件",
+        "deleteFilesConfirm": "您确定要删除 {{count}} 个文件吗？此操作不可撤销，文件将无法恢复。",
+        "andOthers": "以及其他 {{count}} 个",
+        "createDirectory": "创建目录",
+        "directoryName": "名称",
+        "directoryWillBeCreated": "此目录将创建为",
+        "cancel": "取消",
+        "create": "创建",
+        "file": "文件",
+        "directory": "目录"
     },
     "databases": {
         "title": "数据库",
@@ -61,6 +79,18 @@
         "databaseNameDescription": "数据库实例的描述性名称。",
         "connectionsFrom": "连接来源",
         "connectionsFromDescription": "允许从哪里进行连接。留空以允许来自任何地方的连接。",
+        "confirmDelete": "确认删除数据库",
+        "deleteWarning": "删除数据库是永久操作，无法撤销。这将永久删除 {{name}} 数据库并移除所有相关数据。",
+        "confirmName": "确认数据库名称",
+        "confirmNameDescription": "输入数据库名称以确认删除。",
+        "cancel": "取消",
+        "deleteDatabase": "删除数据库",
+        "connectionDetails": "数据库连接详情",
+        "endpoint": "端点",
+        "username": "用户名",
+        "password": "密码",
+        "jdbcString": "JDBC 连接字符串",
+        "close": "关闭",
         "validation": {
             "nameRequired": "必须提供数据库名称。",
             "nameMin": "数据库名称至少需要 3 个字符。",
@@ -76,6 +106,8 @@
         "editSchedule": "编辑计划任务",
         "runNow": "立即运行",
         "deleteSchedule": "删除计划任务",
+        "delete": "删除",
+        "deleteScheduleConfirm": "所有任务将被移除，任何正在运行的进程将被终止。",
         "noSchedules": "此服务器尚未配置任何计划任务。",
         "editor": {
             "title": "编辑计划任务",
@@ -113,7 +145,14 @@
             "continueOnFailure": "失败后继续",
             "continueOnFailureDescription": "当此任务失败时，后续任务仍将运行。",
             "save": "保存更改",
-            "create": "创建任务"
+            "create": "创建任务",
+            "confirmDelete": "确认删除任务",
+            "deleteButton": "删除任务",
+            "deleteConfirm": "您确定要删除此任务吗？此操作无法撤销。",
+            "unknownAction": "未知动作",
+            "ignoringFilesLabel": "忽略的文件和文件夹：",
+            "continuesOnFailure": "失败后继续",
+            "secondsLater": "秒后"
         }
     },
     "users": {
@@ -142,7 +181,9 @@
             "emailMax": "邮箱地址长度不能超过 191 个字符。",
             "emailValid": "必须提供有效的邮箱地址。",
             "emailRequired": "必须提供有效的邮箱地址。"
-        }
+        },
+        "twoFactorEnabled": "已启用 2FA",
+        "permissions": "权限"
     },
     "backups": {
         "title": "备份",
@@ -163,14 +204,28 @@
         "ignoredFilesDescription": "输入生成备份时要忽略的文件或文件夹。留空将使用服务器根目录中 .pteroignore 文件的内容（如果存在）。支持文件和文件夹的通配符匹配，也可以通过在路径前添加感叹号来否定规则。",
         "locked": "已锁定",
         "lockedDescription": "防止此备份被删除，直到明确解锁。",
-        "startBackup": "开始备份"
+        "startBackup": "开始备份",
+        "editBackup": "编辑备份",
+        "unlockTitle": "解锁 \"{{name}}\"",
+        "unlockWarning": "此备份将不再受到自动或意外删除的保护。",
+        "restoreTitle": "恢复 \"{{name}}\"",
+        "restoreWarning": "您的服务器将停止。在恢复完成之前，您将无法控制电源状态、访问文件管理器或创建其他备份。",
+        "deleteBeforeRestore": "恢复备份前删除所有文件。",
+        "deleteTitle": "删除 \"{{name}}\"",
+        "deleteWarning": "这是永久操作。备份一旦删除将无法恢复。",
+        "continue": "继续"
     },
     "network": {
         "title": "网络",
         "description": "为此服务器分配、编辑和删除端口。",
         "createAllocation": "创建端口分配",
         "notes": "备注",
-        "allocationCount": "您当前正在使用此服务器允许的 {{count}}/{{limit}} 个端口分配。"
+        "allocationCount": "您当前正在使用此服务器允许的 {{count}}/{{limit}} 个端口分配。",
+        "hostname": "主机名",
+        "ipAddress": "IP 地址",
+        "port": "端口",
+        "primary": "主要",
+        "makePrimary": "设为主要"
     },
     "startup": {
         "title": "启动配置",
@@ -219,5 +274,36 @@
             "inbound": "入站",
             "outbound": "出站"
         }
+    },
+    "conflict": {
+        "installerTitle": "正在安装",
+        "installerMessage": "您的服务器即将准备就绪，请稍后再试。",
+        "suspendedTitle": "服务器已暂停",
+        "suspendedMessage": "此服务器已被暂停，无法访问。",
+        "maintenanceTitle": "节点维护中",
+        "maintenanceMessage": "此服务器所在的节点当前正在维护中。",
+        "transferringTitle": "正在迁移",
+        "transferringMessage": "您的服务器正在迁移到新节点，请稍后再查看。",
+        "restoringTitle": "正在从备份恢复",
+        "restoringMessage": "您的服务器当前正在从备份恢复，请稍后再试。"
+    },
+    "billing": {
+        "title": "服务器账单",
+        "description": "控制此服务器的账单设置。",
+        "productNotExist": "您最初购买的产品套餐已不存在，因此某些详细信息可能无法显示。",
+        "noRenewalDate": "您的服务器目前没有续费日期。",
+        "summary": "摘要",
+        "nextRenewal": "下次续费",
+        "yourPackage": "您的套餐",
+        "unknown": "未知",
+        "planCost": "套餐费用",
+        "every30Days": "每30天",
+        "viewOrder": "查看订单",
+        "renewServer": "续费服务器",
+        "renewDescription": "如果您现在续费，您的服务器将再运行30天，下次续费日期为",
+        "productNoLongerExists": "服务器创建时使用的产品套餐已不存在。要续费服务器，您需要联系管理员。",
+        "cannotRenewFree": "您无法续费免费服务器。它将自动续费。",
+        "days": "天",
+        "hours": "小时"
     }
 }

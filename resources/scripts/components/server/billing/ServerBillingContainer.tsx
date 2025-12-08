@@ -14,6 +14,7 @@ import PaymentContainer from './PaymentContainer';
 import { useStoreState } from '@/state/hooks';
 import PageContentBlock from '@/components/elements/PageContentBlock';
 import { format } from 'date-fns';
+import { useTranslation } from 'react-i18next';
 
 function timeUntil(targetDate: Date | string) {
     const date = targetDate instanceof Date ? targetDate : new Date(targetDate);
@@ -34,6 +35,7 @@ function addDays(date: Date | string, days: number) {
 }
 
 export default () => {
+    const { t } = useTranslation('server');
     const [product, setProduct] = useState<Product>();
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -58,69 +60,66 @@ export default () => {
 
     return (
         <PageContentBlock
-            title={'Server Billing'}
+            title={t('billing.title') as string}
             header
-            description={'Control your billing settings for this server.'}
+            description={t('billing.description') as string}
         >
             {!product && !loading && (
                 <Alert type={'warning'} className={'mb-6'}>
-                    The product package you purchase initially no longer exists, so some details may not be shown.
+                    {t('billing.productNotExist')}
                 </Alert>
             )}
             <div className={'grid lg:grid-cols-3 gap-4'}>
                 {!renewalDate ? (
-                    <Alert type={'warning'}>There is no present renewal date for your server.</Alert>
+                    <Alert type={'warning'}>{t('billing.noRenewalDate')}</Alert>
                 ) : (
-                    <ContentBox title={'Summary'}>
+                    <ContentBox title={t('billing.summary') as string}>
                         <SpinnerOverlay visible={loading} />
                         <div>
-                            <Label>Next renewal due</Label>
+                            <Label>{t('billing.nextRenewal')}</Label>
                             <p className={'text-gray-400 text-sm'}>
                                 {new Date(renewalDate).toLocaleDateString()}
                                 {' - '}
-                                {timeUntil(renewalDate).days} days, {timeUntil(renewalDate).hours} hours
+                                {timeUntil(renewalDate).days} {t('billing.days')}, {timeUntil(renewalDate).hours} {t('billing.hours')}
                             </p>
                         </div>
                         <div className={'my-6'}>
-                            <Label>Your package</Label>
-                            <p className={'text-gray-400 text-sm'}>{product ? product.name : 'Unknown'}</p>
+                            <Label>{t('billing.yourPackage')}</Label>
+                            <p className={'text-gray-400 text-sm'}>{product ? product.name : t('billing.unknown')}</p>
                             <p className={'text-gray-500 text-xs'}>{product && product.description}</p>
                         </div>
                         <div>
-                            <Label>Plan cost</Label>
+                            <Label>{t('billing.planCost')}</Label>
                             <div className={'flex justify-between'}>
                                 <p className={'text-gray-400 text-sm'}>
                                     {settings.currency.symbol}
-                                    {product ? product.price : '...'} {settings.currency.code.toUpperCase()} every 30
-                                    days
+                                    {product ? product.price : '...'} {settings.currency.code.toUpperCase()} {t('billing.every30Days')}
                                 </p>
                                 <Link to={'/account/billing/orders'} className={'text-green-400 text-xs'}>
-                                    View order <FontAwesomeIcon icon={faArrowRight} />
+                                    {t('billing.viewOrder')} <FontAwesomeIcon icon={faArrowRight} />
                                 </Link>
                             </div>
                         </div>
                     </ContentBox>
                 )}
-                <ContentBox title={'Renew Server'} className={'lg:col-span-2'}>
+                <ContentBox title={t('billing.renewServer') as string} className={'lg:col-span-2'}>
                     <div className={'mb-4'}>
                         <p className={'text-gray-400 text-xs'}>
-                            If you renew now, your server will be active for a further 30 days, making your next renewal
-                            date
+                            {t('billing.renewDescription')}
                             <strong className={'ml-1'}>
-                                {renewalDate ? format(addDays(renewalDate, 30), 'do MMMM yyyy') : 'Unknown'}
+                                {renewalDate ? format(addDays(renewalDate, 30), 'do MMMM yyyy') : t('billing.unknown')}
                             </strong>
                             .
                         </p>
                     </div>
                     {!product ? (
                         <Alert type={'danger'}>
-                            The product package that the server was made with no longer exists. In order to renew your
-                            server, you&apos;ll need to speak to an administrator.
+                            {t('billing.productNoLongerExists')}
                         </Alert>
                     ) : (
                         <>
                             {product.price === 0 ? (
-                                <>You cannot renew a free server. It will be renewed automatically.</>
+                                <>{t('billing.cannotRenewFree')}</>
                             ) : (
                                 <PaymentContainer id={Number(product.id)} />
                             )}

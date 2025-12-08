@@ -26,10 +26,12 @@ import {
     PencilIcon,
     TrashIcon,
 } from '@heroicons/react/outline';
+import { useTranslation } from 'react-i18next';
 
 type ModalType = 'rename' | 'move' | 'chmod';
 
 const FileDropdownMenu = ({ file }: { file: FileObject }) => {
+    const { t } = useTranslation('server');
     const onClickRef = useRef<DropdownMenu>(null);
     const [visible, setVisible] = useState<boolean>(false);
     const [modal, setModal] = useState<ModalType | null>(null);
@@ -132,12 +134,11 @@ const FileDropdownMenu = ({ file }: { file: FileObject }) => {
             <Dialog.Confirm
                 open={showConfirmation}
                 onClose={() => setShowConfirmation(false)}
-                title={`Delete ${file.isFile ? 'File' : 'Directory'}`}
-                confirm={'Delete'}
+                title={t('files.deleteFile', { type: file.isFile ? t('files.file') : t('files.directory') }) as string}
+                confirm={t('files.delete') as string}
                 onConfirmed={doDeletion}
             >
-                You will not be able to recover the contents of&nbsp;
-                <span className={'font-semibold text-slate-50'}>{file.name}</span> once deleted.
+                {t('files.deleteFileConfirm', { name: file.name })}
             </Dialog.Confirm>
             <div
                 css={tw`absolute top-0 right-0 p-2 hover:text-white text-gray-400 duration-250`}
@@ -146,27 +147,27 @@ const FileDropdownMenu = ({ file }: { file: FileObject }) => {
                 <FontAwesomeIcon icon={faEllipsisH} className={'p-1 bg-black/25 rounded'} />
             </div>
             {visible && (
-                <Dialog open={visible} onClose={() => setVisible(false)} title={'File Options'}>
+                <Dialog open={visible} onClose={() => setVisible(false)} title={t('files.fileOptions') as string}>
                     <div className={'grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4 mt-6'}>
                         <Can action={'file.update'}>
                             <Button.Text onClick={() => setModal('rename')} className={'w-full'}>
                                 <PencilIcon className={'w-4 mt-0.5 mr-2'} />
-                                Rename
+                                {t('files.rename')}
                             </Button.Text>
                             <Button.Text onClick={() => setModal('move')} className={'w-full'}>
                                 <ArrowUpIcon className={'w-4 mt-0.5 mr-2'} />
-                                Move
+                                {t('files.move')}
                             </Button.Text>
                             <Button.Text onClick={() => setModal('chmod')} className={'w-full'}>
                                 <CogIcon className={'w-4 mt-0.5 mr-2'} />
-                                Permissions
+                                {t('files.permissions')}
                             </Button.Text>
                         </Can>
                         {file.isFile && (
                             <Can action={'file.create'}>
                                 <Button.Text onClick={doCopy}>
                                     <ClipboardCopyIcon className={'w-4 mt-0.5 mr-2'} />
-                                    Copy File
+                                    {t('files.copyFile')}
                                 </Button.Text>
                             </Can>
                         )}
@@ -174,27 +175,27 @@ const FileDropdownMenu = ({ file }: { file: FileObject }) => {
                             <Can action={'file.create'}>
                                 <Button.Text onClick={doUnarchive}>
                                     <InboxIcon className={'w-4 mt-0.5 mr-2'} />
-                                    Extract Files
+                                    {t('files.extractFiles')}
                                 </Button.Text>
                             </Can>
                         ) : (
                             <Can action={'file.archive'}>
                                 <Button.Text onClick={doArchive}>
                                     <ArchiveIcon className={'w-4 mt-0.5 mr-2'} />
-                                    Archive File
+                                    {t('files.archiveFile')}
                                 </Button.Text>
                             </Can>
                         )}
                         {file.isFile && (
                             <Button.Text onClick={doDownload}>
                                 <DownloadIcon className={'w-4 mt-0.5 mr-2'} />
-                                Download
+                                {t('files.download')}
                             </Button.Text>
                         )}
                         <Can action={'file.archive'}>
                             <Button.Danger onClick={() => setShowConfirmation(true)}>
                                 <TrashIcon className={'w-4 mt-0.5 mr-2'} />
-                                Delete
+                                {t('files.delete')}
                             </Button.Danger>
                         </Can>
                     </div>
