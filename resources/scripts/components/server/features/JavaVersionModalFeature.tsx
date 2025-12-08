@@ -11,6 +11,7 @@ import Select from '@elements/Select';
 import useWebsocketEvent from '@/plugins/useWebsocketEvent';
 import Can from '@elements/Can';
 import InputSpinner from '@elements/InputSpinner';
+import { useTranslation } from 'react-i18next';
 
 const MATCH_ERRORS = [
     'minecraft 1.17 requires running the server with java 16 or above',
@@ -21,6 +22,7 @@ const MATCH_ERRORS = [
 ];
 
 const JavaVersionModalFeature = () => {
+    const { t } = useTranslation('server');
     const [visible, setVisible] = useState(false);
     const [loading, setLoading] = useState(false);
     const [selectedVersion, setSelectedVersion] = useState('');
@@ -75,11 +77,11 @@ const JavaVersionModalFeature = () => {
             showSpinnerOverlay={loading}
         >
             <FlashMessageRender key={'feature:javaVersion'} css={tw`mb-4`} />
-            <h2 css={tw`text-2xl mb-4 text-neutral-100`}>Unsupported Java Version</h2>
+            <h2 css={tw`text-2xl mb-4 text-neutral-100`}>{t('features.javaVersion.title')}</h2>
             <p css={tw`mt-4`}>
-                This server is currently running an unsupported version of Java and cannot be started.
+                {t('features.javaVersion.description')}
                 <Can action={'startup.docker-image'}>
-                    &nbsp;Please select a supported version from the list below to continue starting the server.
+                    &nbsp;{t('features.javaVersion.selectDescription')}
                 </Can>
             </p>
             <Can action={'startup.docker-image'}>
@@ -101,11 +103,11 @@ const JavaVersionModalFeature = () => {
             </Can>
             <div css={tw`mt-8 flex flex-col sm:flex-row justify-end sm:space-x-4 space-y-4 sm:space-y-0`}>
                 <Button onClick={() => setVisible(false)} css={tw`w-full sm:w-auto`}>
-                    Cancel
+                    {t('files.cancel')}
                 </Button>
                 <Can action={'startup.docker-image'}>
                     <Button onClick={updateJava} css={tw`w-full sm:w-auto`}>
-                        Update Docker Image
+                        {t('features.javaVersion.update')}
                     </Button>
                 </Can>
             </div>

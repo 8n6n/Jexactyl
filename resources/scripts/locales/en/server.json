@@ -305,5 +305,46 @@
         "cannotRenewFree": "You cannot renew a free server. It will be renewed automatically.",
         "days": "days",
         "hours": "hours"
+    },
+    "features": {
+        "gslToken": {
+            "title": "Invalid GSL token!",
+            "description1": "It seems like your Gameserver Login Token (GSL token) is invalid or has expired.",
+            "description2": "You can either generate a new one and enter it below or leave the field blank to remove it completely.",
+            "label": "GSL Token",
+            "hint": "Visit https://steamcommunity.com/dev/managegameservers to generate a token.",
+            "update": "Update GSL Token"
+        },
+        "javaVersion": {
+            "title": "Unsupported Java Version",
+            "description": "This server is currently running an unsupported version of Java and cannot be started.",
+            "selectLabel": "Select Java Version",
+            "selectDescription": "Select a Java version from the list below to use when running this server.",
+            "update": "Update Docker Image"
+        },
+        "pidLimit": {
+            "title": "Memory or process limit reached...",
+            "description": "This server has reached the maximum process or memory limit.",
+            "adminHint": "Increasing container_pid_limit in the wings configuration (config.yml) might help resolve this issue.",
+            "restartNote": "Note: Wings must be restarted for the configuration file changes to take effect",
+            "userTitle": "Possible resource limit reached...",
+            "userDescription": "This server is attempting to use more resources than allocated. Please contact the administrator and give them the error below.",
+            "selectLabel": "Limit container PIDs",
+            "selectDescription": "Select the limit for the maximum amount of processes the server may run at one time. If the server exceeds this limit, you can change it below.",
+            "update": "Update Limit"
+        },
+        "diskSpace": {
+            "title": "Out of disk space...",
+            "description": "This server has run out of available disk space and cannot complete the install or update process.",
+            "hint": "To resolve this issue you will need to delete files or purchase additional space.",
+            "adminHint": "Ensure the machine has enough disk space by running df -h. Delete files or increase the available disk space to resolve the issue.",
+            "userDescription": "This server has run out of available disk space and cannot complete the install or update process. Please get in touch with the administrator(s) and inform them of disk space issues.",
+            "close": "Close"
+        },
+        "eula": {
+            "title": "Accept Minecraft EULA",
+            "description": "By pressing \"I Accept\" below you are indicating your agreement to the Minecraft EULA.",
+            "accept": "I Accept"
+        }
     }
 }

@@ -55,5 +55,7 @@
             "cancel": "取消",
             "confirm": "禁用"
         }
-    }
+    },
+    "groupRemovedSuccess": "服务器组移除成功。",
+    "addGroup": "添加分组"
 }

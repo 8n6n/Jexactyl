@@ -22,6 +22,7 @@ import { type ServerGroup } from '@definitions/server';
 import Pill from '@elements/Pill';
 import { VisibleDialog } from './groups/ServerGroupDialog';
 import useFlash from '@/plugins/useFlash';
+import { useTranslation } from 'react-i18next';
 
 export function statusToColor(state?: ServerPowerState): string {
     switch (state) {
@@ -80,6 +81,7 @@ export default ({
     group?: ServerGroup;
     setOpen: React.Dispatch<React.SetStateAction<VisibleDialog>>;
 }) => {
+    const { t } = useTranslation('dashboard');
     const { clearFlashes, addFlash, clearAndAddHttpError } = useFlash();
     const [stats, setStats] = useState<ServerStats>();
     const colors = useStoreState(state => state.theme.data!.colors);
@@ -92,7 +94,7 @@ export default ({
 
         removeServerFromGroup(group!.id, server.uuid)
             .then(() => {
-                addFlash({ type: 'success', key: 'dashboard:groups', message: 'Server group removed successfully.' });
+                addFlash({ type: 'success', key: 'dashboard:groups', message: t('groupRemovedSuccess') });
                 setOpen({ open: 'none', serverId: undefined });
                 setRemoved(true);
             })
@@ -168,7 +170,7 @@ export default ({
                             }
                         >
                             <FontAwesomeIcon icon={faPlus} className={'mr-1 my-auto'} />
-                            Add Group
+                            {t('addGroup')}
                         </div>
                     )}
                 </div>

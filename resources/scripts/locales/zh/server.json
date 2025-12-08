@@ -1,11 +1,11 @@
 {
     "console": {
         "title": "服务器控制台",
-        "installing": "安装中",
-        "transferring": "迁移中",
-        "maintenanceWarning": "此服务器的节点当前正在维护中，所有操作均不可用。",
+        "installing": "正在安装",
+        "transferring": "正在迁移",
+        "maintenanceWarning": "此服务器所在的节点当前正在维护中，所有操作不可用。",
         "installingWarning": "此服务器当前正在运行安装过程，大多数操作不可用。",
-        "transferringWarning": "此服务器当前正在迁移到另一个节点，所有操作均不可用。"
+        "transferringWarning": "此服务器当前正在迁移到另一个节点，所有操作不可用。"
     },
     "power": {
         "start": "启动",
@@ -38,25 +38,25 @@
         "compress": "压缩",
         "decompress": "解压",
         "delete": "删除",
-        "chmod": "修改权限",
+        "chmod": "更改权限",
         "permissions": "权限",
         "archiving": "正在归档文件...",
         "deleting": "正在删除文件...",
         "emptyDirectory": "此目录似乎为空。",
-        "tooManyFiles": "此目录文件过多，无法在浏览器中完整显示，仅显示前 250 个文件。",
+        "tooManyFiles": "此目录太大，无法在浏览器中显示，已限制为前 250 个文件。",
         "sftpDetails": "SFTP 详情",
         "serverAddress": "服务器地址",
-        "sftpPasswordHint": "您的 SFTP 密码与登录此面板的密码相同。",
+        "sftpPasswordHint": "您的 SFTP 密码与访问此面板的密码相同。",
         "launchSftp": "启动 SFTP",
         "fileOptions": "文件选项",
         "extractFiles": "解压文件",
         "archiveFile": "归档文件",
         "archive": "归档",
-        "deleteFile": "删除{{type}}",
+        "deleteFile": "删除 {{type}}",
         "deleteFileConfirm": "删除后将无法恢复 {{name}} 的内容。",
         "deleteFilesTitle": "删除文件",
-        "deleteFilesConfirm": "您确定要删除 {{count}} 个文件吗？此操作不可撤销，文件将无法恢复。",
-        "andOthers": "以及其他 {{count}} 个",
+        "deleteFilesConfirm": "您确定要删除 {{count}} 个文件吗？这是永久操作，文件将无法恢复。",
+        "andOthers": "和其他 {{count}} 个",
         "createDirectory": "创建目录",
         "directoryName": "名称",
         "directoryWillBeCreated": "此目录将创建为",
@@ -67,18 +67,18 @@
     },
     "databases": {
         "title": "数据库",
-        "description": "为您的服务器分配数据库。",
+        "description": "为您的服务器直接分配数据库。",
         "createNew": "创建新数据库",
         "rotatePassword": "轮换密码",
         "showPassword": "显示密码",
         "copyPassword": "复制密码",
-        "noDatabases": "您还没有创建任何数据库。",
+        "noDatabases": "看起来您还没有数据库。",
         "limitZero": "无法为此服务器创建数据库。",
         "databaseCount": "已为此服务器分配 {{count}}/{{limit}} 个数据库。",
         "databaseName": "数据库名称",
-        "databaseNameDescription": "数据库实例的描述性名称。",
+        "databaseNameDescription": "您的数据库实例的描述性名称。",
         "connectionsFrom": "连接来源",
-        "connectionsFromDescription": "允许从哪里进行连接。留空以允许来自任何地方的连接。",
+        "connectionsFromDescription": "应允许从哪里进行连接。留空可允许从任何地方连接。",
         "confirmDelete": "确认删除数据库",
         "deleteWarning": "删除数据库是永久操作，无法撤销。这将永久删除 {{name}} 数据库并移除所有相关数据。",
         "confirmName": "确认数据库名称",
@@ -95,7 +95,7 @@
             "nameRequired": "必须提供数据库名称。",
             "nameMin": "数据库名称至少需要 3 个字符。",
             "nameMax": "数据库名称不能超过 48 个字符。",
-            "nameFormat": "数据库名称只能包含字母数字字符、下划线、短横线和/或句点。",
+            "nameFormat": "数据库名称只能包含字母数字字符、下划线、破折号和/或句点。",
             "hostFormat": "必须提供有效的主机地址。"
         }
     },
@@ -115,9 +115,9 @@
             "name": "计划任务名称",
             "nameDescription": "此计划任务的可读标识符。",
             "cheatsheet": "显示速查表",
-            "cheatsheetDescription": "显示 Cron 速查表以获取示例。",
-            "onlineOnly": "仅当服务器在线时",
-            "onlineOnlyDescription": "仅当服务器处于运行状态时执行此计划任务。",
+            "cheatsheetDescription": "显示 cron 速查表以获取一些示例。",
+            "onlineOnly": "仅在服务器在线时",
+            "onlineOnlyDescription": "仅在服务器处于运行状态时执行此计划任务。",
             "enabled": "启用计划任务",
             "enabledDescription": "如果启用，此计划任务将自动执行。",
             "save": "保存更改",
@@ -126,9 +126,9 @@
         "time": {
             "minute": "分钟",
             "hour": "小时",
-            "dayOfMonth": "几号",
+            "dayOfMonth": "日期",
             "month": "月份",
-            "dayOfWeek": "星期几"
+            "dayOfWeek": "星期"
         },
         "task": {
             "editTitle": "编辑任务",
@@ -234,8 +234,8 @@
         "startupCommand": "启动命令",
         "dockerImageDescription": "这是一个高级功能，允许您选择运行此服务器实例时使用的 Docker 镜像。",
         "customImageNotice": "此服务器的 Docker 镜像已由管理员手动设置，无法通过此界面更改。",
-        "variables": "变量",
-        "readOnly": "只读"
+        "readOnly": "只读",
+        "variables": "变量"
     },
     "settings": {
         "title": "设置",
@@ -305,5 +305,46 @@
         "cannotRenewFree": "您无法续费免费服务器。它将自动续费。",
         "days": "天",
         "hours": "小时"
+    },
+    "features": {
+        "gslToken": {
+            "title": "GSL 令牌无效！",
+            "description1": "您的游戏服务器登录令牌 (GSL Token) 似乎无效或已过期。",
+            "description2": "您可以在下方生成一个新令牌，或留空以完全移除它。",
+            "label": "GSL 令牌",
+            "hint": "访问 https://steamcommunity.com/dev/managegameservers 生成令牌。",
+            "update": "更新 GSL 令牌"
+        },
+        "javaVersion": {
+            "title": "不支持的 Java 版本",
+            "description": "此服务器当前运行的 Java 版本不受支持，无法启动。",
+            "selectLabel": "选择 Java 版本",
+            "selectDescription": "从下方列表中选择运行此服务器时使用的 Java 版本。",
+            "update": "更新 Docker 镜像"
+        },
+        "pidLimit": {
+            "title": "内存或进程限制已达上限...",
+            "description": "此服务器已达到内存或进程的限制。",
+            "adminHint": "在 Wings 配置文件 (config.yml) 中增加 container_pid_limit 可能有助于解决此问题。",
+            "restartNote": "注意：必须重启 Wings 才能使配置文件更改生效",
+            "userTitle": "可能达到资源限制...",
+            "userDescription": "此服务器正在尝试使用超出分配的资源。请联系管理员并提供以下错误信息。",
+            "selectLabel": "限制容器 PID",
+            "selectDescription": "选择服务器一次可运行的最大进程数限制。如果服务器超过此限制，您可以在下方进行更改。",
+            "update": "更新限制"
+        },
+        "diskSpace": {
+            "title": "磁盘空间不足...",
+            "description": "此服务器已用完可用磁盘空间，无法完成安装或更新过程。",
+            "hint": "要解决此问题，您需要删除文件或购买额外空间。",
+            "adminHint": "通过运行 df -h 确保机器有足够的磁盘空间。删除文件或增加可用磁盘空间以解决此问题。",
+            "userDescription": "此服务器已用完可用磁盘空间，无法完成安装或更新过程。请联系管理员告知磁盘空间问题。",
+            "close": "关闭"
+        },
+        "eula": {
+            "title": "接受 Minecraft EULA",
+            "description": "点击下方「我接受」表示您同意 Minecraft EULA。",
+            "accept": "我接受"
+        }
     }
 }

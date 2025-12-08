@@ -14,6 +14,7 @@ import useFlash from '@/plugins/useFlash';
 import register from '@/api/auth/register';
 import { login } from '@/api/auth/login';
 import { faAt, faIdBadge, faKey, faUnlockKeyhole } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
 
 interface Values {
     username: string;
@@ -26,6 +27,7 @@ function RegisterContainer() {
     const ref = useRef<Reaptcha>(null);
     const token = useRef('');
 
+    const { t } = useTranslation('auth');
     const { clearFlashes, clearAndAddHttpError } = useFlash();
     const { enabled: recaptchaEnabled, siteKey } = useStoreState(state => state.settings.data!.recaptcha);
 
@@ -79,10 +81,10 @@ function RegisterContainer() {
             })}
         >
             {({ isSubmitting, setSubmitting, submitForm }) => (
-                <LoginFormContainer title={`Create an Account`}>
+                <LoginFormContainer title={t('createAccount') as string}>
                     <Field
                         type={'text'}
-                        label={'Username'}
+                        label={t('username') as string}
                         icon={faIdBadge}
                         name={'username'}
                         placeholder={'user_account'}
@@ -91,7 +93,7 @@ function RegisterContainer() {
                     <div css={tw`mt-6`}>
                         <Field
                             type={'text'}
-                            label={'Email Address'}
+                            label={t('emailAddress') as string}
                             icon={faAt}
                             name={'email'}
                             placeholder={'user@jexpanel.com'}
@@ -101,7 +103,7 @@ function RegisterContainer() {
                     <div css={tw`mt-6`}>
                         <Field
                             type={'password'}
-                            label={'Password'}
+                            label={t('password') as string}
                             icon={faKey}
                             name={'password'}
                             placeholder={'••••••••••••'}
@@ -111,7 +113,7 @@ function RegisterContainer() {
                     <div css={tw`mt-6`}>
                         <Field
                             type={'password'}
-                            label={'Confirm Password'}
+                            label={t('confirmPassword') as string}
                             icon={faUnlockKeyhole}
                             name={'confirm_password'}
                             placeholder={'••••••••••••'}
@@ -126,7 +128,7 @@ function RegisterContainer() {
                             size={Button.Sizes.Large}
                             disabled={isSubmitting}
                         >
-                            Register
+                            {t('register')}
                         </Button>
                     </div>
                     {recaptchaEnabled && (
@@ -149,7 +151,7 @@ function RegisterContainer() {
                             to={'/auth/login'}
                             css={tw`text-xs text-neutral-300 tracking-wide no-underline uppercase font-medium hover:text-neutral-600`}
                         >
-                            Return to Login
+                            {t('returnToLogin')}
                         </Link>
                     </div>
                 </LoginFormContainer>
