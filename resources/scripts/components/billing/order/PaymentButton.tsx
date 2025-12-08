@@ -6,6 +6,7 @@ import FlashMessageRender from '@/components/FlashMessageRender';
 import { PaymentIntent, updateIntent } from '@/api/billing/intent';
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     selectedNode?: number;
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export default (data: Props) => {
+    const { t } = useTranslation('billing');
     const stripe = useStripe();
     const elements = useElements();
     const [loading, setLoading] = useState(false);
@@ -53,7 +55,7 @@ export default (data: Props) => {
             <FlashMessageRender byKey={'store:order'} className={'mb-4'} />
             <div className={'text-right'}>
                 <Button disabled={!data.selectedNode} className={'mt-4'} size={Button.Sizes.Large}>
-                    Pay Now
+                    {t('payNow')}
                 </Button>
             </div>
         </form>

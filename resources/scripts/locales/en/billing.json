@@ -1,0 +1,31 @@
+{
+    "storeUnavailable": "Due to a configuration error, the store is currently unavailable. Please try again later, or refresh the page.",
+    "availableProducts": "Available Products",
+    "orderProduct": "Order a Product",
+    "orderProductDescription": "Choose and configure any of the products below to your liking.",
+    "categories": "Categories",
+    "noCategories": "No categories found.",
+    "noProducts": "No products could be found in this category.",
+    "monthly": "monthly",
+    "configure": "Configure",
+    "yourOrder": "Your Order",
+    "yourOrderDescription": "Customize your selected plan and submit a payment.",
+    "selectedPlan": "Selected Plan",
+    "chooseLocation": "Choose a location",
+    "chooseLocationDescription": "Select a location from our list to deploy your server to.",
+    "noNodesAvailable": "There are no nodes available for deployment. Please contact an administrator.",
+    "planVariables": "Plan Variables",
+    "planVariablesDescription": "Modify your server variables before your server is even created for ease of use.",
+    "freeProductMessage": "As this product is free, no purchase needs to be made via our payment gateways.",
+    "createServer": "Create Server",
+    "payNow": "Pay Now",
+    "billingActivity": "Billing Activity",
+    "billingActivityDescription": "View and manage the active and previous subscriptions you've created.",
+    "orders": {
+        "totalPrice": "Total Price",
+        "description": "Description",
+        "createdAt": "Created At",
+        "paymentState": "Payment State",
+        "orderType": "Order Type"
+    }
+}

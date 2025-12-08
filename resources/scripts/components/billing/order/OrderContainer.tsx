@@ -32,6 +32,7 @@ import { EggVariable } from '@/api/definitions/server';
 import { Button } from '@/components/elements/button';
 import processUnpaidOrder from '@/api/billing/processUnpaidOrder';
 import FlashMessageRender from '@/components/FlashMessageRender';
+import { useTranslation } from 'react-i18next';
 
 const LimitBox = ({ icon, content }: { icon: IconDefinition; content: string }) => {
     return (
@@ -43,6 +44,7 @@ const LimitBox = ({ icon, content }: { icon: IconDefinition; content: string }) 
 };
 
 export default () => {
+    const { t } = useTranslation('billing');
     const params = useParams<'id'>();
 
     const vars = new Map<string, string>();
@@ -121,20 +123,20 @@ export default () => {
     };
 
     return (
-        <PageContentBlock title={'Your Order'}>
+        <PageContentBlock title={t('yourOrder') as string}>
             <FlashMessageRender byKey={'account:billing:order'} className={'mb-4'} />
             {/* @ts-expect-error this is fine, stripe library is just weird */}
             <Elements stripe={stripe} options={options}>
                 <div className={'text-3xl lg:text-5xl font-bold mt-8 mb-12'}>
-                    Your Order
+                    {t('yourOrder')}
                     <p className={'text-gray-400 font-normal text-sm mt-1'}>
-                        Customize your selected plan and submit a payment.
+                        {t('yourOrderDescription')}
                     </p>
                 </div>
                 <div className={'grid lg:grid-cols-8 gap-4 lg:gap-12'}>
                     <div className={'lg:border-r-4 border-gray-500 lg:col-span-2'}>
                         <p className={'text-2xl text-gray-300 my-4 font-bold'}>
-                            Selected Plan
+                            {t('selectedPlan')}
                             {product.icon && <img src={product.icon} className={'w-8 h-8 ml-2 inline-flex'} />}
                         </p>
                         <LimitBox icon={faIdBadge} content={product.name} />
@@ -158,16 +160,15 @@ export default () => {
                         <div>
                             <div className={'my-10'}>
                                 <div className={'text-xl lg:text-3xl font-semibold mb-4'}>
-                                    Choose a location
+                                    {t('chooseLocation')}
                                     <p className={'text-gray-400 font-normal text-sm mt-1'}>
-                                        Select a location from our list to deploy your server to.
+                                        {t('chooseLocationDescription')}
                                     </p>
                                 </div>
                                 <div className={'grid lg:grid-cols-2 gap-4'}>
                                     {(!nodes || nodes.length < 1) && (
                                         <Alert type={'danger'} className={'col-span-2'}>
-                                            There are no nodes available for deployment. Please contact an
-                                            administrator.
+                                            {t('noNodesAvailable')}
                                         </Alert>
                                     )}
                                     {nodes?.map(node => (
@@ -185,10 +186,9 @@ export default () => {
                                 <>
                                     <div className={'my-10'}>
                                         <div className={'text-xl lg:text-3xl font-semibold mb-4'}>
-                                            Plan Variables
+                                            {t('planVariables')}
                                             <p className={'text-gray-400 font-normal text-sm mt-1'}>
-                                                Modify your server variables before your server is even created for ease
-                                                of use.
+                                                {t('planVariablesDescription')}
                                             </p>
                                         </div>
                                         <div className={'grid lg:grid-cols-2 gap-4'}>
@@ -216,10 +216,10 @@ export default () => {
                             ) : (
                                 <div className={'flex w-full mt-8'}>
                                     <p className={'font-semibold text-gray-400'}>
-                                        As this product is free, no purchase needs to be made via our payment gateways.
+                                        {t('freeProductMessage')}
                                     </p>
                                     <Button className={'ml-auto'} onClick={createFree}>
-                                        Create Server
+                                        {t('createServer')}
                                     </Button>
                                 </div>
                             )}

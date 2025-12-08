@@ -8,7 +8,9 @@
         "transferringWarning": "This server is currently being transferred to another node and all actions are unavailable.",
         "askAI": "Ask AI",
         "serverAssistant": "Server Assistant",
-        "error": "Error"
+        "error": "Error",
+        "save": "Save",
+        "logsSaved": "Your server logs have been saved to the .console-logs folder."
     },
     "power": {
         "start": "Start",
@@ -25,7 +27,10 @@
         "stopping": "Stopping",
         "installing": "Installing",
         "transferring": "Transferring",
-        "restoring_backup": "Restoring Backup"
+        "restoring_backup": "Restoring Backup",
+        "cpu": "CPU",
+        "memory": "Memory",
+        "network": "Network"
     },
     "files": {
         "title": "File Manager",
@@ -66,7 +71,10 @@
         "cancel": "Cancel",
         "create": "Create",
         "file": "File",
-        "directory": "Directory"
+        "directory": "Directory",
+        "fileName": "File Name",
+        "fileNameDescription": "Enter the name that this file should be saved as.",
+        "createFile": "Create File"
     },
     "databases": {
         "title": "Databases",
@@ -255,7 +263,8 @@
         "dockerImageDescription": "This is an advanced feature allowing you to select a Docker image to use when running this server instance.",
         "customImageNotice": "This server's Docker image has been manually set by an administrator and cannot be changed through this UI.",
         "readOnly": "Read Only",
-        "variables": "Variables"
+        "variables": "Variables",
+        "oops": "Oops!"
     },
     "settings": {
         "title": "Settings",

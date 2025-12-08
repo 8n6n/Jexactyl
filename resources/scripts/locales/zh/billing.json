@@ -1,0 +1,31 @@
+{
+    "storeUnavailable": "由于配置错误，商店目前不可用。请稍后重试或刷新页面。",
+    "availableProducts": "可用产品",
+    "orderProduct": "订购产品",
+    "orderProductDescription": "选择并根据您的喜好配置以下任何产品。",
+    "categories": "分类",
+    "noCategories": "未找到分类。",
+    "noProducts": "此类别中未找到产品。",
+    "monthly": "每月",
+    "configure": "配置",
+    "yourOrder": "您的订单",
+    "yourOrderDescription": "自定义您选择的方案并提交付款。",
+    "selectedPlan": "已选方案",
+    "chooseLocation": "选择位置",
+    "chooseLocationDescription": "从我们的列表中选择一个位置来部署您的服务器。",
+    "noNodesAvailable": "没有可用于部署的节点。请联系管理员。",
+    "planVariables": "方案变量",
+    "planVariablesDescription": "在服务器创建之前修改您的服务器变量，以便于使用。",
+    "freeProductMessage": "由于此产品是免费的，无需通过我们的支付网关进行购买。",
+    "createServer": "创建服务器",
+    "payNow": "立即支付",
+    "billingActivity": "账单活动",
+    "billingActivityDescription": "查看和管理您已创建的活动订阅和历史订阅。",
+    "orders": {
+        "totalPrice": "总价",
+        "description": "描述",
+        "createdAt": "创建时间",
+        "paymentState": "支付状态",
+        "orderType": "订单类型"
+    }
+}

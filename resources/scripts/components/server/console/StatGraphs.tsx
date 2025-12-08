@@ -38,7 +38,7 @@ export default () => {
         callback(opts, index) {
             return {
                 ...opts,
-                label: !index ? t('graphs.network.in', 'Network In') : t('graphs.network.out', 'Network Out'),
+                label: (!index ? t('graphs.network.in', 'Network In') : t('graphs.network.out', 'Network Out')) as string,
                 borderColor: !index ? theme('colors.cyan.400') : primary,
                 backgroundColor: hexToRgba(!index ? theme('colors.cyan.700') : primary, 0.5),
             };
@@ -72,14 +72,14 @@ export default () => {
 
     return (
         <>
-            <ChartBlock title={'CPU'}>
+            <ChartBlock title={t('stats.cpu', 'CPU') as string}>
                 <Line {...cpu.props} />
             </ChartBlock>
             <ChartBlock title={t('stats.memory', 'Memory') as string}>
                 <Line {...memory.props} />
             </ChartBlock>
             <ChartBlock
-                title={'Network'}
+                title={t('stats.network', 'Network') as string}
                 legend={
                     <>
                         <Tooltip arrow content={t('graphs.network.inbound', 'Inbound') as string}>

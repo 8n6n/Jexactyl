@@ -8,7 +8,9 @@
         "transferringWarning": "此服务器当前正在迁移到另一个节点，所有操作不可用。",
         "askAI": "询问 AI",
         "serverAssistant": "服务器助手",
-        "error": "错误"
+        "error": "错误",
+        "save": "保存",
+        "logsSaved": "您的服务器日志已保存到 .console-logs 文件夹。"
     },
     "power": {
         "start": "启动",
@@ -66,7 +68,10 @@
         "cancel": "取消",
         "create": "创建",
         "file": "文件",
-        "directory": "目录"
+        "directory": "目录",
+        "fileName": "文件名",
+        "fileNameDescription": "输入要保存的文件名。",
+        "createFile": "创建文件"
     },
     "databases": {
         "title": "数据库",
@@ -255,7 +260,8 @@
         "dockerImageDescription": "这是一个高级功能，允许您选择运行此服务器实例时使用的 Docker 镜像。",
         "customImageNotice": "此服务器的 Docker 镜像已由管理员手动设置，无法通过此界面更改。",
         "readOnly": "只读",
-        "variables": "变量"
+        "variables": "变量",
+        "oops": "哎呀！"
     },
     "settings": {
         "title": "设置",

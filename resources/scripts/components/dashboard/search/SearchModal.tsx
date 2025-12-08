@@ -14,6 +14,7 @@ import { ip } from '@/lib/formatters';
 import { Dialog, DialogProps } from '@/components/elements/dialog';
 import { Server } from '@/api/definitions/server';
 import Input from '@/components/elements/Input';
+import { useTranslation } from 'react-i18next';
 
 type Props = DialogProps;
 
@@ -46,6 +47,7 @@ const SearchWatcher = () => {
 };
 
 export default ({ ...props }: Props) => {
+    const { t } = useTranslation('dashboard');
     const isAdmin = useStoreState(state => state.user.data!.rootAdmin);
     const [servers, setServers] = useState<Server[]>([]);
     const { clearAndAddHttpError, clearFlashes } = useStoreActions(
@@ -69,7 +71,7 @@ export default ({ ...props }: Props) => {
         <Formik
             onSubmit={search}
             validationSchema={object().shape({
-                term: string().min(3, 'Please enter at least three characters to begin searching.'),
+                term: string().min(3, t('search.minChars') as string),
             })}
             initialValues={{ term: '' } as Values}
         >
@@ -78,8 +80,8 @@ export default ({ ...props }: Props) => {
                     <Form>
                         <FormikFieldWrapper
                             name={'term'}
-                            label={'Search term'}
-                            description={'Enter a server name, uuid, or allocation to begin searching.'}
+                            label={t('search.searchTerm') as string}
+                            description={t('search.searchDescription') as string}
                         >
                             <SearchWatcher />
                             <InputSpinner visible={isSubmitting}>

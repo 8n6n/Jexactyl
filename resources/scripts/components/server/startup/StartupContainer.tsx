@@ -82,7 +82,7 @@ const StartupContainer = () => {
         !error || (error && isValidating) ? (
             <Spinner centered size={Spinner.Size.LARGE} />
         ) : (
-            <ServerError title={'Oops!'} message={httpErrorToHuman(error)} onRetry={() => mutate()} />
+            <ServerError title={t('startup.oops') as string} message={httpErrorToHuman(error)} onRetry={() => mutate()} />
         )
     ) : (
         <PageContentBlock

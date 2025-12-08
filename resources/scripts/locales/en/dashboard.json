@@ -83,5 +83,18 @@
         "emailRequired": "An email address must be provided."
     },
     "groupRemovedSuccess": "Server group removed successfully.",
-    "addGroup": "Add Group"
+    "addGroup": "Add Group",
+    "groups": {
+        "configuration": "Server Group Configuration",
+        "addToServer": "Add group to server",
+        "noGroups": "No groups exist on this account.",
+        "create": "Create",
+        "deleteSuccess": "Server group deleted successfully.",
+        "addSuccess": "Server group added successfully."
+    },
+    "search": {
+        "searchTerm": "Search term",
+        "searchDescription": "Enter a server name, uuid, or allocation to begin searching.",
+        "minChars": "Please enter at least three characters to begin searching."
+    }
 }

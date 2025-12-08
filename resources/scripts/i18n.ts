@@ -7,12 +7,14 @@ import enAuth from './locales/en/auth.json';
 import enDashboard from './locales/en/dashboard.json';
 import enServer from './locales/en/server.json';
 import enAdmin from './locales/en/admin.json';
+import enBilling from './locales/en/billing.json';
 
 import zhCommon from './locales/zh/common.json';
 import zhAuth from './locales/zh/auth.json';
 import zhDashboard from './locales/zh/dashboard.json';
 import zhServer from './locales/zh/server.json';
 import zhAdmin from './locales/zh/admin.json';
+import zhBilling from './locales/zh/billing.json';
 
 // Get user language from window object (set by Laravel)
 const getUserLanguage = (): string => {
@@ -33,6 +35,7 @@ const resources = {
         dashboard: enDashboard,
         server: enServer,
         admin: enAdmin,
+        billing: enBilling,
     },
     zh: {
         common: zhCommon,
@@ -40,6 +43,7 @@ const resources = {
         dashboard: zhDashboard,
         server: zhServer,
         admin: zhAdmin,
+        billing: zhBilling,
     },
 };
 
@@ -48,7 +52,7 @@ i18n.use(initReactI18next).init({
     lng: getUserLanguage(),
     fallbackLng: 'en',
     defaultNS: 'common',
-    ns: ['common', 'auth', 'dashboard', 'server', 'admin'],
+    ns: ['common', 'auth', 'dashboard', 'server', 'admin', 'billing'],
     interpolation: {
         escapeValue: false, // React already handles XSS
     },

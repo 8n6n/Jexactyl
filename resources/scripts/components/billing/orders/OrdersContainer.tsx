@@ -18,6 +18,7 @@ import AdminTable, {
 import { OrderFilters } from '@/api/billing/orders/types';
 import CopyOnClick from '@/components/elements/CopyOnClick';
 import { formatDistanceToNowStrict } from 'date-fns';
+import { useTranslation } from 'react-i18next';
 
 export function format(date: number): string {
     let prefix = 'th';
@@ -57,6 +58,7 @@ export function type(state: string): PillStatus {
 }
 
 function OrderTable() {
+    const { t } = useTranslation('billing');
     const { data: orders, error } = useGetOrders();
     const { clearFlashes, clearAndAddHttpError } = useFlash();
     const { setPage, setFilters, sort, setSort, sortDirection } = useContext(OrderContext);
@@ -83,9 +85,9 @@ function OrderTable() {
     return (
         <PageContentBlock>
             <div className={'text-3xl lg:text-5xl font-bold mt-8 mb-12'}>
-                Billing Activity
+                {t('billingActivity')}
                 <p className={'text-gray-400 font-normal text-sm mt-1'}>
-                    View and manage the active and previous subscriptions you&apos;ve created.
+                    {t('billingActivityDescription')}
                 </p>
                 <FlashMessageRender byKey={'billing:orders'} className={'mt-4'} />
             </div>
@@ -101,19 +103,19 @@ function OrderTable() {
                                         onClick={() => setSort('id')}
                                     />
                                     <TableHeader
-                                        name={'Total Price'}
+                                        name={t('orders.totalPrice') as string}
                                         direction={sort === 'total' ? (sortDirection ? 1 : 2) : null}
                                         onClick={() => setSort('total')}
                                     />
-                                    <TableHeader name={'Description'} />
+                                    <TableHeader name={t('orders.description') as string} />
                                     <TableHeader
-                                        name={'Created At'}
+                                        name={t('orders.createdAt') as string}
                                         direction={sort === 'created_at' ? (sortDirection ? 1 : 2) : null}
                                         onClick={() => setSort('created_at')}
                                     />
-                                    <TableHeader name={'Payment State'} />
+                                    <TableHeader name={t('orders.paymentState') as string} />
                                     <TableHeader
-                                        name={'Order Type'}
+                                        name={t('orders.orderType') as string}
                                         direction={sort === 'type' ? (sortDirection ? 1 : 2) : null}
                                         onClick={() => setSort('type')}
                                     />

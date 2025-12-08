@@ -83,5 +83,18 @@
         "emailRequired": "必须提供邮箱地址。"
     },
     "groupRemovedSuccess": "服务器组移除成功。",
-    "addGroup": "添加分组"
+    "addGroup": "添加分组",
+    "groups": {
+        "configuration": "服务器组配置",
+        "addToServer": "添加分组到服务器",
+        "noGroups": "此账户没有任何分组。",
+        "create": "创建",
+        "deleteSuccess": "服务器组删除成功。",
+        "addSuccess": "服务器组添加成功。"
+    },
+    "search": {
+        "searchTerm": "搜索条件",
+        "searchDescription": "输入服务器名称、UUID 或分配地址开始搜索。",
+        "minChars": "请输入至少三个字符开始搜索。"
+    }
 }
