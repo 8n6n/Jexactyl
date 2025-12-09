@@ -7,8 +7,10 @@ import { useState } from 'react';
 import useFlash from '@/plugins/useFlash';
 import { Context } from '../UserRouter';
 import { suspendUser } from '@/api/admin/users';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
+    const { t } = useTranslation('admin');
     const { addFlash, clearAndAddHttpError } = useFlash();
     const [visible, setVisible] = useState<boolean>(false);
     const user = Context.useStoreState(state => state.user);
@@ -21,7 +23,7 @@ export default () => {
                 addFlash({
                     key: 'user:manage',
                     type: 'success',
-                    message: 'This user has been suspended.',
+                    message: t('users.suspendSuccess', 'This user has been suspended.'),
                 });
             })
             .catch(error => {
@@ -37,26 +39,26 @@ export default () => {
     return (
         <>
             <Dialog.Confirm
-                title={`Confirm ${action} request`}
+                title={t('users.confirmAction', `Confirm ${action} request`, { action }) as string}
                 onConfirmed={submit}
                 open={visible}
                 onClose={() => setVisible(false)}
-                confirm={'I understand, proceed'}
+                confirm={t('users.confirmProceed', 'I understand, proceed') as string}
             >
-                Are you sure you wish to {action} this user?
+                {t('users.confirmActionText', `Are you sure you wish to ${action} this user?`, { action })}
             </Dialog.Confirm>
             <div css={tw`h-auto flex flex-col`}>
                 <AdminBox
                     icon={action === 'suspend' ? faEyeSlash : faEye}
-                    title={`${action} user`}
+                    title={`${action === 'suspend' ? t('users.suspend', 'Suspend') : t('users.unsuspend', 'Unsuspend')} ${t('users.user', 'User')}`}
                     css={tw`relative w-full`}
                 >
                     <Button.Warn size={Button.Sizes.Large} css={tw`w-full capitalize`} onClick={() => setVisible(true)}>
-                        {action} User
+                        {action === 'suspend' ? t('users.suspend', 'Suspend') : t('users.unsuspend', 'Unsuspend')} {t('users.user', 'User')}
                     </Button.Warn>
                     <p css={tw`text-xs text-neutral-400 mt-2`}>
-                        This will {action} the user instantly. This account is currently&nbsp;
-                        {user?.state === 'suspended' ? 'suspended' : 'active'}.
+                        {t('users.suspendDesc', `This will ${action} the user instantly. This account is currently`, { action })}&nbsp;
+                        {user?.state === 'suspended' ? t('common:suspended', 'suspended') : t('common:active', 'active')}.
                     </p>
                 </AdminBox>
             </div>

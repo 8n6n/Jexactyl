@@ -9,8 +9,10 @@ import { Context } from '@admin/management/nodes/NodeRouter';
 import CopyOnClick from '@elements/CopyOnClick';
 import type { ApplicationStore } from '@/state';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
+    const { t } = useTranslation('admin');
     const { clearFlashes, clearAndAddHttpError } = useStoreActions(
         (actions: Actions<ApplicationStore>) => actions.flashes,
     );
@@ -36,7 +38,7 @@ export default () => {
 
     return (
         <>
-            <AdminBox title={'Configuration'} icon={faCode} css={tw`mb-4`}>
+            <AdminBox title={t('nodes.configuration', 'Configuration') as string} icon={faCode} css={tw`mb-4`}>
                 <div css={tw`relative`}>
                     <div css={tw`absolute top-0 right-0`}>
                         <CopyOnClick text={configuration} showInNotification={false}>

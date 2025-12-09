@@ -12,12 +12,14 @@ import Label from '@elements/Label';
 import { faFirstOrder } from '@fortawesome/free-brands-svg-icons';
 import ToggleTicketsButton from './ToggleTicketsButton';
 import { updateTicketSettings } from '@/api/admin/tickets';
+import { useTranslation } from 'react-i18next';
 
 export interface TicketSettings {
     maxCount: number;
 }
 
 export default () => {
+    const { t } = useTranslation('admin');
     const { addFlash, clearFlashes, clearAndAddHttpError } = useFlash();
 
     const settings = useStoreState(state => state.everest.data!.tickets);
@@ -30,7 +32,7 @@ export default () => {
                 addFlash({
                     type: 'success',
                     key: 'admin:tickets',
-                    message: 'Settings have been updated successfully.',
+                    message: t('tickets.settingsUpdated', 'Settings have been updated successfully.'),
                 });
             })
             .catch(error => {
@@ -55,26 +57,26 @@ export default () => {
             <Form>
                 <FlashMessageRender byKey={'settings:general'} className={'mb-2'} />
                 <div css={tw`grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6`}>
-                    <AdminBox title={'Maximum Ticket Count'} icon={faFirstOrder}>
+                    <AdminBox title={t('tickets.maxCount', 'Maximum Ticket Count') as string} icon={faFirstOrder}>
                         <div>
                             <div>
-                                <Label className={'mt-1 mr-2'}>What should the limit be?</Label>
+                                <Label className={'mt-1 mr-2'}>{t('tickets.limitQuestion', 'What should the limit be?')}</Label>
                                 <Field id={'maxCount'} name={'maxCount'} defaultValue={settings.maxCount} />
                             </div>
                             <p className={'text-gray-400 text-xs mt-1.5'}>
-                                If you wish, you can set a maximum amount of tickets that a user can create.
+                                {t('tickets.maxCountDesc', 'If you wish, you can set a maximum amount of tickets that a user can create.')}
                             </p>
                         </div>
                     </AdminBox>
                 </div>
                 <div css={tw`w-full flex flex-row items-center mt-6`}>
                     <div css={tw`flex text-xs text-gray-500`}>
-                        These changes may not apply until users refresh the page.
+                        {t('tickets.changesRefresh', 'These changes may not apply until users refresh the page.')}
                     </div>
 
                     <div css={tw`flex ml-auto`}>
                         <ToggleTicketsButton />
-                        <Button type="submit">Save Changes</Button>
+                        <Button type="submit">{t('common:saveChanges', 'Save Changes')}</Button>
                     </div>
                 </div>
             </Form>

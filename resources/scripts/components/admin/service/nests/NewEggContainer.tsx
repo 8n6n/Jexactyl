@@ -18,6 +18,7 @@ import {
 import { Button } from '@elements/button';
 import FlashMessageRender from '@/components/FlashMessageRender';
 import useFlash from '@/plugins/useFlash';
+import { useTranslation } from 'react-i18next';
 
 interface Values {
     name: string;
@@ -30,6 +31,7 @@ interface Values {
 }
 
 export default () => {
+    const { t } = useTranslation('admin');
     const navigate = useNavigate();
     const params = useParams<{ nestId: string }>();
 
@@ -64,14 +66,14 @@ export default () => {
     };
 
     return (
-        <AdminContentBlock title={'New Egg'}>
+        <AdminContentBlock title={t('eggs.newEgg', 'New Egg') as string}>
             <div css={tw`w-full flex flex-row items-center mb-8`}>
                 <div css={tw`flex flex-col flex-shrink`} style={{ minWidth: '0' }}>
-                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>New Egg</h2>
+                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>{t('eggs.newEgg', 'New Egg')}</h2>
                     <p
                         css={tw`hidden md:block text-base text-neutral-400 whitespace-nowrap overflow-ellipsis overflow-hidden`}
                     >
-                        Add a new egg to the panel.
+                        {t('eggs.addNewEgg', 'Add a new egg to the panel.')}
                     </p>
                 </div>
             </div>
@@ -109,7 +111,7 @@ export default () => {
                         <div css={tw`bg-zinc-800 rounded shadow-md py-2 px-6 mb-16`}>
                             <div css={tw`flex flex-row`}>
                                 <Button type="submit" css={tw`ml-auto`} disabled={isSubmitting || !isValid}>
-                                    Create
+                                    {t('common:create', 'Create')}
                                 </Button>
                             </div>
                         </div>

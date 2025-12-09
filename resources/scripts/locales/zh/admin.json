@@ -39,7 +39,27 @@
         "secure": "安全",
         "nonSecure": "不安全",
         "totalMemory": "总内存",
-        "totalDisk": "总磁盘"
+        "totalDisk": "总磁盘",
+        "settings": "设置",
+        "limits": "限制",
+        "dataDirectory": "数据目录",
+        "behindProxy": "在代理后面",
+        "automaticAllocation": "自动分配",
+        "memory": "内存",
+        "memoryOverallocate": "内存超分配",
+        "disk": "磁盘",
+        "diskOverallocate": "磁盘超分配",
+        "listen": "监听",
+        "configuration": "配置",
+        "httpListenPort": "HTTP 监听端口",
+        "httpPublicPort": "HTTP 公共端口",
+        "sftpListenPort": "SFTP 监听端口",
+        "sftpPublicPort": "SFTP 公共端口",
+        "billingConfiguration": "计费配置",
+        "deployablePaid": "可部署付费服务器",
+        "deployablePaidDesc": "允许用户通过计费系统将服务器部署到此节点（如果已启用）。",
+        "deployableFree": "可部署免费服务器",
+        "deployableFreeDesc": "允许用户通过计费系统将免费服务器部署到此节点。"
     },
     "users": {
         "title": "用户",
@@ -60,14 +80,36 @@
         "title": "预设组",
         "description": "系统上当前可用的所有预设组。",
         "createNest": "创建预设组",
-        "editNest": "编辑预设组"
+        "editNest": "编辑预设组",
+        "editUser": "编辑用户",
+        "enabled": "已启用",
+        "disabled": "已禁用",
+        "suspended": "已暂停",
+        "active": "活跃",
+        "admin": "管理员",
+        "fullAccess": "完全访问权限",
+        "standard": "标准用户"
     },
     "eggs": {
         "title": "预设",
         "description": "系统上所有可用的预设。",
         "createEgg": "创建预设",
         "editEgg": "编辑预设",
-        "importEgg": "导入预设"
+        "importEgg": "导入预设",
+        "newEgg": "新建预设",
+        "addNewEgg": "向面板添加新预设。",
+        "information": "预设信息",
+        "details": "预设详情",
+        "author": "作者",
+        "startupCommand": "启动命令",
+        "dockerImages": "Docker 镜像",
+        "lifecycle": "生命周期",
+        "stopCommand": "停止命令",
+        "installScript": "安装脚本",
+        "installContainer": "安装容器",
+        "installContainerDesc": "用于运行此安装脚本的 Docker 镜像。",
+        "installEntrypoint": "安装入口点",
+        "installEntrypointDesc": "应用于在安装容器内运行此脚本的命令。"
     },
     "mounts": {
         "title": "挂载",
@@ -105,7 +147,14 @@
     "tickets": {
         "title": "工单",
         "description": "更新设置并管理用户工单。",
-        "newTicket": "新建工单"
+        "newTicket": "新建工单",
+        "system": "工单系统",
+        "systemDescription": "Jexactyl 的工单界面允许您的用户在面板上创建支持工单。用户可以创建、更新和查看工单，管理员可以回复并标记为特定状态。此功能可以随时切换以适应您的业务需求。",
+        "settingsUpdated": "设置已成功更新。",
+        "maxCount": "最大工单数量",
+        "limitQuestion": "限制应该是多少？",
+        "maxCountDesc": "如果您愿意，可以设置用户可以创建的工单最大数量。",
+        "changesRefresh": "这些更改可能在用户刷新页面后才会生效。"
     },
     "links": {
         "title": "自定义链接",
@@ -125,7 +174,14 @@
         "geminiWarning": "Jexactyl AI 依赖 Google Gemini 模型处理请求。提供的信息可能不准确或过时。请谨慎使用！",
         "rateLimitWarning": "Gemini 公共 API 的 API 请求限制为每秒 120 次 - 如果您遇到速率限制，可能需要升级您的许可证。",
         "disableTitle": "禁用 Jexactyl AI",
-        "disableDescription": "点击下面的按钮将为客户和管理员禁用 Jexactyl AI。您的 API 密钥将保留在数据库中，除非您选择手动删除它。"
+        "disableDescription": "点击下面的按钮将为客户和管理员禁用 Jexactyl AI。您的 API 密钥将保留在数据库中，除非您选择手动删除它。",
+        "settingsUpdated": "设置已成功更新。",
+        "clientSideAi": "客户端 AI",
+        "allowUsersAi": "允许普通用户使用 AI？",
+        "allowUsersAiDesc": "如果启用，普通 Jexactyl 用户将能够与管理员一样与 Jexactyl AI 交互。",
+        "modifyApiKey": "修改 API 密钥",
+        "modifyApiKeyDesc": "如果您遇到‘无效 API 密钥’错误，可以在此处输入新密钥来重置。",
+        "changesReload": "这些更改可能在重新加载页面后才会生效。"
     },
     "billing": {
         "title": "账单",

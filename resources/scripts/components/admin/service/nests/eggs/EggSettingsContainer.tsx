@@ -22,22 +22,25 @@ import Label from '@elements/Label';
 import SpinnerOverlay from '@elements/SpinnerOverlay';
 import useFlash from '@/plugins/useFlash';
 import { useStoreState } from '@/state/hooks';
+import { useTranslation } from 'react-i18next';
 
 export function EggInformationContainer() {
+    const { t } = useTranslation('admin');
     const { isSubmitting } = useFormikContext();
 
     return (
-        <AdminBox icon={faEgg} title={'Egg Information'} css={tw`relative`}>
+        <AdminBox icon={faEgg} title={t('eggs.information', 'Egg Information') as string} css={tw`relative`}>
             <SpinnerOverlay visible={isSubmitting} />
 
-            <Field id={'name'} name={'name'} label={'Name'} type={'text'} css={tw`mb-6`} />
+            <Field id={'name'} name={'name'} label={t('common:name', 'Name') as string} type={'text'} css={tw`mb-6`} />
 
-            <Field id={'description'} name={'description'} label={'Description'} type={'text'} css={tw`mb-2`} />
+            <Field id={'description'} name={'description'} label={t('common:description', 'Description') as string} type={'text'} css={tw`mb-2`} />
         </AdminBox>
     );
 }
 
 function EggDetailsContainer() {
+    const { t } = useTranslation('admin');
     const { data: egg } = useEggFromRoute();
 
     if (!egg) {
@@ -45,14 +48,14 @@ function EggDetailsContainer() {
     }
 
     return (
-        <AdminBox icon={faEgg} title={'Egg Details'} css={tw`relative`}>
+        <AdminBox icon={faEgg} title={t('eggs.details', 'Egg Details') as string} css={tw`relative`}>
             <div css={tw`mb-6`}>
                 <Label>UUID</Label>
                 <Input id={'uuid'} name={'uuid'} type={'text'} value={egg.uuid} readOnly />
             </div>
 
             <div css={tw`mb-2`}>
-                <Label>Author</Label>
+                <Label>{t('eggs.author', 'Author')}</Label>
                 <Input id={'author'} name={'author'} type={'text'} value={egg.author} readOnly />
             </div>
         </AdminBox>
@@ -60,37 +63,40 @@ function EggDetailsContainer() {
 }
 
 export function EggStartupContainer({ className }: { className?: string }) {
+    const { t } = useTranslation('admin');
     const { isSubmitting } = useFormikContext();
 
     return (
-        <AdminBox icon={faTerminal} title={'Startup Command'} css={tw`relative`} className={className}>
+        <AdminBox icon={faTerminal} title={t('eggs.startupCommand', 'Startup Command') as string} css={tw`relative`} className={className}>
             <SpinnerOverlay visible={isSubmitting} />
 
-            <Field id={'startup'} name={'startup'} label={'Startup Command'} type={'text'} css={tw`mb-1`} />
+            <Field id={'startup'} name={'startup'} label={t('eggs.startupCommand', 'Startup Command') as string} type={'text'} css={tw`mb-1`} />
         </AdminBox>
     );
 }
 
 export function EggImageContainer() {
+    const { t } = useTranslation('admin');
     const { isSubmitting } = useFormikContext();
 
     return (
         <AdminBox icon={faDocker} title={'Docker'} css={tw`relative`}>
             <SpinnerOverlay visible={isSubmitting} />
 
-            <TextareaField id={'dockerImages'} name={'dockerImages'} label={'Docker Images'} rows={5} />
+            <TextareaField id={'dockerImages'} name={'dockerImages'} label={t('eggs.dockerImages', 'Docker Images') as string} rows={5} />
         </AdminBox>
     );
 }
 
 export function EggLifecycleContainer() {
+    const { t } = useTranslation('admin');
     const { isSubmitting } = useFormikContext();
 
     return (
-        <AdminBox icon={faFireAlt} title={'Lifecycle'} css={tw`relative`}>
+        <AdminBox icon={faFireAlt} title={t('eggs.lifecycle', 'Lifecycle') as string} css={tw`relative`}>
             <SpinnerOverlay visible={isSubmitting} />
 
-            <Field id={'configStop'} name={'configStop'} label={'Stop Command'} type={'text'} css={tw`mb-1`} />
+            <Field id={'configStop'} name={'configStop'} label={t('eggs.stopCommand', 'Stop Command') as string} type={'text'} css={tw`mb-1`} />
         </AdminBox>
     );
 }

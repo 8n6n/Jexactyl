@@ -13,6 +13,7 @@ import { Editor } from '@elements/editor';
 import Field from '@elements/Field';
 import SpinnerOverlay from '@elements/SpinnerOverlay';
 import useFlash from '@/plugins/useFlash';
+import { useTranslation } from 'react-i18next';
 
 interface Values {
     scriptContainer: string;
@@ -21,6 +22,7 @@ interface Values {
 }
 
 export default function EggInstallContainer() {
+    const { t } = useTranslation('admin');
     const { clearFlashes, clearAndAddHttpError } = useFlash();
 
     const { data: egg } = useEggFromRoute();
@@ -58,7 +60,7 @@ export default function EggInstallContainer() {
             }}
         >
             {({ isSubmitting, isValid }) => (
-                <AdminBox icon={faScroll} title={'Install Script'} noPadding>
+                <AdminBox icon={faScroll} title={t('eggs.installScript', 'Install Script') as string} noPadding>
                     <div css={tw`relative pb-4`}>
                         <SpinnerOverlay visible={isSubmitting} />
 
@@ -81,26 +83,24 @@ export default function EggInstallContainer() {
                                     <Field
                                         id={'scriptContainer'}
                                         name={'scriptContainer'}
-                                        label={'Install Container'}
+                                        label={t('eggs.installContainer', 'Install Container') as string}
                                         type={'text'}
-                                        description={'The Docker image to use for running this installation script.'}
+                                        description={t('eggs.installContainerDesc', 'The Docker image to use for running this installation script.') as string}
                                     />
 
                                     <Field
                                         id={'scriptEntry'}
                                         name={'scriptEntry'}
-                                        label={'Install Entrypoint'}
+                                        label={t('eggs.installEntrypoint', 'Install Entrypoint') as string}
                                         type={'text'}
-                                        description={
-                                            'The command that should be used to run this script inside of the installation container.'
-                                        }
+                                        description={t('eggs.installEntrypointDesc', 'The command that should be used to run this script inside of the installation container.') as string}
                                     />
                                 </div>
                             </div>
 
                             <div css={tw`flex flex-row border-t border-neutral-600`}>
                                 <Button type="submit" css={tw`ml-auto mr-6 mt-4`} disabled={isSubmitting || !isValid}>
-                                    Save Changes
+                                    {t('common:saveChanges', 'Save Changes')}
                                 </Button>
                             </div>
                         </Form>

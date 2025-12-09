@@ -39,7 +39,27 @@
         "secure": "Secure",
         "nonSecure": "Non-Secure",
         "totalMemory": "Total Memory",
-        "totalDisk": "Total Disk"
+        "totalDisk": "Total Disk",
+        "settings": "Settings",
+        "limits": "Limits",
+        "dataDirectory": "Data Directory",
+        "behindProxy": "Behind Proxy",
+        "automaticAllocation": "Automatic Allocation",
+        "memory": "Memory",
+        "memoryOverallocate": "Memory Overallocate",
+        "disk": "Disk",
+        "diskOverallocate": "Disk Overallocate",
+        "listen": "Listen",
+        "configuration": "Configuration",
+        "httpListenPort": "HTTP Listen Port",
+        "httpPublicPort": "HTTP Public Port",
+        "sftpListenPort": "SFTP Listen Port",
+        "sftpPublicPort": "SFTP Public Port",
+        "billingConfiguration": "Billing Configuration",
+        "deployablePaid": "Deployable for paid servers",
+        "deployablePaidDesc": "Allows users to deploy servers to this node via the Billing system if it is enabled.",
+        "deployableFree": "Deployable for free servers",
+        "deployableFreeDesc": "Allows users to deploy free servers to this node via the billing system."
     },
     "users": {
         "title": "Users",
@@ -54,7 +74,15 @@
         "active": "Active",
         "admin": "Admin",
         "fullAccess": "Full Access",
-        "standard": "Standard"
+        "standard": "Standard",
+        "suspendSuccess": "This user has been suspended.",
+        "confirmAction": "Confirm {{action}} request",
+        "confirmProceed": "I understand, proceed",
+        "confirmActionText": "Are you sure you wish to {{action}} this user?",
+        "suspend": "Suspend",
+        "unsuspend": "Unsuspend",
+        "user": "User",
+        "suspendDesc": "This will {{action}} the user instantly. This account is currently"
     },
     "nests": {
         "title": "Nests",
@@ -67,7 +95,21 @@
         "description": "All eggs available on the system.",
         "createEgg": "Create Egg",
         "editEgg": "Edit Egg",
-        "importEgg": "Import Egg"
+        "importEgg": "Import Egg",
+        "newEgg": "New Egg",
+        "addNewEgg": "Add a new egg to the panel.",
+        "information": "Egg Information",
+        "details": "Egg Details",
+        "author": "Author",
+        "startupCommand": "Startup Command",
+        "dockerImages": "Docker Images",
+        "lifecycle": "Lifecycle",
+        "stopCommand": "Stop Command",
+        "installScript": "Install Script",
+        "installContainer": "Install Container",
+        "installContainerDesc": "The Docker image to use for running this installation script.",
+        "installEntrypoint": "Install Entrypoint",
+        "installEntrypointDesc": "The command that should be used to run this script inside of the installation container."
     },
     "mounts": {
         "title": "Mounts",
@@ -105,7 +147,14 @@
     "tickets": {
         "title": "Tickets",
         "description": "Update settings and manage user tickets.",
-        "newTicket": "New Ticket"
+        "newTicket": "New Ticket",
+        "system": "Ticket System",
+        "systemDescription": "Jexactyl's ticket interface allows your users to create tickets for support on the panel. Users can create, update and view tickets which admins can reply to and mark as a certain status. This feature can be toggled at anytime to suit your business' needs.",
+        "settingsUpdated": "Settings have been updated successfully.",
+        "maxCount": "Maximum Ticket Count",
+        "limitQuestion": "What should the limit be?",
+        "maxCountDesc": "If you wish, you can set a maximum amount of tickets that a user can create.",
+        "changesRefresh": "These changes may not apply until users refresh the page."
     },
     "links": {
         "title": "Custom Links",
@@ -125,7 +174,14 @@
         "geminiWarning": "Jexactyl AI relies on Google Gemini models for requests. Information provided could be inaccurate or outdated. Use with caution!",
         "rateLimitWarning": "API requests are limited on Gemini's public API to 120/second - if you experience ratelimiting, you may need to upgrade your license.",
         "disableTitle": "Disable Jexactyl AI",
-        "disableDescription": "Clicking the button below will disable Jexactyl AI for both clients and administrators. Your API key will remain in the database unless you choose to delete it manually."
+        "disableDescription": "Clicking the button below will disable Jexactyl AI for both clients and administrators. Your API key will remain in the database unless you choose to delete it manually.",
+        "settingsUpdated": "Settings have been updated successfully.",
+        "clientSideAi": "Client-side AI",
+        "allowUsersAi": "Allow standard users to use AI?",
+        "allowUsersAiDesc": "If enabled, standard Jexactyl users will be able to interact with Jexactyl AI as well as administrators.",
+        "modifyApiKey": "Modify API Key",
+        "modifyApiKeyDesc": "If you are experiencing 'Invalid API Key' errors, you can enter a new one here to reset it.",
+        "changesReload": "These changes may not apply until this page is reloaded."
     },
     "billing": {
         "title": "Billing",
