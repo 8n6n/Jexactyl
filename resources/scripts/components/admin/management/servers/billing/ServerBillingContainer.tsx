@@ -7,6 +7,7 @@ import Spinner from '@/components/elements/Spinner';
 import { useStoreState } from '@/state/hooks';
 import { faCashRegister } from '@fortawesome/free-solid-svg-icons';
 import EditServerBillingDialog from './EditServerBillingDialog';
+import { useTranslation } from 'react-i18next';
 
 function timeUntil(targetDate: Date | string) {
     const date = targetDate instanceof Date ? targetDate : new Date(targetDate);
@@ -21,6 +22,7 @@ function timeUntil(targetDate: Date | string) {
 }
 
 export default () => {
+    const { t } = useTranslation('admin');
     const { data: server } = useServerFromRoute();
     const billing = useStoreState(state => state.everest.data!.billing);
 
@@ -32,54 +34,53 @@ export default () => {
         <div>
             {!billing.enabled && (
                 <Alert type={'danger'}>
-                    The Billing Module is currently disabled. Any changes made here will not have effect unless the
-                    module is enabled again.
+                    {t('servers.billingDisabledWarning', 'The Billing Module is currently disabled. Any changes made here will not have effect unless the module is enabled again.')}
                 </Alert>
             )}
             <div className={'mt-4 grid lg:grid-cols-4 gap-4'}>
-                <AdminBox title={'Billing Details'} icon={faCashRegister} className={'relative'}>
+                <AdminBox title={t('servers.billingDetails', 'Billing Details') as string} icon={faCashRegister} className={'relative'}>
                     <div className={'grid gap-y-4'}>
                         <div>
-                            <Label>Plan Name and Cost</Label>
+                            <Label>{t('servers.planNameCost', 'Plan Name and Cost')}</Label>
                             <p className={'text-gray-400'}>
                                 {!server.billingProductId ? (
-                                    'None'
+                                    t('common:none', 'None')
                                 ) : !product ? (
                                     <Spinner size={'small'} centered />
                                 ) : (
                                     <>
                                         {product.name} - {billing.currency.symbol}
-                                        {product.price} {billing.currency.code.toUpperCase()} every 30 days
+                                        {product.price} {billing.currency.code.toUpperCase()} {t('servers.every30Days', 'every 30 days')}
                                     </>
                                 )}
                             </p>
                         </div>
                         <div>
-                            <Label>Next Renewal Due</Label>
+                            <Label>{t('servers.nextRenewalDue', 'Next Renewal Due')}</Label>
                             <p className={'text-gray-400'}>
                                 {!server.renewalDate ? (
-                                    'None'
+                                    t('common:none', 'None')
                                 ) : (
                                     <>
                                         {new Date(server.renewalDate).toLocaleDateString()}
                                         {' - '}
-                                        {timeUntil(server.renewalDate).days} days, {timeUntil(server.renewalDate).hours}{' '}
-                                        hours
+                                        {timeUntil(server.renewalDate).days} {t('servers.days', 'days')}, {timeUntil(server.renewalDate).hours}{' '}
+                                        {t('servers.hours', 'hours')}
                                     </>
                                 )}
                             </p>
                         </div>
                         <div>
-                            <Label>Resource Limits</Label>
+                            <Label>{t('servers.resourceLimits', 'Resource Limits')}</Label>
                             <p className={'text-gray-400'}>
                                 {!server.billingProductId ? (
-                                    'None'
+                                    t('common:none', 'None')
                                 ) : !product ? (
                                     <Spinner size={'small'} centered />
                                 ) : (
                                     <>
                                         {product.limits.cpu}% CPU &bull; {product.limits.memory / 1024} GiB RAM &bull;{' '}
-                                        {product.limits.disk / 1024} GiB Storage
+                                        {product.limits.disk / 1024} GiB {t('servers.storage', 'Storage')}
                                     </>
                                 )}
                             </p>

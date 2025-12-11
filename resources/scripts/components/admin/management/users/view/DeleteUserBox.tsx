@@ -8,8 +8,10 @@ import useFlash from '@/plugins/useFlash';
 import { Context } from '../UserRouter';
 import { deleteUser } from '@/api/admin/users';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
+    const { t } = useTranslation('admin');
     const navigate = useNavigate();
     const { clearAndAddHttpError } = useFlash();
     const [visible, setVisible] = useState<boolean>(false);
@@ -30,21 +32,21 @@ export default () => {
     return (
         <>
             <Dialog.Confirm
-                title={'Confirm deletion request'}
+                title={t('users.confirmDeletion', 'Confirm deletion request') as string}
                 onConfirmed={submit}
                 open={visible}
                 onClose={() => setVisible(false)}
-                confirm={'I understand, proceed'}
+                confirm={t('users.confirmProceed', 'I understand, proceed') as string}
             >
-                Are you sure you wish to delete this user? They will not be able to access the Panel anymore!
+                {t('users.deleteConfirmText', 'Are you sure you wish to delete this user? They will not be able to access the Panel anymore!')}
             </Dialog.Confirm>
             <div css={tw`h-auto flex flex-col`}>
-                <AdminBox icon={faUserSlash} title={'Delete User'} css={tw`relative w-full`}>
+                <AdminBox icon={faUserSlash} title={t('users.deleteUser', 'Delete User') as string} css={tw`relative w-full`}>
                     <Button.Danger size={Button.Sizes.Large} css={tw`w-full`} onClick={() => setVisible(true)}>
-                        Delete User
+                        {t('users.deleteUser', 'Delete User')}
                     </Button.Danger>
                     <p css={tw`text-xs text-neutral-400 mt-2`}>
-                        This will remove the user&apos;s account, meaning they will not be able to access the Panel.
+                        {t('users.deleteUserDesc', "This will remove the user's account, meaning they will not be able to access the Panel.")}
                     </p>
                 </AdminBox>
             </div>
