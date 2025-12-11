@@ -12,8 +12,10 @@ import RequiredFieldIcon from '@elements/RequiredFieldIcon';
 import useStatus from '@/plugins/useStatus';
 import { toggleModule, updateModule } from '@/api/admin/auth/module';
 import { Alert } from '@elements/alert';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
+    const { t } = useTranslation('admin');
     const { status, setStatus } = useStatus();
     const [confirm, setConfirm] = useState<boolean>(false);
     const { clearFlashes, clearAndAddHttpError } = useFlash();
@@ -47,7 +49,7 @@ export default () => {
 
     return (
         <AdminBox
-            title={'Discord SSO Module'}
+            title={t('auth.discordSsoModule', 'Discord SSO Module') as string}
             icon={faDiscord}
             byKey={'auth:modules:discord'}
             status={status}
@@ -55,18 +57,18 @@ export default () => {
         >
             <Dialog.Confirm
                 open={confirm}
-                title={'Confirm module removal'}
+                title={t('auth.confirmModuleRemoval', 'Confirm module removal') as string}
                 onConfirmed={() => doDeletion()}
                 onClose={() => setConfirm(false)}
             >
-                Are you sure you wish to delete this module?
+                {t('auth.deleteModuleConfirm', 'Are you sure you wish to delete this module?')}
             </Dialog.Confirm>
             <TrashIcon
                 className={'w-5 h-5 absolute top-0 right-0 m-3.5 text-red-500 hover:text-red-300 duration-300'}
                 onClick={() => setConfirm(true)}
             />
             <div>
-                <Label>Client Identifier {!settings.clientId && <RequiredFieldIcon />}</Label>
+                <Label>{t('auth.clientId', 'Client Identifier')} {!settings.clientId && <RequiredFieldIcon />}</Label>
                 <Input
                     id={'client_id'}
                     type={'password'}
@@ -75,19 +77,19 @@ export default () => {
                     placeholder={settings.clientId ? '••••••••••••••••' : ''}
                 />
                 <p className={'text-xs text-gray-400 mt-1'}>
-                    Set the Discord Client ID. You can find this in the{' '}
+                    {t('auth.clientIdDesc', 'Set the Discord Client ID. You can find this in the')}{' '}
                     <Link
                         to={'https://discord.com/developers/docs/intro'}
                         style={{ color: colors.primary }}
                         className={'hover:brightness-125 duration-300'}
                     >
-                        Developer Portal
+                        {t('auth.developerPortal', 'Developer Portal')}
                     </Link>
                     .
                 </p>
             </div>
             <div className={'my-6'}>
-                <Label>Client Secret {!settings.clientSecret && <RequiredFieldIcon />}</Label>
+                <Label>{t('auth.clientSecret', 'Client Secret')} {!settings.clientSecret && <RequiredFieldIcon />}</Label>
                 <Input
                     id={'client_secret'}
                     type={'password'}
@@ -96,20 +98,20 @@ export default () => {
                     placeholder={settings.clientSecret ? '••••••••••••••••' : ''}
                 />
                 <p className={'text-xs text-gray-400 mt-1'}>
-                    Set the Discord Client Secret. You can find this in the{' '}
+                    {t('auth.clientSecretDesc', 'Set the Discord Client Secret. You can find this in the')}{' '}
                     <Link
                         to={'https://discord.com/developers/docs/intro'}
                         style={{ color: colors.primary }}
                         className={'hover:brightness-125 duration-300'}
                     >
-                        Developer Portal
+                        {t('auth.developerPortal', 'Developer Portal')}
                     </Link>
                     .
                 </p>
             </div>
             <Alert type={'info'}>
                 <div>
-                    Use the following Callback URL:
+                    {t('auth.callbackUrl', 'Use the following Callback URL:')}
                     <p className={'bg-black/50 p-1 rounded-lg font-mono w-fit mt-2'}>
                         /auth/modules/discord/authenticate
                     </p>

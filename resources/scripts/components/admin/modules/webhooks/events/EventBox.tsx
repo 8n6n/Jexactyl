@@ -5,8 +5,10 @@ import useStatus from '@/plugins/useStatus';
 import { faXmarkCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 export default ({ event }: { event: WebhookEvent }) => {
+    const { t } = useTranslation('admin');
     if (!event) return <></>;
 
     const { status, setStatus } = useStatus();

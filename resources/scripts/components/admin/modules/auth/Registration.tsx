@@ -7,8 +7,10 @@ import { useStoreState } from '@/state/hooks';
 import { Alert } from '@elements/alert';
 import useStatus from '@/plugins/useStatus';
 import { updateModule } from '@/api/admin/auth/module';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
+    const { t } = useTranslation('admin');
     const { status, setStatus } = useStatus();
     const { clearFlashes, clearAndAddHttpError } = useFlash();
     const settings = useStoreState(state => state.everest.data!.auth.registration);
@@ -28,26 +30,25 @@ export default () => {
     };
 
     return (
-        <AdminBox title={'Registration Module'} icon={faUserPlus} byKey={'auth:registration'} status={status}>
+        <AdminBox title={t('auth.registrationModule', 'Registration Module') as string} icon={faUserPlus} byKey={'auth:registration'} status={status}>
             <div>
-                <Label>Allow User Registration</Label>
+                <Label>{t('auth.allowRegistration', 'Allow User Registration')}</Label>
                 <Select id={'enabled'} name={'enabled'} onChange={e => update('enabled', e.target.value)}>
                     <option value={1} selected={settings.enabled}>
-                        Enabled
+                        {t('common:enabled', 'Enabled')}
                     </option>
                     <option value={0} selected={!settings.enabled}>
-                        Disabled
+                        {t('common:disabled', 'Disabled')}
                     </option>
                 </Select>
                 <p className={'text-xs text-gray-400 mt-1'}>
-                    Toggle whether users can register using the built-in pages.
+                    {t('auth.registrationDesc', 'Toggle whether users can register using the built-in pages.')}
                 </p>
             </div>
             {!settings.enabled && (
                 <Alert type={'warning'} className={'mt-6'}>
                     <span className={'text-xs'}>
-                        Since registration is disabled, OAuth modules like Discord will only allow users to login - not
-                        register.
+                        {t('auth.registrationWarning', 'Since registration is disabled, OAuth modules like Discord will only allow users to login - not register.')}
                     </span>
                 </Alert>
             )}

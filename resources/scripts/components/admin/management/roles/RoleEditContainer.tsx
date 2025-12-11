@@ -86,15 +86,15 @@ const EditInformationContainer = () => {
 
                         <Form css={tw`mb-0`}>
                             <div>
-                                <Field id={'name'} name={'name'} label={'Name'} type={'text'} />
+                                <Field id={'name'} name={'name'} label={t('common:name', 'Name')} type={'text'} />
                             </div>
 
                             <div css={tw`mt-6`}>
-                                <Field id={'description'} name={'description'} label={'Description'} type={'text'} />
+                                <Field id={'description'} name={'description'} label={t('common:description', 'Description')} type={'text'} />
                             </div>
 
                             <div css={tw`mt-6`}>
-                                <Field id={'color'} type={'color'} name={'color'} label={'Color'} />
+                                <Field id={'color'} type={'color'} name={'color'} label={t('roles.color', 'Color')} />
                             </div>
 
                             <div css={tw`w-full flex flex-row items-center mt-6`}>

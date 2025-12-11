@@ -12,8 +12,10 @@ import FlashMessageRender from '@/components/FlashMessageRender';
 import RequiredFieldIcon from '@elements/RequiredFieldIcon';
 import { toggleModule, updateModule } from '@/api/admin/auth/module';
 import { Alert } from '@elements/alert';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
+    const { t } = useTranslation('admin');
     const { status, setStatus } = useStatus();
     const [confirm, setConfirm] = useState<boolean>(false);
     const { clearFlashes, clearAndAddHttpError } = useFlash();
@@ -44,22 +46,22 @@ export default () => {
     };
 
     return (
-        <AdminBox title={'Google SSO Module'} icon={faGoogle} byKey={'auth:modules:google'} status={status} canDelete>
+        <AdminBox title={t('auth.googleSsoModule', 'Google SSO Module') as string} icon={faGoogle} byKey={'auth:modules:google'} status={status} canDelete>
             <FlashMessageRender byKey={'auth:modules:google'} className={'my-2'} />
             <Dialog.Confirm
                 open={confirm}
-                title={'Confirm module removal'}
+                title={t('auth.confirmModuleRemoval', 'Confirm module removal') as string}
                 onConfirmed={() => doDeletion()}
                 onClose={() => setConfirm(false)}
             >
-                Are you sure you wish to delete this module?
+                {t('auth.deleteModuleConfirm', 'Are you sure you wish to delete this module?')}
             </Dialog.Confirm>
             <TrashIcon
                 className={'w-5 h-5 absolute top-0 right-0 m-3.5 text-red-500 hover:text-red-300 duration-300'}
                 onClick={() => setConfirm(true)}
             />
             <div>
-                <Label>Client Identifier {!settings.clientId && <RequiredFieldIcon />}</Label>
+                <Label>{t('auth.clientId', 'Client Identifier')} {!settings.clientId && <RequiredFieldIcon />}</Label>
                 <Input
                     id={'client_id'}
                     type={'password'}
@@ -68,10 +70,10 @@ export default () => {
                     placeholder={settings.clientId ? '••••••••••••••••' : ''}
                 />
 
-                <p className={'text-xs text-gray-400 mt-1'}>Set the Google Client ID.</p>
+                <p className={'text-xs text-gray-400 mt-1'}>{t('auth.googleClientIdDesc', 'Set the Google Client ID.')}</p>
             </div>
             <div className={'my-6'}>
-                <Label>Client Secret {!settings.clientSecret && <RequiredFieldIcon />}</Label>
+                <Label>{t('auth.clientSecret', 'Client Secret')} {!settings.clientSecret && <RequiredFieldIcon />}</Label>
                 <Input
                     id={'client_secret'}
                     type={'password'}
@@ -79,11 +81,11 @@ export default () => {
                     onChange={e => update('client_secret', e.target.value)}
                     placeholder={settings.clientSecret ? '••••••••••••••••' : ''}
                 />
-                <p className={'text-xs text-gray-400 mt-1'}>Set the Google Client Secret.</p>
+                <p className={'text-xs text-gray-400 mt-1'}>{t('auth.googleClientSecretDesc', 'Set the Google Client Secret.')}</p>
             </div>
             <Alert type={'info'}>
                 <div>
-                    Use the following Callback URL:
+                    {t('auth.callbackUrl', 'Use the following Callback URL:')}
                     <p className={'bg-black/50 p-1 rounded-lg font-mono w-fit mt-2'}>
                         /auth/modules/google/authenticate
                     </p>
