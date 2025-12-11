@@ -21,8 +21,10 @@ import { getCategory } from '@/api/admin/billing/categories';
 import { Product } from '@/api/definitions/admin';
 import { ProductValues } from '@/api/admin/billing/types';
 import { Alert } from '@/components/elements/alert';
+import { useTranslation } from 'react-i18next';
 
 export default ({ product }: { product?: Product }) => {
+    const { t } = useTranslation('admin');
     const navigate = useNavigate();
     const params = useParams<'id'>();
     const [uuid, setUuid] = useState<string>();
@@ -63,7 +65,7 @@ export default ({ product }: { product?: Product }) => {
     }, [params.id]);
 
     return (
-        <AdminContentBlock title={product ? 'Edit Product' : 'New Product'}>
+        <AdminContentBlock title={product ? (t('billingProducts.editProduct', 'Edit Product') as string) : (t('billingProducts.newProduct', 'New Product') as string)}>
             <div css={tw`w-full flex flex-row items-center m-8`}>
                 {product?.icon ? (
                     <img src={product.icon} className={'ww-8 h-8 mr-4'} />
@@ -71,11 +73,11 @@ export default ({ product }: { product?: Product }) => {
                     <CubeIcon className={'w-8 h-8 mr-4'} />
                 )}
                 <div css={tw`flex flex-col flex-shrink`} style={{ minWidth: '0' }}>
-                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>{product?.name ?? 'New Product'}</h2>
+                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>{product?.name ?? t('billingProducts.newProduct', 'New Product')}</h2>
                     <p
                         css={tw`hidden lg:block text-base text-neutral-400 whitespace-nowrap overflow-ellipsis overflow-hidden`}
                     >
-                        {product?.uuid ?? 'Add a new product to the billing interface.'}
+                        {product?.uuid ?? t('billingProducts.addNewProduct', 'Add a new product to the billing interface.')}
                     </p>
                 </div>
                 {product && (
@@ -83,7 +85,7 @@ export default ({ product }: { product?: Product }) => {
                         <Link to={`/admin/billing/categories/${Number(params.id)}`}>
                             <Button>
                                 <FontAwesomeIcon icon={faArrowLeft} className={'mr-2'} />
-                                Return to Category
+                                {t('billingProducts.returnToCategory', 'Return to Category')}
                             </Button>
                         </Link>
                     </div>
@@ -126,7 +128,7 @@ export default ({ product }: { product?: Product }) => {
                     <Form>
                         <div css={tw`grid grid-cols-1 lg:grid-cols-2 gap-4`}>
                             <div css={tw`w-full flex flex-col mr-0 lg:mr-2`}>
-                                <AdminBox title={'General Details'} icon={faPuzzlePiece}>
+                                <AdminBox title={t('billingProducts.generalDetails', 'General Details') as string} icon={faPuzzlePiece}>
                                     <FieldRow>
                                         <Field
                                             id={'name'}
@@ -161,7 +163,7 @@ export default ({ product }: { product?: Product }) => {
                                         />
                                     </FieldRow>
                                 </AdminBox>
-                                <AdminBox title={'Resource Limits'} className={'lg:mt-4'} icon={faMicrochip}>
+                                <AdminBox title={t('billingProducts.resourceLimits', 'Resource Limits') as string} className={'lg:mt-4'} icon={faMicrochip}>
                                     <FieldRow>
                                         <Field
                                             id={'limits.cpu'}
@@ -188,7 +190,7 @@ export default ({ product }: { product?: Product }) => {
                                 </AdminBox>
                             </div>
                             <div css={tw`w-full flex flex-col mr-0 lg:mr-2`}>
-                                <AdminBox title={'Feature Limits'} icon={faBell}>
+                                <AdminBox title={t('billingProducts.featureLimits', 'Feature Limits') as string} icon={faBell}>
                                     <FieldRow>
                                         <Field
                                             id={'limits.backup'}
@@ -213,24 +215,21 @@ export default ({ product }: { product?: Product }) => {
                                         />
                                     </FieldRow>
                                 </AdminBox>
-                                {/* Dynamic alerts based on price */}
                                 {Number(values.price) === 0 && (
                                     <Alert type={'warning'} className={'mt-4'}>
-                                        You have set this product to be free. Please confirm this choice before
-                                        proceeding, otherwise users will be able to use this plan without payment.
+                                        {t('billingProducts.freeWarning', 'You have set this product to be free. Please confirm this choice before proceeding, otherwise users will be able to use this plan without payment.')}
                                     </Alert>
                                 )}
                                 {Number(values.price) === 0 && (
                                     <Alert type={'info'} className={'mt-4'}>
-                                        As this product is free, users will only be able to use it once to prevent
-                                        abuse.
+                                        {t('billingProducts.freeInfo', 'As this product is free, users will only be able to use it once to prevent abuse.')}
                                     </Alert>
                                 )}
                                 <div css={tw`rounded shadow-md mt-4 py-2 pr-6`} style={{ backgroundColor: secondary }}>
                                     <div css={tw`text-right`}>
                                         {product && <ProductDeleteButton product={product} />}
                                         <Button type={'submit'} disabled={isSubmitting || !isValid}>
-                                            {product ? 'Update Product' : 'Create Product'}
+                                            {product ? t('billingProducts.updateProduct', 'Update Product') : t('billingProducts.createProduct', 'Create Product')}
                                         </Button>
                                     </div>
                                 </div>

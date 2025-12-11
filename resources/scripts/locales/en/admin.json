@@ -318,8 +318,22 @@
         "viewCategory": "View Category",
         "products": "Products",
         "productsInCategory": "A list of the available products in the {{category}} category.",
+        "viewProduct": "View Product",
+        "editProduct": "Edit Product",
+        "newProduct": "New Product",
+        "addNewProduct": "Add a new product to the billing interface.",
+        "returnToCategory": "Return to Category",
+        "generalDetails": "General Details",
+        "resourceLimits": "Resource Limits",
+        "featureLimits": "Feature Limits",
+        "freeWarning": "You have set this product to be free. Please confirm this choice before proceeding, otherwise users will be able to use this plan without payment.",
+        "freeInfo": "As this product is free, users will only be able to use it once to prevent abuse.",
+        "updateProduct": "Update Product",
         "createProduct": "Create Product",
-        "viewProduct": "View Product"
+        "nameMismatch": "The product name does not match.",
+        "confirmDeletion": "Confirm product deletion",
+        "deleteWarning": "Are you sure you want to delete this product? All products under this product will also be permenantly deleted. To confirm, please type the product name",
+        "below": "below"
     },
     "activity": {
         "title": "Admin Activity",

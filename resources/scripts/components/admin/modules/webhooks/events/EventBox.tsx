@@ -32,7 +32,7 @@ export default ({ event }: { event: WebhookEvent }) => {
         >
             {status === 'none' && (
                 <span className={'absolute top-2.5 right-2 space-x-1'}>
-                    <Pill type={event.enabled ? 'success' : 'danger'}>{event.enabled ? 'Enabled' : 'Disabled'}</Pill>
+                    <Pill type={event.enabled ? 'success' : 'danger'}>{event.enabled ? t('common:enabled', 'Enabled') : t('common:disabled', 'Disabled')}</Pill>
                 </span>
             )}
             <p className={'text-sm text-gray-400'}>

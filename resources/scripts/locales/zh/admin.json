@@ -319,8 +319,22 @@
         "viewCategory": "查看分类",
         "products": "产品",
         "productsInCategory": "{{category}} 分类中的可用产品列表。",
+        "viewProduct": "查看产品",
+        "editProduct": "编辑产品",
+        "newProduct": "新产品",
+        "addNewProduct": "向计费界面添加新产品。",
+        "returnToCategory": "返回分类",
+        "generalDetails": "常规详情",
+        "resourceLimits": "资源限制",
+        "featureLimits": "功能限制",
+        "freeWarning": "您已将此产品设置为免费。请在继续之前确认此选择，否则用户将可以无需付款使用此方案。",
+        "freeInfo": "由于此产品是免费的，用户只能使用一次以防止滥用。",
+        "updateProduct": "更新产品",
         "createProduct": "创建产品",
-        "viewProduct": "查看产品"
+        "nameMismatch": "产品名称不匹配。",
+        "confirmDeletion": "确认删除产品",
+        "deleteWarning": "您确定要删除此产品吗？此产品下的所有产品也将被永久删除。要确认，请输入产品名称",
+        "below": "如下"
     },
     "activity": {
         "title": "管理员活动",

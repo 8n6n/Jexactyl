@@ -9,8 +9,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Product } from '@/api/definitions/admin';
+import { useTranslation } from 'react-i18next';
 
 export default ({ product }: { product: Product }) => {
+    const { t } = useTranslation('admin');
     const navigate = useNavigate();
     const params = useParams<'id'>();
     const [name, setName] = useState<string>('');
@@ -24,7 +26,7 @@ export default ({ product }: { product: Product }) => {
             addFlash({
                 type: 'error',
                 key: 'admin:billing:products:delete',
-                message: 'The product name does not match.',
+                message: t('billingProducts.nameMismatch', 'The product name does not match.'),
             });
 
             return;
@@ -41,16 +43,15 @@ export default ({ product }: { product: Product }) => {
                 open={open}
                 onConfirmed={doDeletion}
                 onClose={() => setOpen(false)}
-                title={'Confirm product deletion'}
+                title={t('billingProducts.confirmDeletion', 'Confirm product deletion') as string}
             >
                 <FlashMessageRender byKey={'admin:billing:products:delete'} className={'mb-2'} />
-                Are you sure you want to delete this product? All products under this product will also be permenantly
-                deleted. To confirm, please type the product name&nbsp;
-                <span className={'p-1 bg-zinc-900 rounded font-mono text-sm mx-1'}>({product.name})</span>below:
+                {t('billingProducts.deleteWarning', 'Are you sure you want to delete this product? All products under this product will also be permenantly deleted. To confirm, please type the product name')}&nbsp;
+                <span className={'p-1 bg-zinc-900 rounded font-mono text-sm mx-1'}>({product.name})</span>{t('billingProducts.below', 'below')}:
                 <Input onChange={e => setName(e.currentTarget.value)} className={'mt-2'} />
             </Dialog.Confirm>
             <Button.Danger className={'mr-4'} type={'button'} onClick={() => setOpen(true)}>
-                <FontAwesomeIcon icon={faTrash} className={'mr-1'} /> Delete
+                <FontAwesomeIcon icon={faTrash} className={'mr-1'} /> {t('common:delete', 'Delete')}
             </Button.Danger>
         </>
     );
